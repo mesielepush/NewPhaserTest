@@ -1,4 +1,5 @@
-import one from './one'
+import menu from './menu';
+import loading from './loading';
 const config = ()=>{
     var config = {
         type: Phaser.AUTO,
@@ -10,7 +11,7 @@ const config = ()=>{
                 gravity: { y: 200 }
             }
         },
-        scene: [one]
+        scene: [loading, menu]
     };
     
     var game = new Phaser.Game(config);

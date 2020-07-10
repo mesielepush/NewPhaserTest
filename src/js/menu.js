@@ -1,7 +1,7 @@
-class one extends Phaser.Scene{
+class menu extends Phaser.Scene{
 
     constructor(){
-        super({key:'one'})
+        super({key:'menu'})
     }
     preload (){
         this.load.setBaseURL('http://labs.phaser.io');
@@ -16,9 +16,9 @@ class one extends Phaser.Scene{
     }
     create (){
         this.add.image(400, 300, 'sky');
-    this.add.image(400, 300, 'star');
+        this.add.image(400, 300, 'star');
     }
     
     
 }
-export default one
+export default menu
