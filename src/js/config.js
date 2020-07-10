@@ -1,4 +1,6 @@
-import menu from './menu';
+import menuScene1 from './menuScene1';
+import menuScene0 from './menuScene0';
+
 import loading from './loading';
 const config = ()=>{
     var config = {
@@ -11,7 +13,7 @@ const config = ()=>{
                 gravity: { y: 200 }
             }
         },
-        scene: [loading, menu]
+        scene: [loading, menuScene0,menuScene1]
     };
     
     var game = new Phaser.Game(config);

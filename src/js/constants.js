@@ -1,6 +1,6 @@
 const constants = {
     scenes:{
-        menu:'menu'
+        menu0:'menu0'
     }
 }
 export default constants

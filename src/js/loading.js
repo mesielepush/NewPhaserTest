@@ -20,12 +20,16 @@ class loading extends Phaser.Scene {
             frameWidth:511.5
         });
         this.load.spritesheet('hero', "../src/images/sprites/generichero.png",{
-            frameHeight:550,
+            frameHeight:590,
             frameWidth:450
         });
         this.load.spritesheet('city', "../src/images/sprites/citys.png",{
             frameHeight:600,
             frameWidth:920
+        });
+        this.load.spritesheet('countryhouse', "../src/images/sprites/menuScene0.png",{
+            frameHeight:326,
+            frameWidth:540
         })
 
 
@@ -35,7 +39,7 @@ class loading extends Phaser.Scene {
         
     }
     create(){
-        this.scene.start(constants.scenes.menu,'Hellow from the loade scene')
+        this.scene.start('menu0','Hellow from the loade scene')
        
     }
     
