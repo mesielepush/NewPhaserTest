@@ -3,7 +3,7 @@ import loading from './loading';
 const config = ()=>{
     var config = {
         type: Phaser.AUTO,
-        width: 800,
+        width: 920,
         height: 600,
         physics: {
             default: 'arcade',
