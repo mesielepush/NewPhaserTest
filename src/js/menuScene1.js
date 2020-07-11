@@ -45,7 +45,7 @@ class menuScene1 extends Phaser.Scene{
         this.hero.play('right',true)
         this.hero.x+=2
         if (this.hero.x >= 1100){
-            this.scene.start('menu0','Hellow from the loade scene')
+            this.scene.start('menu2','Hellow from the loade scene')
 
         }
     }

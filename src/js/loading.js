@@ -12,7 +12,11 @@ class loading extends Phaser.Scene {
         
 
         this.load.image('passage',"../src/images/passage.png");
-        this.load.image('block',"../src/images/blocks.png")
+        this.load.image('block',"../src/images/blocks.png");
+        this.load.image('bg3',"../src/images/menu3.png");
+        
+
+        
 
 
         this.load.spritesheet('house', "../src/images/sprites/houseSprites.png",{
@@ -30,7 +34,12 @@ class loading extends Phaser.Scene {
         this.load.spritesheet('countryhouse', "../src/images/sprites/menuScene0.png",{
             frameHeight:326,
             frameWidth:540
+        });
+        this.load.spritesheet('second', "../src/images/sprites/second.png",{
+            frameHeight:108,
+            frameWidth:109
         })
+
 
 
         this.load.on('progress', (percent) =>{
@@ -39,7 +48,7 @@ class loading extends Phaser.Scene {
         
     }
     create(){
-        this.scene.start('menu0','Hellow from the loade scene')
+        this.scene.start('menu2','Hellow from the loade scene')
        
     }
     
