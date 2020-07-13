@@ -14,9 +14,15 @@ class loading extends Phaser.Scene {
         this.load.image('passage',"../src/images/passage.png");
         this.load.image('block',"../src/images/blocks.png");
         this.load.image('bg3',"../src/images/menu3.png");
-        
+        this.load.image('house0',"../src/images/house0.png");
+        this.load.image('logo',"../src/images/logo.png");
+        this.load.image('start',"../src/images/starts.png");
+        this.load.image('main',"../src/images/main.png");
 
-        
+
+
+        this.load.audio('opening','../src/music/inevitable.mp3');
+        this.load.audio('steps','../src/music/steps.mp3');
 
 
         this.load.spritesheet('house', "../src/images/sprites/houseSprites.png",{
@@ -24,7 +30,7 @@ class loading extends Phaser.Scene {
             frameWidth:511.5
         });
         this.load.spritesheet('hero', "../src/images/sprites/generichero.png",{
-            frameHeight:590,
+            frameHeight:600,
             frameWidth:450
         });
         this.load.spritesheet('city', "../src/images/sprites/citys.png",{
@@ -48,7 +54,7 @@ class loading extends Phaser.Scene {
         
     }
     create(){
-        this.scene.start('menu2','Hellow from the loade scene')
+        this.scene.start('main')
        
     }
     
