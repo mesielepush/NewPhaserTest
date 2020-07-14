@@ -16,7 +16,7 @@ const config = ()=>{
         physics: {
             default: 'arcade',
             arcade: {
-                gravity: { y: 600 }
+                gravity: { y: 800 }
             }
         },
         scene: [loading, menu, start1,start2,start3,main,room1,room2,room3]

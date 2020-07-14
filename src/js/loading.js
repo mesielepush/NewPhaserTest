@@ -24,6 +24,7 @@ class loading extends Phaser.Scene {
 
 
 
+
         this.load.audio('opening','../src/music/inevitable.mp3');
         this.load.audio('steps','../src/music/steps.mp3');
 
@@ -57,7 +58,7 @@ class loading extends Phaser.Scene {
         
     }
     create(){
-        this.scene.start('room2')
+        this.scene.start('room1')
        
     }
     

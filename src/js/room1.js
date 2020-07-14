@@ -6,10 +6,9 @@ class room1 extends Phaser.Scene{
         super({key:'room1'})
     }
     preload(){
-        this.load.spritesheet('tiles', "../src/images/assets/tiles.png", {frameWidth: 70, frameHeight: 70});
         
-        // the player will collide with this layer
-        
+        this.load.image('ground',"../src/images/ground.png");
+        this.load.image('room1_stuff',"../src/images/room1_stuff.png");
 
 
 
@@ -51,18 +50,20 @@ class room1 extends Phaser.Scene{
         }); 
     }
     create (){
-        this.room1_passage = this.add.image(0,0,"room1_passage").setOrigin(0).setScale(1).setDepth(0);
-        this.hero = this.physics.add.sprite(450,500,"hero",12).setDepth(3).setScale(0.3).setImmovable(true);
+        
+        this.room1_passage = this.add.image(0,0,"room1_passage").setOrigin(0).setDepth(-1);
+        this.room1_stuff = this.add.image(1800,295,'room1_stuff').setDepth(1)
+        this.hero = this.physics.add.sprite(0,400,"hero",4).setDepth(0).setScale(0.2).setGravityY(0);
         /* window.steps.stop() */
-        var groundTiles = this.map.addTilesetImage('tiles');
-        this.groundLayer = this.map.createDynamicLayer('World', groundTiles, 0, 0);
+        this.groundLayer  = this.physics.add.image(0,400,"ground").setOrigin(0).setDepth(-2);
 
-        this.groundLayer.setCollisionByExclusion([-1]);
+        
         this.physics.world.bounds.width = this.groundLayer.width;
         this.physics.world.bounds.height = this.groundLayer.height;
-
-        this.hero.setBounce(0.2); // our player will bounce from items
+        
+        /* this.hero.setBounce(0.2); */ // our player will bounce from items
         this.hero.setCollideWorldBounds(true); // don't go out of the map
+        this.groundLayer.setCollideWorldBounds(true)
         this.physics.add.collider(this.groundLayer, this.hero);
 
         this.keyboard = this.input.keyboard.addKeys("W,A,S,D");
@@ -73,6 +74,7 @@ class room1 extends Phaser.Scene{
         
     }
     update(){
+        console.log(this.hero.y)
         if (this.keyboard.D.isDown === true) {
             
             this.hero.setVelocityX(+constants.hero.speed_room1);
@@ -117,7 +119,9 @@ class room1 extends Phaser.Scene{
         } else if (this.hero.body.velocity.y > 0) { //moving down
             this.hero.play("down", true);
         }
-
+        if (this.hero.y<300){
+            this.hero.y=300
+        }
     }
 }
 export default room1;

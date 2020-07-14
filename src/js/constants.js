@@ -4,7 +4,7 @@ const constants = {
     },
     hero:{
         speed:100,
-        speed_room1:150
+        speed_room1:250
     }
 }
 export default constants
