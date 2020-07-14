@@ -21,7 +21,7 @@ class menu extends Phaser.Scene{
             volume: 0.3
         }) 
         window.opening = this.opening
-        /* this.opening.play() */
+        this.opening.play()
         
         this.anims.create({
             key: "country",
