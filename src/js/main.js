@@ -54,8 +54,7 @@ class main extends Phaser.Scene{
     update(){
         
         /* this.hero.setScale() */
-        console.log('X; ',this.hero.x)
-        console.log('Y; ',this.hero.y)
+        
 
         if (this.keyboard.D.isDown === true) {
             
