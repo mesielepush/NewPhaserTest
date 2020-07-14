@@ -14,7 +14,8 @@ class room2 extends Phaser.Scene{
     this.load.image('coin', "../src/images/assets/coinGold.png");
     // player animations
     this.load.atlas('player', "../src/images/assets/player.png", "../src/images/assets/player.json");
-     this.anims.create({
+
+    this.anims.create({
         key: 'walk',
         frames: this.anims.generateFrameNames('player', { prefix: 'p1_walk', start: 1, end: 11, zeroPad: 2 }),
         frameRate: 10,
@@ -34,7 +35,6 @@ class room2 extends Phaser.Scene{
         this.groundLayer = this.map.createDynamicLayer('World', groundTiles, 0, 0);
         // the player will collide with this layer
         this.groundLayer.setCollisionByExclusion([-1]);
-        
         // set the boundaries of our game world
         this.physics.world.bounds.width = this.groundLayer.width;
         this.physics.world.bounds.height = this.groundLayer.height;
@@ -44,7 +44,7 @@ class room2 extends Phaser.Scene{
         this.physics.add.collider(this.groundLayer, this.player);
         this.cursors = this.input.keyboard.createCursorKeys();
         this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
-        // make the camera follow the player
+        // make the camera follow the pla yer
         this.cameras.main.startFollow(this.player);
         
         // set background color, so the sky is not black    
@@ -53,8 +53,9 @@ class room2 extends Phaser.Scene{
     }
     update(){
         if (this.cursors.left.isDown) // if the left arrow key is down
-    {
+    {   
         this.player.body.setVelocityX(-200); // move left
+        
     }
     else if (this.cursors.right.isDown) // if the right arrow key is down
     {
@@ -64,6 +65,14 @@ class room2 extends Phaser.Scene{
     {
         this.player.body.setVelocityY(-500); // jump up
     }
+
+    if (this.player.body.velocity.x < 0) { //moving right
+        this.player.play("walk", true);
+    }
+
     }
 }
 export default room2;
+
+/* this.player.flipX= true; // flip the sprite to the left
+this.player.play('walk', true); // play walk animation */

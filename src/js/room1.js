@@ -6,6 +6,13 @@ class room1 extends Phaser.Scene{
         super({key:'room1'})
     }
     preload(){
+        this.load.spritesheet('tiles', "../src/images/assets/tiles.png", {frameWidth: 70, frameHeight: 70});
+        
+        // the player will collide with this layer
+        
+
+
+
         this.anims.create({
             key: "left",
             frameRate: 8,
@@ -45,9 +52,19 @@ class room1 extends Phaser.Scene{
     }
     create (){
         this.room1_passage = this.add.image(0,0,"room1_passage").setOrigin(0).setScale(1).setDepth(0);
-        
         this.hero = this.physics.add.sprite(450,500,"hero",12).setDepth(3).setScale(0.3).setImmovable(true);
         /* window.steps.stop() */
+        var groundTiles = this.map.addTilesetImage('tiles');
+        this.groundLayer = this.map.createDynamicLayer('World', groundTiles, 0, 0);
+
+        this.groundLayer.setCollisionByExclusion([-1]);
+        this.physics.world.bounds.width = this.groundLayer.width;
+        this.physics.world.bounds.height = this.groundLayer.height;
+
+        this.hero.setBounce(0.2); // our player will bounce from items
+        this.hero.setCollideWorldBounds(true); // don't go out of the map
+        this.physics.add.collider(this.groundLayer, this.hero);
+
         this.keyboard = this.input.keyboard.addKeys("W,A,S,D");
         this.cameras.main.setBounds(0,0,this.room1_passage.displayWidth,this.room1_passage.displayHeight);
         this.cameras.main.startFollow(this.hero);
