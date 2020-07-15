@@ -130,9 +130,7 @@ class room1 extends Phaser.Scene{
                 this.scene.start('room1_door1')
             };
             if (this.hero.x <1770 && this.hero.x >1700){
-                /* console.log('HERE°!!!!!') */
-                this.add.text(this.hero.x,0, '...This is DOOR TWO... ',
-                { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
+                this.scene.start('room1_door2')
             };
 
             if (this.hero.x <2800 && this.hero.x >2740){

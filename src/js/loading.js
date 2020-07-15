@@ -20,7 +20,14 @@ class loading extends Phaser.Scene {
         this.load.image('main',"../src/images/main.png");
         this.load.image('room1_passage',"../src/images/room1_passage.png");
         this.load.image('room1_stuff',"../src/images/room1_stuff.png");
-        
+        this.load.image('ground',"../src/images/ground.png");
+        this.load.image('floor1',"../src/images/room1_floor1.png");
+        this.load.image('bg2',"../src/images/room1_door2.png");
+        this.load.image('corral',"../src/images/corral.png");
+        this.load.image('corral1',"../src/images/corral1.png");
+
+
+
 
 
 
@@ -32,6 +39,10 @@ class loading extends Phaser.Scene {
         this.load.spritesheet('machine', "../src/images/sprites/machine.png",{
             frameHeight:750,
             frameWidth:784
+        });
+        this.load.spritesheet('chicken', "../src/images/sprites/chicken.png",{
+            frameHeight:35,
+            frameWidth:32
         });
         this.load.spritesheet('room_1bg', "../src/images/sprites/room1_door1.png",{
             frameHeight:540,
@@ -67,7 +78,7 @@ class loading extends Phaser.Scene {
         
     }
     create(){
-        this.scene.start('room1_door1')
+        this.scene.start('room1_door2')
        
     }
     
