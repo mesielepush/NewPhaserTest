@@ -74,7 +74,7 @@ class room1 extends Phaser.Scene{
         
     }
     update(){
-        console.log(this.hero.y)
+        console.log(this.hero.x)
         if (this.keyboard.D.isDown === true) {
             
             this.hero.setVelocityX(+constants.hero.speed_room1);
@@ -122,6 +122,23 @@ class room1 extends Phaser.Scene{
         if (this.hero.y<300){
             this.hero.y=300
         }
+        if (this.hero.y<350){
+            if (this.hero.x <970 && this.hero.x >900){
+                this.scene.start('room1_door1')
+            };
+            if (this.hero.x <1770 && this.hero.x >1700){
+                /* console.log('HERE°!!!!!') */
+                this.add.text(this.hero.x,0, '...This is DOOR TWO... ',
+                { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
+            };
+
+            if (this.hero.x <2800 && this.hero.x >2740){
+                /* console.log('HERE°!!!!!') */
+                this.add.text(this.hero.x,0, '...This is DOOR THREE... ',
+                { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
+            };
+        }
+
     }
 }
 export default room1;

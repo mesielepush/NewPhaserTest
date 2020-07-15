@@ -28,7 +28,10 @@ class loading extends Phaser.Scene {
         this.load.audio('opening','../src/music/inevitable.mp3');
         this.load.audio('steps','../src/music/steps.mp3');
 
-
+        this.load.spritesheet('machine', "../src/images/sprites/machine.png",{
+            frameHeight:750,
+            frameWidth:784
+        });
         this.load.spritesheet('house', "../src/images/sprites/houseSprites.png",{
             frameHeight:510,
             frameWidth:511.5
@@ -37,6 +40,7 @@ class loading extends Phaser.Scene {
             frameHeight:600,
             frameWidth:450
         });
+        
         this.load.spritesheet('city', "../src/images/sprites/citys.png",{
             frameHeight:600,
             frameWidth:920
@@ -58,7 +62,7 @@ class loading extends Phaser.Scene {
         
     }
     create(){
-        this.scene.start('room1')
+        this.scene.start('room1_door1')
        
     }
     
