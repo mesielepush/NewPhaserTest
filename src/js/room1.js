@@ -5,6 +5,9 @@ class room1 extends Phaser.Scene{
     constructor(){
         super({key:'room1'})
     }
+    init(data){
+        this.heroCurrentX = data.x
+    }
     preload(){
         
         this.load.image('ground',"../src/images/ground.png");
@@ -53,7 +56,7 @@ class room1 extends Phaser.Scene{
         
         this.room1_passage = this.add.image(0,0,"room1_passage").setOrigin(0).setDepth(-1);
         this.room1_stuff = this.add.image(1800,295,'room1_stuff').setDepth(1)
-        this.hero = this.physics.add.sprite(0,400,"hero",4).setDepth(0).setScale(0.2).setGravityY(0);
+        this.hero = this.physics.add.sprite(this.heroCurrentX || 0,400,"hero",4).setDepth(0).setScale(0.2).setGravityY(0);
         /* window.steps.stop() */
         this.groundLayer  = this.physics.add.image(0,400,"ground").setOrigin(0).setDepth(-2);
 

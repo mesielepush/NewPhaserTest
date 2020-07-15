@@ -34,7 +34,7 @@ class loading extends Phaser.Scene {
             frameWidth:784
         });
         this.load.spritesheet('room_1bg', "../src/images/sprites/room1_door1.png",{
-            frameHeight:600,
+            frameHeight:540,
             frameWidth:784
         });
         this.load.spritesheet('house', "../src/images/sprites/houseSprites.png",{

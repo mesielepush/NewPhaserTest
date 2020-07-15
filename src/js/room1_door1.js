@@ -15,7 +15,15 @@ class room1_door1 extends Phaser.Scene{
             }),
             repeat:0
         });
-        
+        this.anims.create({
+            key: "down",
+            frameRate: 8,
+            frames: this.anims.generateFrameNumbers("hero", {
+                start: 0,
+                end: 3
+            }),
+            repeat:0
+        });
         this.anims.create({
             key: "right",
             frameRate: 8,
@@ -35,25 +43,45 @@ class room1_door1 extends Phaser.Scene{
             }),
             repeat:-1
         });
+        this.anims.create({
+            key: "bgroom1",
+            frameRate: 8,
+            frames: this.anims.generateFrameNumbers("room_1bg", {
+                start: 0,
+                end: 5
+            }),
+            repeat:-1
+        });
+        this.anims.create({
+            key: "up",
+            frameRate: 8,
+            frames: this.anims.generateFrameNumbers("hero", {
+                start: 12,
+                end: 15
+            }),
+            repeat:0
+        }); 
+
+        
         this.load.image('ground',"../src/images/ground.png");
+        this.load.image('floor1',"../src/images/room1_floor1.png");
+
     }
     create (){
         
-        this.groundLayer  = this.physics.add.image(0,550,"ground").setOrigin(0).setDepth(2);
-        this.hero = this.physics.add.sprite(450,440,"hero",12).setDepth(3).setScale(0.3);
-        this.machine = this.add.sprite(700,250,"machine",0).setDepth(1).setScale(0.6);
-
+        
+        this.hero = this.physics.add.sprite(450,440,"hero",12).setDepth(3).setScale(0.2);
+        this.machine = this.add.sprite(220,280,"machine",0).setDepth(1).setScale(0.6).setDepth(2);
+        this.machine.flipX= true
         this.mainbg = this.add.sprite(460,300,"main",0).setDepth(0).setScale(1);
-        this.roomg = this.add.sprite(460,300,"room_1bg",0).setDepth(0).setScale(0.5);
-
-        
-        this.physics.world.bounds.width = this.groundLayer.width;
-        this.physics.world.bounds.height = this.groundLayer.height;
+        this.roombg = this.add.sprite(550,200,"room_1bg",0).setDepth(0).setScale(1.6);
+        this.groundLayer = this.physics.add.image(0,550,"floor1").setOrigin(0).setDepth(1).setScale(1);
+        this.physics.add.collider(this.machine, this.hero);
         
 
-        this.hero.setCollideWorldBounds(true); // don't go out of the map
+        this.hero.setCollideWorldBounds(true); 
         this.groundLayer.setCollideWorldBounds(true)
-        this.physics.add.collider(this.groundLayer, this.hero);
+        
 
         this.keyboard = this.input.keyboard.addKeys("W,A,S,D");
         
@@ -61,11 +89,7 @@ class room1_door1 extends Phaser.Scene{
         this.physics.world.bounds.height = this.mainbg.height;
 
         
-        /* this.hero.setBounce(0.2); */ // our player will bounce from items
-        this.hero.setCollideWorldBounds(true); // don't go out of the map
-        this.groundLayer.setCollideWorldBounds(true)
-        this.physics.add.collider(this.groundLayer, this.hero);
-
+      
         this.keyboard = this.input.keyboard.addKeys("W,A,S,D");
         
         
@@ -74,25 +98,27 @@ class room1_door1 extends Phaser.Scene{
     }
     update(){
         this.machine.play("on", true);
+        this.roombg.anims.playReverse('bgroom1',true)
+        console.log(this.hero.x)
         /* this.hero.setScale() */
         
 
         if (this.keyboard.D.isDown === true) {
             
-            this.hero.setVelocityX(+constants.hero.speed);
+            this.hero.setVelocityX(+constants.hero.speed_room1);
             
 
         }
 
         if (this.keyboard.W.isDown === true) {
             
-            this.hero.setVelocityY(-constants.hero.speed);
+            this.hero.setVelocityY(-constants.hero.speed_room1);
             
         }
 
         if (this.keyboard.S.isDown === true) {
             
-            this.hero.setVelocityY(+constants.hero.speed);
+            this.hero.setVelocityY(+constants.hero.speed_room1);
             
         }
 
@@ -122,9 +148,12 @@ class room1_door1 extends Phaser.Scene{
             this.hero.play("down", true);
         }
 
-        if (this.hero.y < 280){
+        if (this.hero.y < 450){
             
-            
+            this.hero.y=450
+        }
+        if (this.hero.x ==875){
+            this.scene.start('room1',{ x: 990 })
         }
 
     }
