@@ -44,6 +44,7 @@ class room1_door1 extends Phaser.Scene{
         this.machine = this.add.sprite(700,250,"machine",0).setDepth(1).setScale(0.6);
 
         this.mainbg = this.add.sprite(460,300,"main",0).setDepth(0).setScale(1);
+        this.roomg = this.add.sprite(460,300,"room_1bg",0).setDepth(0).setScale(0.5);
 
         
         this.physics.world.bounds.width = this.groundLayer.width;

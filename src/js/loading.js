@@ -20,6 +20,7 @@ class loading extends Phaser.Scene {
         this.load.image('main',"../src/images/main.png");
         this.load.image('room1_passage',"../src/images/room1_passage.png");
         this.load.image('room1_stuff',"../src/images/room1_stuff.png");
+        
 
 
 
@@ -30,6 +31,10 @@ class loading extends Phaser.Scene {
 
         this.load.spritesheet('machine', "../src/images/sprites/machine.png",{
             frameHeight:750,
+            frameWidth:784
+        });
+        this.load.spritesheet('room_1bg', "../src/images/sprites/room1_door1.png",{
+            frameHeight:600,
             frameWidth:784
         });
         this.load.spritesheet('house', "../src/images/sprites/houseSprites.png",{
