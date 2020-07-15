@@ -99,7 +99,7 @@ class room1_door2 extends Phaser.Scene{
         this.hero = this.physics.add.sprite(800,600,"hero",8).setDepth(4).setScale(0.2);
         this.chicken = this.physics.add.sprite(600,351,"chicken",0).setDepth(2).setScale(4);
         this.chicken.body.setAllowGravity(false)
-        
+        this.no = this.add.image(250,250,'no_button').setDepth(5)
 
         this.roombg = this.add.sprite(457,300,"bg2",0).setDepth(0).setScale(1);
         this.corral = this.add.image(450,335,'corral').setDepth(0);
