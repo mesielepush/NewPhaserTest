@@ -16,12 +16,12 @@ class menu extends Phaser.Scene{
         this.hoverSprite = this.add.sprite(playButton.x+280,playButton.y,'second').setScale(1.2).setDepth(2);
         this.hoverSprite.setVisible(false);
 
-        /* this.opening = this.sound.add('opening',{
+        this.opening = this.sound.add('opening',{
             loop: true,
             volume: 0.3
         }) 
         window.opening = this.opening
-        this.opening.play() */
+        this.opening.play()
         
         this.anims.create({
             key: "country",

@@ -9,7 +9,8 @@ class room1 extends Phaser.Scene{
         this.heroCurrentX = data.x
         this.chickensOn = data.chickens
         console.log('DATA OPEN: ',data.open)
-        this.openGate = data.open
+        this.openGate = data.open,
+        this.complete = data.complete
     }
     preload(){
         
@@ -213,7 +214,7 @@ class room1 extends Phaser.Scene{
         }
         if (this.hero.x > 3550){
             if (this.open == true){
-                this.scene.start('secondLast')
+                this.scene.start('secondLast', {room1: true})
             }
         }
 
