@@ -4,13 +4,89 @@ class loading extends Phaser.Scene {
         super({key:"loading"});
     }
     preload(){
+        let loadingBar = this.add.graphics({
+            fillStyle:{
+                color: 0xffffff
+            }
+        });
         
-        this.load.image('logo',"../src/images/logo.png")
+
+        this.load.image('passage',"../src/images/passage.png");
+        this.load.image('block',"../src/images/blocks.png");
+        this.load.image('bg3',"../src/images/menu3.png");
+        this.load.image('house0',"../src/images/house0.png");
+        this.load.image('logo',"../src/images/logo.png");
+        this.load.image('start',"../src/images/starts.png");
+        this.load.image('main',"../src/images/main.png");
+        this.load.image('room1_passage',"../src/images/room1_passage.png");
+        this.load.image('room1_stuff',"../src/images/room1_stuff.png");
+        this.load.image('ground',"../src/images/ground.png");
+        this.load.image('floor1',"../src/images/room1_floor1.png");
+        this.load.image('bg2',"../src/images/room1_door2.png");
+        this.load.image('corral',"../src/images/corral.png");
+        this.load.image('corral2',"../src/images/corral1_2.png");
+        this.load.image('corral1',"../src/images/corral1.png");
+        this.load.image('no_button',"../src/images/buttonNo.png");
+        this.load.image('yes_button',"../src/images/buttonYes.png");
+
+
+
+
+
+
+
+
+
+        this.load.audio('opening','../src/music/inevitable.mp3');
+        this.load.audio('steps','../src/music/steps.mp3');
+
+        this.load.spritesheet('machine', "../src/images/sprites/machine.png",{
+            frameHeight:750,
+            frameWidth:784
+        });
+        this.load.spritesheet('th', "../src/images/sprites/th.png",{
+            frameHeight:600,
+            frameWidth:800
+        });
+        this.load.spritesheet('chicken', "../src/images/sprites/chicken.png",{
+            frameHeight:35,
+            frameWidth:32
+        });
+        this.load.spritesheet('room_1bg', "../src/images/sprites/room1_door1.png",{
+            frameHeight:540,
+            frameWidth:784
+        });
+        this.load.spritesheet('house', "../src/images/sprites/houseSprites.png",{
+            frameHeight:510,
+            frameWidth:511.5
+        });
+        this.load.spritesheet('hero', "../src/images/sprites/generichero.png",{
+            frameHeight:600,
+            frameWidth:450
+        });
         
+        this.load.spritesheet('city', "../src/images/sprites/citys.png",{
+            frameHeight:600,
+            frameWidth:920
+        });
+        this.load.spritesheet('countryhouse', "../src/images/sprites/menuScene0.png",{
+            frameHeight:326,
+            frameWidth:540
+        });
+        this.load.spritesheet('second', "../src/images/sprites/second.png",{
+            frameHeight:108,
+            frameWidth:109
+        })
+
+
+
+        this.load.on('progress', (percent) =>{
+            loadingBar.fillRect(0,this.game.renderer.height / 2,this.game.renderer.width * percent, 50)
+        });
         
     }
     create(){
-        this.scene.start(constants.scenes.menu,'Hellow from the loade scene')
+        this.scene.start('secondLast')
        
     }
     
