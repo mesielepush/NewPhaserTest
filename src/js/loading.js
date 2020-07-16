@@ -31,8 +31,17 @@ class loading extends Phaser.Scene {
         this.load.image('backDoor',"../src/images/backDoors.png");
         this.load.audio('opening','../src/music/inevitable.mp3');
         this.load.audio('steps','../src/music/steps.mp3');
-        this.load.image('alertWhite',"../src/images/alertWhite.png")
+        this.load.image('alertWhite',"../src/images/alertWhite.png");
+        this.load.image('tube',"../src/images/tube.png");
+        this.load.image('aspersor',"../src/images/aspersor.png");
+        this.load.image('romm2_official',"../src/images/romm2_official.png");
 
+
+
+        this.load.spritesheet('catStay', "../src/images/sprites/catStay.png",{
+            frameHeight:20,
+            frameWidth:32
+        });
         this.load.spritesheet('catapult', "../src/images/sprites/catapult.png",{
             frameHeight:181,
             frameWidth:214

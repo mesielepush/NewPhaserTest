@@ -7,6 +7,42 @@ class room2 extends Phaser.Scene{
     }
     preload(){
         this.anims.create({
+            key: "left",
+            frameRate: 8,
+            frames: this.anims.generateFrameNumbers("hero", {
+                start: 8,
+                end: 11
+            }),
+            repeat:0
+        });
+        this.anims.create({
+            key: "up",
+            frameRate: 8,
+            frames: this.anims.generateFrameNumbers("hero", {
+                start: 12,
+                end: 15
+            }),
+            repeat:0
+        }); 
+        this.anims.create({
+            key: "down",
+            frameRate: 8,
+            frames: this.anims.generateFrameNumbers("hero", {
+                start: 0,
+                end: 3
+            }),
+            repeat:0
+        });
+        this.anims.create({
+            key: "right",
+            frameRate: 8,
+            frames: this.anims.generateFrameNumbers("hero", {
+                start: 4,
+                end: 7
+            }),
+            repeat:0
+        });
+        this.anims.create({
             key: "room2back",
             frameRate: 10,
             frames: this.anims.generateFrameNumbers("room2bg", {
@@ -33,19 +69,83 @@ class room2 extends Phaser.Scene{
             }),
             repeat:-1
         });
+        this.anims.create({
+            key: "catStay_animation",
+            frameRate: 3,
+            frames: this.anims.generateFrameNumbers("catStay", {
+                start: 3,
+                end: 5
+            }),
+            repeat:-1
+        });
  
     }
     create (){
-        this.room2bg1 = this.add.sprite(0,0,"room2bg1",0).setDepth(0).setScale(1).setOrigin(0);
-
-        this.catapult = this.add.sprite(450,180,"catapult",0).setDepth(1).setScale(1.5).setDepth(1);
-        this.alert = this.add.image(550,375,'alertWhite')
-        this.catapult.flipX= true
+        this.room2bg = this.add.sprite(0,0,"romm2_official",0).setDepth(0).setScale(2).setOrigin(0);
+        this.hero = this.physics.add.sprite( 400,400,"hero",4).setDepth(0).setScale(0.2).setGravityY(0);
+        this.hero.body.setAllowGravity(false);
+        this.physics.world.bounds.width = this.room2bg.width*2;
+        this.physics.world.bounds.height = this.room2bg.height*2;
+        this.keyboard = this.input.keyboard.addKeys("W,A,S,D");
+        this.hero.setCollideWorldBounds(true);
+        this.ex = this.add.text(this.hero.x,100, 'X: ',this.hero.x,
+                { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
+        this.ys = this.add.text(this.hero.x,150, 'X: ',this.hero.y,
+            { fontFamily: 'Georgia, "Gouady Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
     }
     update(){
-        this.catapult.play('catapult_animation',true)
-        
-        this.room2bg1.play('room2bg1_animation',true)
+        this.ex.setText('X: '+this.hero.x);
+       
+        this.ys.setText('Y: '+this.hero.y);
+        if (this.keyboard.D.isDown === true) {
+            
+            this.hero.setVelocityX(+constants.hero.speed_room1);
+            
+
+        }
+
+        if (this.keyboard.W.isDown === true) {
+            
+            this.hero.setVelocityY(-constants.hero.speed_room1);
+            
+        }
+
+        if (this.keyboard.S.isDown === true) {
+            
+            this.hero.setVelocityY(+constants.hero.speed_room1);
+            
+        }
+
+        if (this.keyboard.A.isDown === true) {
+            
+            this.hero.setVelocityX(-constants.hero.speed_room1);
+            
+        }
+        if (this.keyboard.A.isUp && this.keyboard.D.isUp) { //not moving on X axis
+            
+            this.hero.setVelocityX(0);
+            
+        }
+        if (this.keyboard.W.isUp && this.keyboard.S.isUp) { //not pressing y movement
+            
+            this.hero.setVelocityY(0);
+            
+        }
+
+        if (this.hero.body.velocity.x > 0) { //moving right
+            this.hero.play("right", true);
+        } else if (this.hero.body.velocity.x < 0) { //moving left
+            this.hero.play("left", true);
+        } else if (this.hero.body.velocity.y < 0) { //moving up
+            this.hero.play("up", true);
+        } else if (this.hero.body.velocity.y > 0) { //moving down
+            this.hero.play("down", true);
+        }
+        if (this.hero.x >749){
+            if(this.hero.y<380 && this.hero.y >299){
+                this.scene.start('room2_passage1')
+            }
+        }
 
     }
 }
