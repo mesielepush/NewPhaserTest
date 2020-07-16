@@ -5,6 +5,14 @@ class room2 extends Phaser.Scene{
     constructor(){
         super({key:'room2'})
     }
+    init(data){
+        this.complete = {
+            room1: data.room1,
+            room2 : data.room2,
+            room3 :data.doom3
+
+        }
+    }
     preload(){
         this.anims.create({
             key: "left",
