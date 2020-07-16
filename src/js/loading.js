@@ -24,6 +24,7 @@ class loading extends Phaser.Scene {
         this.load.image('floor1',"../src/images/room1_floor1.png");
         this.load.image('bg2',"../src/images/room1_door2.png");
         this.load.image('corral',"../src/images/corral.png");
+        this.load.image('corral2',"../src/images/corral1_2.png");
         this.load.image('corral1',"../src/images/corral1.png");
         this.load.image('no_button',"../src/images/buttonNo.png");
         this.load.image('yes_button',"../src/images/buttonYes.png");
@@ -81,7 +82,7 @@ class loading extends Phaser.Scene {
         
     }
     create(){
-        this.scene.start('room1_door2')
+        this.scene.start('menu')
        
     }
     

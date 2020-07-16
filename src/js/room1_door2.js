@@ -5,6 +5,9 @@ class room1_door2 extends Phaser.Scene{
     constructor(){
         super({key:'room1_door2'})
     }
+    init(data){
+    this.openGate = data.open
+    }
     preload(){
         this.anims.create({
             key: "left",
@@ -94,17 +97,20 @@ class room1_door2 extends Phaser.Scene{
 
     }
     create (){
-        
-        
+        this.open = this.openGate || false;
+        this.chickenBoundaries = true;
         this.hero = this.physics.add.sprite(800,600,"hero",8).setDepth(4).setScale(0.2);
         this.chicken = this.physics.add.sprite(600,351,"chicken",0).setDepth(2).setScale(4);
         this.chicken.body.setAllowGravity(false)
-        this.no = this.add.image(250,250,'no_button').setDepth(5)
+        this.hero.body.setAllowGravity(false)
+
+        this.no = this.add.image(140,450,'no_button').setDepth(3).setScale(0.7).setVisible(true)
+        this.yes = this.add.image(140,450,'yes_button').setDepth(3).setScale(0.7).setVisible(false)
 
         this.roombg = this.add.sprite(457,300,"bg2",0).setDepth(0).setScale(1);
         this.corral = this.add.image(450,335,'corral').setDepth(0);
         this.corral1 = this.add.image(450,360,'corral1').setDepth(3);
-        
+        this.corral2 = this.add.image(450,335,'corral2').setDepth(0).setVisible(false);
         
 
         this.hero.setCollideWorldBounds(true); 
@@ -130,9 +136,16 @@ class room1_door2 extends Phaser.Scene{
                     break;
                 case 1: y = Phaser.Math.Between(400, this.game.renderer.height);
             }
-            this.chickens.add(this.physics.add.sprite(x,y,"chicken",0).setDepth(2).setScale(4));
+            this.chickens.add(this.physics.add.sprite(x,y,"chicken",0).setDepth(2).setScale(4).setCollideWorldBounds(true));
         }
-        
+        if (this.open == true){
+            for (let i = 0; i < this.chickens.getChildren().length; i++) {
+                this.chickens.getChildren()[i].setVisible(false)
+            }
+            this.corral.setVisible(false)
+            this.corral1.setVisible(false)
+            this.corral2.setVisible(true)
+        }
 
         /* window.steps.stop() */
     }
@@ -141,28 +154,28 @@ class room1_door2 extends Phaser.Scene{
         console.log(this.hero.x)
         /* this.hero.setScale() */
         for (let i = 0; i < this.chickens.getChildren().length; i++) {
-            this.physics.accelerateToObject(this.chickens.getChildren()[i], this.hero,150);
-
+            this.physics.accelerateToObject(this.chickens.getChildren()[i], this.hero,50);
+            this.chickens.getChildren()[i].body.setAllowGravity(false).setCollideWorldBounds(true)
             if (this.chickens.getChildren()[i].body.velocity.x > 0){
                 this.chickens.getChildren()[i].play('right_chicken',true);
             }
             if (this.chickens.getChildren()[i].body.velocity.x < 0){
                 this.chickens.getChildren()[i].play('left_chicken',true);
             }
-
-            if (this.chickens.getChildren()[i].y > 400){
-                this.chickens.getChildren()[i].y = 400
-            }
-            if (this.chickens.getChildren()[i].x > 590){
-                this.chickens.getChildren()[i].x =590
-            }
-            if (this.chickens.getChildren()[i].x < 250){
-                this.chickens.getChildren()[i].x = 250
-            }
-            
+            if (this.chickenBoundaries == true){
                 
-            
-            
+    
+                if (this.chickens.getChildren()[i].y > 400){
+                    this.chickens.getChildren()[i].y = 400
+                }
+                if (this.chickens.getChildren()[i].x > 590){
+                    this.chickens.getChildren()[i].x =590
+                }
+                if (this.chickens.getChildren()[i].x < 250){
+                    this.chickens.getChildren()[i].x = 250
+                }
+            }
+                      
         }
         
         if (this.keyboard.D.isDown === true) {
@@ -186,7 +199,7 @@ class room1_door2 extends Phaser.Scene{
 
         if (this.keyboard.A.isDown === true) {
             
-            this.hero.setVelocityX(-constants.hero.speed);
+            this.hero.setVelocityX(-300);
             
         }
         if (this.keyboard.A.isUp && this.keyboard.D.isUp) { //not moving on X axis
@@ -215,7 +228,23 @@ class room1_door2 extends Phaser.Scene{
             this.hero.y=450
         }
         if (this.hero.x ==875){
-            this.scene.start('room1',{ x: 990 })
+           
+            if (this.chickenBoundaries == false){
+                this.scene.start('room1',{ chickens: true , x: 1848})
+            }else{
+                this.scene.start('room1',{ chickens: false ,x: 1848 })
+            }
+            
+        }
+        if (this.hero.y == 450){
+            if (this.hero.x >114 && this.hero.x <186) {
+                this.no.setVisible(false);
+                this.yes.setVisible(true);
+                this.corral1.setVisible(false);
+                this.corral.setVisible(false);
+                this.corral2.setVisible(true)
+                this.chickenBoundaries = false
+            }
         }
 
     }
