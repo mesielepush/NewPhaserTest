@@ -29,19 +29,22 @@ class loading extends Phaser.Scene {
         this.load.image('no_button',"../src/images/buttonNo.png");
         this.load.image('yes_button',"../src/images/buttonYes.png");
         this.load.image('backDoor',"../src/images/backDoors.png");
-
-
-
-
-
-
-
-
-
-
         this.load.audio('opening','../src/music/inevitable.mp3');
         this.load.audio('steps','../src/music/steps.mp3');
+        this.load.image('alertWhite',"../src/images/alertWhite.png")
 
+        this.load.spritesheet('catapult', "../src/images/sprites/catapult.png",{
+            frameHeight:181,
+            frameWidth:214
+        });
+        this.load.spritesheet('room2bg1', "../src/images/sprites/room2_bg1.png",{
+            frameHeight:640,
+            frameWidth:960
+        });
+        this.load.spritesheet('room2bg', "../src/images/sprites/room2bg.png",{
+            frameHeight:215,
+            frameWidth:512
+        });
         this.load.spritesheet('machine', "../src/images/sprites/machine.png",{
             frameHeight:750,
             frameWidth:784
@@ -88,7 +91,7 @@ class loading extends Phaser.Scene {
         
     }
     create(){
-        this.scene.start('menu')
+        this.scene.start('room2')
        
     }
     

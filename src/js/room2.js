@@ -6,69 +6,46 @@ class room2 extends Phaser.Scene{
         super({key:'room2'})
     }
     preload(){
-        // map made with Tiled in JSON format
-    this.load.tilemapTiledJSON('map', "../src/images/assets/map.json");
-    // tiles in spritesheet 
-    this.load.spritesheet('tiles', "../src/images/assets/tiles.png", {frameWidth: 70, frameHeight: 70});
-    // simple coin image
-    this.load.image('coin', "../src/images/assets/coinGold.png");
-    // player animations
-    this.load.atlas('player', "../src/images/assets/player.png", "../src/images/assets/player.json");
-
-    this.anims.create({
-        key: 'walk',
-        frames: this.anims.generateFrameNames('player', { prefix: 'p1_walk', start: 1, end: 11, zeroPad: 2 }),
-        frameRate: 10,
-        repeat: -1
-    });
-
+        this.anims.create({
+            key: "room2back",
+            frameRate: 10,
+            frames: this.anims.generateFrameNumbers("room2bg", {
+                start: 0,
+                end: 7
+            }),
+            repeat:-1
+        });
+        this.anims.create({
+            key: "room2bg1_animation",
+            frameRate: 24,
+            frames: this.anims.generateFrameNumbers("room2bg1", {
+                start: 0,
+                end: 60
+            }),
+            repeat:-1
+        });
+        this.anims.create({
+            key: "catapult_animation",
+            frameRate: 10,
+            frames: this.anims.generateFrameNumbers("catapult", {
+                start: 0,
+                end: 14
+            }),
+            repeat:-1
+        });
+ 
     }
     create (){
-        this.add.text(0,0, '...This is ROOM two... ',
-                { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
-        this.animationPlayed = true;
-        this.map = this.make.tilemap({key: 'map'});
+        this.room2bg1 = this.add.sprite(0,0,"room2bg1",0).setDepth(0).setScale(1).setOrigin(0);
 
-        // tiles for the ground layer
-        var groundTiles = this.map.addTilesetImage('tiles');
-        // create the ground layer
-        this.groundLayer = this.map.createDynamicLayer('World', groundTiles, 0, 0);
-        // the player will collide with this layer
-        this.groundLayer.setCollisionByExclusion([-1]);
-        // set the boundaries of our game world
-        this.physics.world.bounds.width = this.groundLayer.width;
-        this.physics.world.bounds.height = this.groundLayer.height;
-        this.player = this.physics.add.sprite(200, 200, 'player').setDepth(5);
-        this.player.setBounce(0.2); // our player will bounce from items
-        this.player.setCollideWorldBounds(true); // don't go out of the map
-        this.physics.add.collider(this.groundLayer, this.player);
-        this.cursors = this.input.keyboard.createCursorKeys();
-        this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
-        // make the camera follow the pla yer
-        this.cameras.main.startFollow(this.player);
-        
-        // set background color, so the sky is not black    
-        this.cameras.main.setBackgroundColor('#ccccff'); 
-            /* window.steps.stop() */
+        this.catapult = this.add.sprite(450,180,"catapult",0).setDepth(1).setScale(1.5).setDepth(1);
+        this.alert = this.add.image(550,375,'alertWhite')
+        this.catapult.flipX= true
     }
     update(){
-        if (this.cursors.left.isDown) // if the left arrow key is down
-    {   
-        this.player.body.setVelocityX(-200); // move left
+        this.catapult.play('catapult_animation',true)
         
-    }
-    else if (this.cursors.right.isDown) // if the right arrow key is down
-    {
-        this.player.body.setVelocityX(200); // move right
-    }
-    if ((this.cursors.space.isDown || this.cursors.up.isDown) && this.player.body.onFloor())
-    {
-        this.player.body.setVelocityY(-500); // jump up
-    }
-
-    if (this.player.body.velocity.x < 0) { //moving right
-        this.player.play("walk", true);
-    }
+        this.room2bg1.play('room2bg1_animation',true)
 
     }
 }

@@ -46,15 +46,24 @@ class main extends Phaser.Scene{
     create (){
         this.mainbg = this.add.sprite(460,300,"main",0).setDepth(0).setScale(1);
         this.hero = this.physics.add.sprite(450,500,"hero",12).setDepth(3).setScale(0.3).setImmovable(true);
-
+        this.hero.body.setAllowGravity(false);
         this.keyboard = this.input.keyboard.addKeys("W,A,S,D");
+
+
+        this.ex = this.add.text(this.hero.x,100, 'X: ',this.hero.x,
+        { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
+        this.ys = this.add.text(this.hero.x,150, 'X: ',this.hero.y,
+            { fontFamily: 'Georgia, "Gouady Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
+
 
         /* window.steps.stop() */
     }
     update(){
         
         /* this.hero.setScale() */
-        
+        this.ex.setText('X: '+this.hero.x);
+       
+        this.ys.setText('Y: '+this.hero.y);
 
         if (this.keyboard.D.isDown === true) {
             

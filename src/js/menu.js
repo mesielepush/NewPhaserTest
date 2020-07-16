@@ -16,12 +16,12 @@ class menu extends Phaser.Scene{
         this.hoverSprite = this.add.sprite(playButton.x+280,playButton.y,'second').setScale(1.2).setDepth(2);
         this.hoverSprite.setVisible(false);
 
-        this.opening = this.sound.add('opening',{
+        /* this.opening = this.sound.add('opening',{
             loop: true,
             volume: 0.3
         }) 
         window.opening = this.opening
-        this.opening.play()
+        this.opening.play() */
         
         this.anims.create({
             key: "country",
@@ -32,7 +32,7 @@ class menu extends Phaser.Scene{
             })
         });
         this.anims.create({
-            key: "down",
+            key: "down_second",
             frameRate: 5,
             frames: this.anims.generateFrameNumbers("second", {
                 start: 0,
@@ -53,7 +53,7 @@ class menu extends Phaser.Scene{
 
         });
         playButton.on('pointerup', ()=>{
-            this.hoverSprite.play('down').on('animationcomplete', ()=>{this.scene.start('start1')})
+            this.hoverSprite.play('down_second').on('animationcomplete', ()=>{this.scene.start('start1')})
             
         });
 
