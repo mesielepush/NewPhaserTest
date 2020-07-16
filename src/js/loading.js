@@ -44,6 +44,10 @@ class loading extends Phaser.Scene {
             frameHeight:750,
             frameWidth:784
         });
+        this.load.spritesheet('th', "../src/images/sprites/th.png",{
+            frameHeight:600,
+            frameWidth:800
+        });
         this.load.spritesheet('chicken', "../src/images/sprites/chicken.png",{
             frameHeight:35,
             frameWidth:32
@@ -82,7 +86,7 @@ class loading extends Phaser.Scene {
         
     }
     create(){
-        this.scene.start('menu')
+        this.scene.start('secondLast')
        
     }
     

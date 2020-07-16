@@ -6,11 +6,19 @@ class secondLast extends Phaser.Scene{
         super({key:'secondLast'})
     }
     init(data){
-        this.chickensOn = data.chickens
-        console.log(data.open)
+        
         
     }
     preload(){
+        this.anims.create({
+            key: "throne_animation",
+            frameRate: 8,
+            frames: this.anims.generateFrameNumbers("th", {
+                start:0,
+                end: 20
+            }),
+            repeat:0
+        });
         this.anims.create({
             key: "left",
             frameRate: 8,
@@ -54,11 +62,14 @@ class secondLast extends Phaser.Scene{
     }
     create (){
         this.hero = this.physics.add.sprite(450,450,"hero",8).setDepth(4).setScale(0.2);
-        this.hero.body.setAllowGravity(false)
+        this.bg = this.add.sprite(450,360,"th",8).setDepth(4).setScale(1.18);
+        this.hero.body.setAllowGravity(false);
+        this.keyboard = this.input.keyboard.addKeys("W,A,S,D");
+
         /* window.steps.stop() */
     }
     update(){
-        
+        this.bg.play('throne_animation',true)
         
         
 
