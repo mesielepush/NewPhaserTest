@@ -18,7 +18,23 @@ class room2_passage1 extends Phaser.Scene{
         
     }
     create (){
-        
+
+        this.soundOn = this.add.image(450,35,'soundOn').setScale(0.3).setVisible(false).setDepth(6)
+        this.soundOff = this.add.image(450,35,'soundOff').setScale(0.3).setDepth(6)
+        this.soundOn.setInteractive();
+        this.soundOff.setInteractive();
+
+        this.soundOn.on('pointerup', ()=>{
+            this.soundOn.setVisible(false)
+            this.soundOff.setVisible(true)
+            window.opening.play()
+        });
+        this.soundOff.on('pointerup', ()=>{
+            this.soundOff.setVisible(false)
+            this.soundOn.setVisible(true)
+            window.opening.stop()
+            
+        });
         this.room2Background = this.add.sprite(386,300,"room2bg",0).setDepth(1).setScale(2.2).setDepth(0);
         this.alert = this.add.image(550,375,'alertWhite').setVisible(false)
         this.redAlert = this.add.image(550,375,'alertRed').setVisible(false)
@@ -35,18 +51,14 @@ class room2_passage1 extends Phaser.Scene{
         this.no = this.add.image(840,150,'no_button').setDepth(3).setScale(0.7).setVisible(false)
         this.yes = this.add.image(840,150,'yes_button').setDepth(3).setScale(0.7).setVisible(true)
 
-        this.ex = this.add.text(this.hero.x,100, 'X: ',this.hero.x,
-                { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
-        this.ys = this.add.text(this.hero.x,150, 'X: ',this.hero.y,
-            { fontFamily: 'Georgia, "Gouady Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
+        
         this.seenOnce = false
     }
     update(){
         console.log(this.complete)
 
         this.room2Background.play("room2back",true);
-        this.ex.setText('X: '+this.hero.x);
-        this.ys.setText('Y: '+this.hero.y);
+        
         if (this.keyboard.D.isDown === true) {
             
             this.hero.setVelocityX(+constants.hero.speed_room1);

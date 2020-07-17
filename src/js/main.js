@@ -15,26 +15,33 @@ class main extends Phaser.Scene{
         
     }
     create (){
+        
         this.mainbg = this.add.sprite(460,300,"main",0).setDepth(0).setScale(1);
         this.hero = this.physics.add.sprite(450,500,"hero",12).setDepth(3).setScale(0.2).setImmovable(true);
         this.hero.body.setAllowGravity(false);
         this.keyboard = this.input.keyboard.addKeys("W,A,S,D");
+        
+        
+        this.soundOn = this.add.image(450,50,'soundOn').setScale(0.3).setVisible(false)
+        this.soundOff = this.add.image(450,50,'soundOff').setScale(0.3)
+        this.soundOn.setInteractive();
+        this.soundOff.setInteractive();
 
-
-        this.ex = this.add.text(this.hero.x,100, 'X: ',this.hero.x,
-        { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
-        this.ys = this.add.text(this.hero.x,150, 'X: ',this.hero.y,
-            { fontFamily: 'Georgia, "Gouady Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
-
-
+        this.soundOn.on('pointerup', ()=>{
+            this.soundOn.setVisible(false)
+            this.soundOff.setVisible(true)
+            window.opening.play()
+        });
+        this.soundOff.on('pointerup', ()=>{
+            this.soundOff.setVisible(false)
+            this.soundOn.setVisible(true)
+            window.opening.stop()
+            
+        });
         /* window.steps.stop() */
     }
     update(){
         
-        
-        this.ex.setText('X: '+this.hero.x);
-       
-        this.ys.setText('Y: '+this.hero.y);
 
         if (this.keyboard.D.isDown === true) {
             

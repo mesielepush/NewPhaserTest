@@ -21,8 +21,23 @@ class room1_door1 extends Phaser.Scene{
 
     }
     create (){
-        
-        console.log(this.complete)
+
+        this.soundOn = this.add.image(450,50,'soundOn').setScale(0.3).setVisible(false).setDepth(6)
+        this.soundOff = this.add.image(450,50,'soundOff').setScale(0.3).setDepth(6)
+        this.soundOn.setInteractive();
+        this.soundOff.setInteractive();
+
+        this.soundOn.on('pointerup', ()=>{
+            this.soundOn.setVisible(false)
+            this.soundOff.setVisible(true)
+            window.opening.play()
+        });
+        this.soundOff.on('pointerup', ()=>{
+            this.soundOff.setVisible(false)
+            this.soundOn.setVisible(true)
+            window.opening.stop()
+            
+        });
 
         this.hero = this.physics.add.sprite(800,500,"hero",8).setDepth(3).setScale(0.2);
         this.hero.body.setAllowGravity(false)

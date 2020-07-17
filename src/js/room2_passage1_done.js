@@ -33,10 +33,7 @@ class room2_passage1_done extends Phaser.Scene{
         this.catIdle = this.add.sprite(587,510,'catIdle').setScale(2.5).setVisible(false);
         this.yes = this.add.image(840,150,'yes_button').setDepth(3).setScale(0.7).setVisible(true)
         
-        this.ex = this.add.text(this.hero.x,100, 'X: ',this.hero.x,
-                { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
-        this.ys = this.add.text(this.hero.x,150, 'X: ',this.hero.y,
-            { fontFamily: 'Georgia, "Gouady Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
+        
         this.keyboard = this.input.keyboard.addKeys("W,A,S,D");
         
     }
@@ -45,9 +42,7 @@ class room2_passage1_done extends Phaser.Scene{
         console.log(this.complete)
         
         this.room2Background.play("room2back",true);
-        this.ex.setText('X: '+this.hero.x);
-       
-        this.ys.setText('Y: '+this.hero.y);
+        
         this.catIdle.setVisible(true);
         this.catIdle.play('catIdle_animation',true)
         this.ex.setText('X: '+this.hero.x);

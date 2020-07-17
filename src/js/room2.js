@@ -23,6 +23,25 @@ class room2 extends Phaser.Scene{
  
     }
     create (){
+
+        this.soundOn = this.add.image(450,50,'soundOn').setScale(0.3).setVisible(false).setDepth(6)
+        this.soundOff = this.add.image(450,50,'soundOff').setScale(0.3).setDepth(6)
+        this.soundOn.setInteractive();
+        this.soundOff.setInteractive();
+
+        this.soundOn.on('pointerup', ()=>{
+            this.soundOn.setVisible(false)
+            this.soundOff.setVisible(true)
+            window.opening.play()
+        });
+        this.soundOff.on('pointerup', ()=>{
+            this.soundOff.setVisible(false)
+            this.soundOn.setVisible(true)
+            window.opening.stop()
+            
+        });
+
+
         this.room2bg = this.add.sprite(0,0,"romm2_official",0).setDepth(0).setScale(2).setOrigin(0);
         this.hero = this.physics.add.sprite( 400,400,"hero",4).setDepth(0).setScale(0.2).setGravityY(0);
         this.hero.body.setAllowGravity(false);
@@ -30,19 +49,13 @@ class room2 extends Phaser.Scene{
         this.physics.world.bounds.height = this.room2bg.height*2;
         this.keyboard = this.input.keyboard.addKeys("W,A,S,D");
         this.hero.setCollideWorldBounds(true);
-        this.ex = this.add.text(this.hero.x,100, 'X: ',this.hero.x,
-                { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
-        this.ys = this.add.text(this.hero.x,150, 'X: ',this.hero.y,
-            { fontFamily: 'Georgia, "Gouady Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
+        
         this.catDone = this.add.text(70,380, 'Go to the first room',
         { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
         this.catDone.setVisible(false);
     }
     update(){
-        console.log(this.complete)
         
-        this.ex.setText('X: '+this.hero.x);
-        this.ys.setText('Y: '+this.hero.y);
         if (this.keyboard.D.isDown === true) {
             
             this.hero.setVelocityX(+constants.hero.speed_room1);

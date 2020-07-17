@@ -49,7 +49,7 @@ class start2 extends Phaser.Scene{
         }
         
         this.hero.play('right',true)
-        this.hero.x+=15
+        this.hero.x+=3
         if (this.hero.x >= 1050){
             this.scene.start('start3','Hellow from the loade scene')
 

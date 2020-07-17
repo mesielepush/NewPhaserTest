@@ -17,6 +17,22 @@ class room2_passage2 extends Phaser.Scene{
  
     }
     create (){
+        this.soundOn = this.add.image(450,35,'soundOn').setScale(0.3).setVisible(false).setDepth(6)
+        this.soundOff = this.add.image(450,35,'soundOff').setScale(0.3).setDepth(6)
+        this.soundOn.setInteractive();
+        this.soundOff.setInteractive();
+
+        this.soundOn.on('pointerup', ()=>{
+            this.soundOn.setVisible(false)
+            this.soundOff.setVisible(true)
+            window.opening.play()
+        });
+        this.soundOff.on('pointerup', ()=>{
+            this.soundOff.setVisible(false)
+            this.soundOn.setVisible(true)
+            window.opening.stop()
+            
+        });
         this.room2bg1 = this.add.sprite(0,0,"room2bg1",0).setDepth(0).setScale(1).setOrigin(0);
         this.catapult = this.add.sprite(430,180,"catapult",0).setDepth(1).setScale(1.5).setDepth(1);
         this.tube = this.add.image(366,300,'tube').setDepth(2).setScale(1);
@@ -32,10 +48,7 @@ class room2_passage2 extends Phaser.Scene{
         this.hero.setCollideWorldBounds(true);
         this.keyboard = this.input.keyboard.addKeys("W,A,S,D");
         
-        this.ex = this.add.text(450,100, 'X: ',this.hero.x,
-        { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
-        this.ys = this.add.text(450,150, 'X: ',this.hero.y,
-            { fontFamily: 'Georgia, "Gouady Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
+        
         this.catMoving = false
 
 
@@ -43,8 +56,7 @@ class room2_passage2 extends Phaser.Scene{
     update(){
        console.log(this.complete)
         
-       this.ex.setText('ROOM2 X: '+this.hero.x);
-       this.ys.setText('Y: '+this.hero.y);
+       
        if (this.catMoving == true){
             this.catMove.play('catWalk_animation',true);
             this.catMove.x+=7

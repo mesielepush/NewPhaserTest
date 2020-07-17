@@ -23,7 +23,7 @@ class start3 extends Phaser.Scene{
     update(){
         
         this.hero.play('right',true)
-        this.hero.x+=15
+        this.hero.x+=3
         
         if (this.hero.x >= 75){
             this.hero.y = 452
@@ -35,7 +35,7 @@ class start3 extends Phaser.Scene{
             this.hero.y = 490
         }
         
-        if (this.hero.x ==180){
+        if (this.hero.x >180){
             
             if(this.animationPlayed === false) {
                 let secondText = this.add.text(200,270, '...I try to stop him... I failed... ',

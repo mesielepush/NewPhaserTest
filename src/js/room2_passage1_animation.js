@@ -41,10 +41,7 @@ class room2_passage1_animation extends Phaser.Scene{
         this.catIdle = this.add.sprite(587,510,'catIdle').setScale(2.5).setVisible(false);
         this.yes = this.add.image(840,150,'yes_button').setDepth(3).setScale(0.7).setVisible(true)
         this.no = this.add.image(840,150,'no_button').setDepth(3).setScale(0.7).setVisible(false)
-        this.ex = this.add.text(this.catMove.x,100, 'X: ',this.catMove.x,
-                { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
-        this.ys = this.add.text(this.catMove.x,150, 'X: ',this.catMove.y,
-            { fontFamily: 'Georgia, "Gouady Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
+        
         this.seenOnce = false
     }
     update(){
@@ -57,9 +54,7 @@ class room2_passage1_animation extends Phaser.Scene{
         
         
         this.room2Background.play("room2back",true);
-        this.ex.setText('X: '+this.catMove.x);
-       
-        this.ys.setText('Y: '+this.catMove.y);
+        
         
         if ( this.catMove.x >250){
             if(this.seenOnce == false){

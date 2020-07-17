@@ -18,6 +18,24 @@ class secondLast extends Phaser.Scene{
     }
     create (){
         
+        this.soundOn = this.add.image(450,35,'soundOn').setScale(0.3).setVisible(false).setDepth(6)
+        this.soundOff = this.add.image(450,35,'soundOff').setScale(0.3).setDepth(6)
+        this.soundOn.setInteractive();
+        this.soundOff.setInteractive();
+
+        this.soundOn.on('pointerup', ()=>{
+            this.soundOn.setVisible(false)
+            this.soundOff.setVisible(true)
+            window.opening.play()
+        });
+        this.soundOff.on('pointerup', ()=>{
+            this.soundOff.setVisible(false)
+            this.soundOn.setVisible(true)
+            window.opening.stop()
+            
+        });
+
+
         this.hero = this.physics.add.sprite(450,450,"hero",12).setDepth(4).setScale(0.2);
         this.bg = this.add.sprite(450,360,"th",0).setDepth(0).setScale(1.18);
         this.roombg = this.add.sprite(457,300,"bg2",0).setDepth(-1).setScale(1).setVisible(false);
@@ -37,10 +55,7 @@ class secondLast extends Phaser.Scene{
         this.oneTwo.setVisible(false);
 
 
-        this.ex = this.add.text(this.hero.x,100, 'X: ',this.hero.x,
-                { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
-        this.ys = this.add.text(this.hero.x,150, 'X: ',this.hero.y,
-            { fontFamily: 'Georgia, "Gouady Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
+       
 
         /* window.steps.stop() */
     }
@@ -49,9 +64,9 @@ class secondLast extends Phaser.Scene{
 
         this.oneDone.setVisible(false)
         this.bg.play('throne_animation',true);
-        this.ex.setText(this.hero.x);
+        
         this.oneTwo.setVisible(false)
-        this.ys.setText(this.hero.y);
+        
 
         if (this.keyboard.D.isDown === true) {
             

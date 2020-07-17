@@ -53,11 +53,24 @@ class room1 extends Phaser.Scene{
         this.physics.world.bounds.height = this.room1_passage.height;
         this.no = this.add.image(3600,450,'no_button').setDepth(3).setScale(0.7).setVisible(true)
         this.yes = this.add.image(3600,150,'yes_button').setDepth(3).setScale(0.7).setVisible(false)
-        this.ex = this.add.text(this.hero.x,100, 'X: ',this.hero.x,
-            { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
-        this.ys = this.add.text(this.hero.x,150, 'X: ',this.hero.y,
-            { fontFamily: 'Georgia, "Gouady Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
+        
 
+        this.soundOn = this.add.image(450,50,'soundOn').setScale(0.3).setVisible(false)
+        this.soundOff = this.add.image(450,50,'soundOff').setScale(0.3)
+        this.soundOn.setInteractive();
+        this.soundOff.setInteractive();
+
+        this.soundOn.on('pointerup', ()=>{
+            this.soundOn.setVisible(false)
+            this.soundOff.setVisible(true)
+            window.opening.play()
+        });
+        this.soundOff.on('pointerup', ()=>{
+            this.soundOff.setVisible(false)
+            this.soundOn.setVisible(true)
+            window.opening.stop()
+            
+        });
         
         if (this.chickensOn == true){
             this.chicken = this.physics.add.sprite(600,351,"chicken",0).setDepth(0).setScale(4);
@@ -76,9 +89,8 @@ class room1 extends Phaser.Scene{
         }
     }
     update(){
-        this.ex.setText('X: '+this.hero.x);
-        this.ys.setText('Y: '+this.hero.y);
-        console.log(this.complete)
+        this.soundOn.x = this.hero.x
+        this.soundOff.x = this.hero.x
         if (this.chickensOn==true){
             for (let i = 0; i < this.chickens.getChildren().length; i++) {
                 this.physics.accelerateToObject(this.chickens.getChildren()[i], this.hero,50);

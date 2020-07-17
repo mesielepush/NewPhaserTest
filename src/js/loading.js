@@ -40,6 +40,10 @@ class loading extends Phaser.Scene {
         this.load.image('catButtonGreen',"../src/images/catButtonGreen.png");
         this.load.image('tuna',"../src/images/tuna.png");
         this.load.image('alertGreen',"../src/images/alertGreen.png");
+        this.load.image('soundOn',"../src/images/sound.png");
+        this.load.image('soundOff',"../src/images/soundOff.png");
+
+
 
 
 
@@ -112,6 +116,7 @@ class loading extends Phaser.Scene {
         
     }
     create(){
+        
         this.scene.start('menu')
        
     }
