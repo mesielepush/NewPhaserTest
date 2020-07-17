@@ -114,8 +114,8 @@ class room2_passage2 extends Phaser.Scene{
 
     }
     update(){
-        /* this.catapult.play('catapult_animation',true) */
-       this.ex.setText('X: '+this.hero.x);
+        
+       this.ex.setText('ROOM2 X: '+this.hero.x);
        this.ys.setText('Y: '+this.hero.y);
        if (this.catMoving == true){
             this.catMove.play('catWalk_animation',true);
@@ -180,6 +180,7 @@ class room2_passage2 extends Phaser.Scene{
                 this.catStay.destroy();
                 this.catMove.setVisible(true)
                 this.catMoving = true
+                
                 
             });
 

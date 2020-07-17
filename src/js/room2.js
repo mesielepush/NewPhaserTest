@@ -9,9 +9,13 @@ class room2 extends Phaser.Scene{
         this.complete = {
             room1: data.room1,
             room2 : data.room2,
-            room3 :data.doom3
+            
         }
-        this.cat = data.cat
+        if (this.complete.room2==true){
+            this.cat = true
+        }else{
+            this.cat = data.cat
+        }
     }
     preload(){
         this.anims.create({
@@ -100,10 +104,13 @@ class room2 extends Phaser.Scene{
                 { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
         this.ys = this.add.text(this.hero.x,150, 'X: ',this.hero.y,
             { fontFamily: 'Georgia, "Gouady Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
+        this.catDone = this.add.text(70,380, 'Go to the first room',
+        { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
+        this.catDone.setVisible(false);
     }
     update(){
+        
         this.ex.setText('X: '+this.hero.x);
-       
         this.ys.setText('Y: '+this.hero.y);
         if (this.keyboard.D.isDown === true) {
             
@@ -176,6 +183,16 @@ class room2 extends Phaser.Scene{
                 }
                 
             }
+        }
+        if (this.hero.y == 572){
+            if (this.cat == true){
+                this.catDone.setVisible(true)
+            }else{
+                this.scene.start('main',{
+                    room1:this.complete.room1,
+                    room2:this.complete.room2})
+            }
+            
         }
 
     }

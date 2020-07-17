@@ -9,8 +9,6 @@ class room2_passage1_animation extends Phaser.Scene{
         this.complete = {
             room1: data.room1,
             room2 : data.room2,
-            room3 :data.doom3
-
         }
         this.cat = data.cat
     }

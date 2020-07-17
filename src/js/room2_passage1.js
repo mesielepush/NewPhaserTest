@@ -88,7 +88,6 @@ class room2_passage1 extends Phaser.Scene{
     update(){
         this.room2Background.play("room2back",true);
         this.ex.setText('X: '+this.hero.x);
-       
         this.ys.setText('Y: '+this.hero.y);
         if (this.keyboard.D.isDown === true) {
             

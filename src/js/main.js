@@ -5,6 +5,12 @@ class main extends Phaser.Scene{
     constructor(){
         super({key:'main'})
     }
+    init(data){
+        this.complete = {
+            room1: data.room1,
+            room2 : data.room2,
+        }
+    }
     preload(){
         this.anims.create({
             key: "left",
@@ -45,7 +51,7 @@ class main extends Phaser.Scene{
     }
     create (){
         this.mainbg = this.add.sprite(460,300,"main",0).setDepth(0).setScale(1);
-        this.hero = this.physics.add.sprite(450,500,"hero",12).setDepth(3).setScale(0.3).setImmovable(true);
+        this.hero = this.physics.add.sprite(450,500,"hero",12).setDepth(3).setScale(0.2).setImmovable(true);
         this.hero.body.setAllowGravity(false);
         this.keyboard = this.input.keyboard.addKeys("W,A,S,D");
 
@@ -60,7 +66,7 @@ class main extends Phaser.Scene{
     }
     update(){
         
-        /* this.hero.setScale() */
+        
         this.ex.setText('X: '+this.hero.x);
        
         this.ys.setText('Y: '+this.hero.y);
@@ -113,15 +119,33 @@ class main extends Phaser.Scene{
         if (this.hero.y < 280){
             if (this.hero.x <220 && this.hero.x >103){
                 
-                this.scene.start('room1')
+                this.scene.start('room1',{
+                    room1:this.complete.room1,
+                    room2:this.complete.room2
+                })
             };
             if (this.hero.x >= 399 && this.hero.x <506){
-                this.scene.start('room2')
+                this.scene.start('secondLast',{
+                    room1:this.complete.room1,
+                    room2:this.complete.room2
+                })
             };
             if (this.hero.x >= 706 && this.hero.x <818){
-                this.scene.start('room3')
+                this.scene.start('room2',{
+                    room1:this.complete.room1,
+                    room2:this.complete.room2
+                })
             };
             
+        }
+        if (this.hero.y >506){
+            this.hero.y = 506
+        }
+        if (this.hero.x>873){
+            this.hero.x=873
+        }
+        if (this.hero.x <43){
+            this.hero.x = 43
         }
 
     }

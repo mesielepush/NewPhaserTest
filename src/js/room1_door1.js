@@ -8,7 +8,11 @@ class room1_door1 extends Phaser.Scene{
     init(data){
         this.chickensOn = data.chickens
         console.log(data.open)
-        
+        this.complete=  {
+            room1: data.room1,
+            room2 : data.room2,
+            
+        }
     }
     preload(){
         this.anims.create({
@@ -75,7 +79,7 @@ class room1_door1 extends Phaser.Scene{
     }
     create (){
         
-        console.log(this.chickenOn)
+        console.log(this.complete)
 
         this.hero = this.physics.add.sprite(800,500,"hero",8).setDepth(3).setScale(0.2);
         this.hero.body.setAllowGravity(false)
@@ -120,11 +124,10 @@ class room1_door1 extends Phaser.Scene{
         /* window.steps.stop() */
     }
     update(){
-        if (this.chickensLoaded == 6){
+        if (this.chickensLoaded > 5){
             this.yes.setVisible(true);
             this.open = true;
-            console.log('THIS:OPEN: ',this.open)
-            console.log(this.chickensLoaded)
+           
         }
         this.roombg.anims.playReverse('bgroom1',true)
 
@@ -202,9 +205,17 @@ class room1_door1 extends Phaser.Scene{
         if (this.hero.x ==875){
             if (this.open ==true){
 
-                this.scene.start('room1',{ open:true,x: 990 })
+                this.scene.start('room1',{
+                    open:true,
+                    x: 990,
+                    room1:this.complete.room1,
+                    room2: this.complete.room2
+                 })
             }else{
-                this.scene.start('room1',{ x: 990 })
+                this.scene.start('room1',{
+                    x: 990,
+                    room1:this.complete.room1,
+                    room2: this.complete.room2 })
             }
             
         }

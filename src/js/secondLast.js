@@ -9,8 +9,6 @@ class secondLast extends Phaser.Scene{
         this.complete = {
             room1: data.room1,
             room2 : data.room2,
-            room3 :data.doom3
-
         }
         
     }
@@ -96,9 +94,8 @@ class secondLast extends Phaser.Scene{
     update(){
         this.oneDone.setVisible(false)
         this.bg.play('throne_animation',true);
-        console.log(this.complete)
         this.ex.setText(this.hero.x);
-       
+        this.oneTwo.setVisible(false)
         this.ys.setText(this.hero.y);
 
         if (this.keyboard.D.isDown === true) {
@@ -152,30 +149,33 @@ class secondLast extends Phaser.Scene{
         }
         if (this.hero.y >530){
             if (this.hero.x>56 && this.hero.x <248){
-                console.log(this.complete.room1)
+                
                 if (this.complete.room1 == true ){
-                    console.log('TRUEEE')
 
                     this.oneDone.setVisible(true)
                 }else{
-                    this.scene.start('room1', {x:3450,complete: this.complete})
+                    this.scene.start('room1', {
+                        x:3450,
+                        room1:this.complete.room1,
+                        room2:this.complete.room2})
                 }
             }
             if (this.hero.x>400 && this.hero.x <550){
                 
-                if (this.complete.room2 == true ){
-                    this.oneTwo.setVisible(true);
-                }
-                else{
-                    this.scene.start('room2', {complete: this.complete})
-                }
+                    this.scene.start('main', {
+                        room1:this.complete.room1,
+                        room2:this.complete.room2})
+               
             }
             if (this.hero.x >716){
                 if (this.complete.room2 == true ){
                     this.oneTwo.setVisible(true);
                 }
                 else{
-                    this.scene.start('room2', {complete: this.complete})
+                    this.scene.start('room2', {
+                        room1:this.complete.room1,
+                        room2:this.complete.room2
+                    })
                 }
             }
         }

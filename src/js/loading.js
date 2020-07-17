@@ -114,7 +114,7 @@ class loading extends Phaser.Scene {
         
     }
     create(){
-        this.scene.start('room2_passage1_done')
+        this.scene.start('room2_passage2')
        
     }
     

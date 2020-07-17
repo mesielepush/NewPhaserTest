@@ -10,13 +10,22 @@ class room1 extends Phaser.Scene{
         this.chickensOn = data.chickens
         console.log('DATA OPEN: ',data.open)
         this.openGate = data.open,
-        this.complete = data.complete
+        this.complete =  {
+            room1: data.room1,
+            room2 : data.room2,
+            
+        }
     }
     preload(){
         
         this.load.image('ground',"../src/images/ground.png");
         this.load.image('room1_stuff',"../src/images/room1_stuff.png");
-        this.open = this.openGate || false
+        if (this.complete.room1 == true){
+            this.open = true
+        }else{
+            this.open = this.openGate || false
+        }
+        
 
 
         this.anims.create({
@@ -78,7 +87,7 @@ class room1 extends Phaser.Scene{
         
         this.room1_passage = this.add.image(0,0,"room1_passage").setOrigin(0).setDepth(-1);
         this.room1_stuff = this.add.image(1800,295,'room1_stuff').setDepth(1)
-        this.hero = this.physics.add.sprite(this.heroCurrentX || 0,400,"hero",4).setDepth(0).setScale(0.2).setGravityY(0);
+        this.hero = this.physics.add.sprite(this.heroCurrentX || 236,400,"hero",4).setDepth(0).setScale(0.2).setGravityY(0);
         /* window.steps.stop() */
         this.hero.body.setAllowGravity(false)
         this.groundLayer  = this.physics.add.image(0,400,"ground").setOrigin(0).setDepth(-2);
@@ -99,6 +108,10 @@ class room1 extends Phaser.Scene{
         this.physics.world.bounds.height = this.room1_passage.height;
         this.no = this.add.image(3600,450,'no_button').setDepth(3).setScale(0.7).setVisible(true)
         this.yes = this.add.image(3600,150,'yes_button').setDepth(3).setScale(0.7).setVisible(false)
+        this.ex = this.add.text(this.hero.x,100, 'X: ',this.hero.x,
+            { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
+        this.ys = this.add.text(this.hero.x,150, 'X: ',this.hero.y,
+            { fontFamily: 'Georgia, "Gouady Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
 
         
         if (this.chickensOn == true){
@@ -118,8 +131,8 @@ class room1 extends Phaser.Scene{
         }
     }
     update(){
-        console.log('THIS OPEN',this.open);
-        console.log(this.hero.x)
+        this.ex.setText('X: '+this.hero.x);
+        this.ys.setText('Y: '+this.hero.y);
         
         if (this.chickensOn==true){
             for (let i = 0; i < this.chickens.getChildren().length; i++) {
@@ -191,10 +204,16 @@ class room1 extends Phaser.Scene{
         if (this.hero.y<350){
             if (this.hero.x >914 && this.hero.x <1000){
                 if (this.chickensOn==true){
-                    this.scene.start('room1_door1',{chickens:true})
+                    this.scene.start('room1_door1',{
+                        chickens:true,
+                        room1:this.complete.room1,
+                        room2:this.complete.room2})
                 }
                 else{
-                    this.scene.start('room1_door1',{chickens:false})
+                    this.scene.start('room1_door1',{
+                        chickens:false,
+                        room1:this.complete.room1,
+                        room2:this.complete.room2})
                 }
             };
             if (this.hero.x <1880 && this.hero.x >1800){
@@ -202,8 +221,12 @@ class room1 extends Phaser.Scene{
                     this.add.text(this.hero.x,0, '...Nothing to do here... ',
                 { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
                     
+                }else{
+                    this.scene.start('room1_door2',{
+                        room1:this.complete.room1,
+                        room2:this.complete.room2})
                 }
-                this.scene.start('room1_door2')
+                
             };
 
             if (this.hero.x <2800 && this.hero.x >2740){
@@ -214,8 +237,13 @@ class room1 extends Phaser.Scene{
         }
         if (this.hero.x > 3550){
             if (this.open == true){
-                this.scene.start('secondLast', {room1: true})
+                this.scene.start('secondLast', {
+                    room1: true,
+                    room2:this.complete.room2})
             }
+        }
+        if (this.hero.x ==45){
+            this.scene.start('main')
         }
 
     }

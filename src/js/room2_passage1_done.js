@@ -5,7 +5,12 @@ class room2_passage1_done extends Phaser.Scene{
     constructor(){
         super({key:'room2_passage1_done'})
     }
-    
+    init(data){
+        this.complete={
+            room1: data.room1,
+            room2: data.room2
+        }
+    }
     preload(){
         this.anims.create({
             key: "room2back",
@@ -154,7 +159,9 @@ class room2_passage1_done extends Phaser.Scene{
             this.hero.y =430
         }
         if (this.hero.x >965){
-            this.scene.start('secondLast',{room2:true})
+            this.scene.start('secondLast',{
+                room1:this.complete.room1,
+                room2: true})
         }
     }
 }
