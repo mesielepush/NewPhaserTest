@@ -8,7 +8,7 @@ class room1 extends Phaser.Scene{
     init(data){
         this.heroCurrentX = data.x
         this.chickensOn = data.chickens
-        console.log('DATA OPEN: ',data.open)
+        
         this.openGate = data.open,
         this.complete =  {
             room1: data.room1,
@@ -26,62 +26,7 @@ class room1 extends Phaser.Scene{
             this.open = this.openGate || false
         }
         
-
-
-        this.anims.create({
-            key: "left",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 8,
-                end: 11
-            }),
-            repeat:0
-        });
-        this.anims.create({
-            key: "up",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 12,
-                end: 15
-            }),
-            repeat:0
-        }); 
-        this.anims.create({
-            key: "down",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 0,
-                end: 3
-            }),
-            repeat:0
-        });
-        this.anims.create({
-            key: "right",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 4,
-                end: 7
-            }),
-            repeat:0
-        });
-        this.anims.create({
-            key: "left_chicken",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("chicken", {
-                start: 3,
-                end: 5
-            }),
-            repeat:-1
-        });
-        this.anims.create({
-            key: "right_chicken",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("chicken", {
-                start: 7,
-                end: 9
-            }),
-            repeat:-1
-        });
+        
     }
     create (){
         
@@ -133,7 +78,7 @@ class room1 extends Phaser.Scene{
     update(){
         this.ex.setText('X: '+this.hero.x);
         this.ys.setText('Y: '+this.hero.y);
-        
+        console.log(this.complete)
         if (this.chickensOn==true){
             for (let i = 0; i < this.chickens.getChildren().length; i++) {
                 this.physics.accelerateToObject(this.chickens.getChildren()[i], this.hero,50);
@@ -230,7 +175,7 @@ class room1 extends Phaser.Scene{
             };
 
             if (this.hero.x <2800 && this.hero.x >2740){
-                /* console.log('HERE°!!!!!') */
+                
                 this.add.text(this.hero.x,0, '...This is DOOR THREE... ',
                 { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
             };

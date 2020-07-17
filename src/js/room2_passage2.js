@@ -5,88 +5,15 @@ class room2_passage2 extends Phaser.Scene{
     constructor(){
         super({key:'room2_passage2'})
     }
+    init(data){
+        this.complete={
+            room1: data.room1,
+            room2: data.room2
+        }
+    }
     preload(){
-        this.anims.create({
-            key: "room2back",
-            frameRate: 10,
-            frames: this.anims.generateFrameNumbers("room2bg", {
-                start: 0,
-                end: 7
-            }),
-            repeat:-1
-        });
-        this.anims.create({
-            key: "room2bg1_animation",
-            frameRate: 24,
-            frames: this.anims.generateFrameNumbers("room2bg1", {
-                start: 0,
-                end: 60
-            }),
-            repeat:-1
-        });
-        this.anims.create({
-            key: "catapult_animation",
-            frameRate: 10,
-            frames: this.anims.generateFrameNumbers("catapult", {
-                start: 0,
-                end: 14
-            }),
-            repeat:0
-        });
-        this.anims.create({
-            key: "catStay_animation",
-            frameRate: 3,
-            frames: this.anims.generateFrameNumbers("catStay", {
-                start: 3,
-                end: 5
-            }),
-            repeat:-1
-        });
-        this.anims.create({
-            key: "left",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 8,
-                end: 11
-            }),
-            repeat:0
-        });
-        this.anims.create({
-            key: "up",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 12,
-                end: 15
-            }),
-            repeat:0
-        }); 
-        this.anims.create({
-            key: "down",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 0,
-                end: 3
-            }),
-            repeat:0
-        });
-        this.anims.create({
-            key: "right",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 4,
-                end: 7
-            }),
-            repeat:0
-        });
-        this.anims.create({
-            key: "catWalk_animation",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("catWalk", {
-                start: 0,
-                end: 11
-            }),
-            repeat:-1
-        });
+       
+       
  
     }
     create (){
@@ -114,6 +41,7 @@ class room2_passage2 extends Phaser.Scene{
 
     }
     update(){
+       console.log(this.complete)
         
        this.ex.setText('ROOM2 X: '+this.hero.x);
        this.ys.setText('Y: '+this.hero.y);
@@ -193,7 +121,10 @@ class room2_passage2 extends Phaser.Scene{
             this.scene.start('room2')
         }
         if (this.catMove.x > 885){
-            this.scene.start('room2_passage1_animation')
+            this.scene.start('room2_passage1_animation',{
+                room1:this.complete.room1,
+                room2:this.complete.room2
+            })
         }
     }
 }

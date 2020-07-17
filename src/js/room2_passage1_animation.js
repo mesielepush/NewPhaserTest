@@ -13,24 +13,7 @@ class room2_passage1_animation extends Phaser.Scene{
         this.cat = data.cat
     }
     preload(){
-        this.anims.create({
-            key: "room2back",
-            frameRate: 10,
-            frames: this.anims.generateFrameNumbers("room2bg", {
-                start: 0,
-                end: 7
-            }),
-            repeat:-1
-        });
-        this.anims.create({
-            key: "catWalk_animation",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("catWalk", {
-                start: 0,
-                end: 11
-            }),
-            repeat:-1
-        });
+        
         this.anims.create({
             key: "catIdle_animation",
             frameRate: 4,
@@ -65,6 +48,7 @@ class room2_passage1_animation extends Phaser.Scene{
         this.seenOnce = false
     }
     update(){
+        console.log(this.complete)
         
         if (this.catMove.active){
             this.catMove.play('catWalk_animation',true);
@@ -106,7 +90,10 @@ class room2_passage1_animation extends Phaser.Scene{
                 this.yes.setVisible(true);
                 this.no.destroy();
                 this.catIdle.play('catIdle_animation',true).on('animationcomplete',()=>{
-                    this.scene.start('room2',{cat:true})
+                    this.scene.start('room2',{
+                        cat:true,
+                        room1:this.complete.room1,
+                        room2:this.complete.room2})
                 })})
         }
     }

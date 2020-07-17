@@ -12,42 +12,7 @@ class main extends Phaser.Scene{
         }
     }
     preload(){
-        this.anims.create({
-            key: "left",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 8,
-                end: 11
-            }),
-            repeat:0
-        });
-        this.anims.create({
-            key: "up",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 12,
-                end: 15
-            }),
-            repeat:0
-        }); 
-        this.anims.create({
-            key: "down",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 0,
-                end: 3
-            }),
-            repeat:0
-        });
-        this.anims.create({
-            key: "right",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 4,
-                end: 7
-            }),
-            repeat:0
-        }); 
+        
     }
     create (){
         this.mainbg = this.add.sprite(460,300,"main",0).setDepth(0).setScale(1);

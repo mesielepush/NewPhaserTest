@@ -106,15 +106,13 @@ class loading extends Phaser.Scene {
             frameWidth:109
         })
 
-
-
         this.load.on('progress', (percent) =>{
             loadingBar.fillRect(0,this.game.renderer.height / 2,this.game.renderer.width * percent, 50)
         });
         
     }
     create(){
-        this.scene.start('room2_passage2')
+        this.scene.start('menu')
        
     }
     

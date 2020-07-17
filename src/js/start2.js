@@ -21,15 +21,7 @@ class start2 extends Phaser.Scene{
             }),
             repeat:0
         });
-        this.anims.create({
-            key: "right",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 4,
-                end: 7
-            }),
-            repeat:0
-        }); 
+        
         this.cityPlayed = false;
         this.housePlayed = false;
 
@@ -57,7 +49,7 @@ class start2 extends Phaser.Scene{
         }
         
         this.hero.play('right',true)
-        this.hero.x+=2
+        this.hero.x+=15
         if (this.hero.x >= 1050){
             this.scene.start('start3','Hellow from the loade scene')
 

@@ -14,95 +14,16 @@ class room1_door2 extends Phaser.Scene{
     }
     }
     preload(){
-        this.anims.create({
-            key: "left",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 8,
-                end: 11
-            }),
-            repeat:0
-        });
-        this.anims.create({
-            key: "down",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 0,
-                end: 3
-            }),
-            repeat:0
-        });
-        this.anims.create({
-            key: "right",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 4,
-                end: 7
-            }),
-            repeat:0
-        });
         
-        this.anims.create({
-            key: "on",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("machine", {
-                start: 0,
-                end: 2
-            }),
-            repeat:-1
-        });
         
-        this.anims.create({
-            key: "up",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 12,
-                end: 15
-            }),
-            repeat:0
-        }); 
-
-        this.anims.create({
-            key: "left_chicken",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("chicken", {
-                start: 3,
-                end: 5
-            }),
-            repeat:-1
-        });
-        this.anims.create({
-            key: "right_chicken",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("chicken", {
-                start: 7,
-                end: 9
-            }),
-            repeat:-1
-        });
-        this.anims.create({
-            key: "up_chicken",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("chicken", {
-                start: 10,
-                end: 12
-            }),
-            repeat:-1
-        });
-        this.anims.create({
-            key: "idle",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("chicken", {
-                start: 0,
-                end: 2
-            }),
-            repeat:-1
-        });
+        
+        
+        
         
 
     }
     create (){
-        console.log(this.complete)
+        
         this.open = this.openGate || false;
         this.chickenBoundaries = true;
         this.hero = this.physics.add.sprite(800,600,"hero",8).setDepth(4).setScale(0.2);
@@ -156,6 +77,7 @@ class room1_door2 extends Phaser.Scene{
         /* window.steps.stop() */
     }
     update(){
+        console.log(this.complete)
         
         
         for (let i = 0; i < this.chickens.getChildren().length; i++) {

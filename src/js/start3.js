@@ -6,16 +6,6 @@ class start3 extends Phaser.Scene{
     preload (){
         
         
-        this.anims.create({
-            key: "right",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 4,
-                end: 7
-            }),
-            repeat:0
-        });
-        
        
     }
     create (){
@@ -33,8 +23,8 @@ class start3 extends Phaser.Scene{
     update(){
         
         this.hero.play('right',true)
-        this.hero.x+=2
-        console.log(this.hero.x)
+        this.hero.x+=15
+        
         if (this.hero.x >= 75){
             this.hero.y = 452
         }

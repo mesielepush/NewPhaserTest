@@ -13,64 +13,17 @@ class secondLast extends Phaser.Scene{
         
     }
     preload(){
-        this.anims.create({
-            key: "throne_animation",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("th", {
-                start:0,
-                end: 20
-            }),
-            repeat:0
-        });
-        this.anims.create({
-            key: "left",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 8,
-                end: 11
-            }),
-            repeat:0
-        });
-        this.anims.create({
-            key: "down",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 0,
-                end: 3
-            }),
-            repeat:0
-        });
-        this.anims.create({
-            key: "right",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 4,
-                end: 7
-            }),
-            repeat:0
-        });
         
         
-        this.anims.create({
-            key: "up",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 12,
-                end: 15
-            }),
-            repeat:0
-        }); 
-
-
     }
     create (){
-        console.log(this.complete)
-        this.hero = this.physics.add.sprite(450,450,"hero",8).setDepth(4).setScale(0.2);
-        this.bg = this.add.sprite(450,360,"th",8).setDepth(0).setScale(1.18);
+        
+        this.hero = this.physics.add.sprite(450,450,"hero",12).setDepth(4).setScale(0.2);
+        this.bg = this.add.sprite(450,360,"th",0).setDepth(0).setScale(1.18);
         this.roombg = this.add.sprite(457,300,"bg2",0).setDepth(-1).setScale(1).setVisible(false);
         this.physics.world.bounds.width = this.roombg.width;
         this.physics.world.bounds.height = this.roombg.height;
-        this.backDoors = this.add.image(465,590,"backDoor",8).setDepth(1).setScale(1.18);
+        this.backDoors = this.add.image(465,590,"backDoor").setDepth(1).setScale(1.18);
         this.hero.setCollideWorldBounds(true);
         this.hero.body.setAllowGravity(false);
         this.keyboard = this.input.keyboard.addKeys("W,A,S,D");
@@ -92,6 +45,8 @@ class secondLast extends Phaser.Scene{
         /* window.steps.stop() */
     }
     update(){
+        console.log(this.complete)
+
         this.oneDone.setVisible(false)
         this.bg.play('throne_animation',true);
         this.ex.setText(this.hero.x);

@@ -3,8 +3,8 @@ const constants = {
         menu0:'menu0'
     },
     hero:{
-        speed:250,
-        speed_room1:250
+        speed:350,
+        speed_room1:350
     }
 }
 export default constants

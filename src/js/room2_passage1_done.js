@@ -12,61 +12,7 @@ class room2_passage1_done extends Phaser.Scene{
         }
     }
     preload(){
-        this.anims.create({
-            key: "room2back",
-            frameRate: 10,
-            frames: this.anims.generateFrameNumbers("room2bg", {
-                start: 0,
-                end: 7
-            }),
-            repeat:-1
-        });
         
-        this.anims.create({
-            key: "catIdle_animation",
-            frameRate: 4,
-            frames: this.anims.generateFrameNumbers("catIdle", {
-                start: 0,
-                end: 8
-            }),
-            repeat:2
-        });
-        this.anims.create({
-            key: "left",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 8,
-                end: 11
-            }),
-            repeat:0
-        });
-        this.anims.create({
-            key: "up",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 12,
-                end: 15
-            }),
-            repeat:0
-        }); 
-        this.anims.create({
-            key: "down",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 0,
-                end: 3
-            }),
-            repeat:0
-        });
-        this.anims.create({
-            key: "right",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 4,
-                end: 7
-            }),
-            repeat:0
-        });
     }
     create (){
         
@@ -96,6 +42,7 @@ class room2_passage1_done extends Phaser.Scene{
     }
     update(){
                 
+        console.log(this.complete)
         
         this.room2Background.play("room2back",true);
         this.ex.setText('X: '+this.hero.x);

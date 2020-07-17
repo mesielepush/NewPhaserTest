@@ -7,70 +7,13 @@ class room1_door1 extends Phaser.Scene{
     }
     init(data){
         this.chickensOn = data.chickens
-        console.log(data.open)
         this.complete=  {
             room1: data.room1,
             room2 : data.room2,
             
         }
     }
-    preload(){
-        this.anims.create({
-            key: "left",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 8,
-                end: 11
-            }),
-            repeat:0
-        });
-        this.anims.create({
-            key: "down",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 0,
-                end: 3
-            }),
-            repeat:0
-        });
-        this.anims.create({
-            key: "right",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 4,
-                end: 7
-            }),
-            repeat:0
-        });
-        
-        this.anims.create({
-            key: "on",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("machine", {
-                start: 0,
-                end: 2
-            }),
-            repeat:-1
-        });
-        this.anims.create({
-            key: "bgroom1",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("room_1bg", {
-                start: 0,
-                end: 5
-            }),
-            repeat:-1
-        });
-        this.anims.create({
-            key: "up",
-            frameRate: 8,
-            frames: this.anims.generateFrameNumbers("hero", {
-                start: 12,
-                end: 15
-            }),
-            repeat:0
-        }); 
-
+    preload(){       
         
         this.load.image('ground',"../src/images/ground.png");
         this.load.image('floor1',"../src/images/room1_floor1.png");

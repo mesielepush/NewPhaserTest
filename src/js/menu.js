@@ -53,7 +53,8 @@ class menu extends Phaser.Scene{
 
         });
         playButton.on('pointerup', ()=>{
-            this.hoverSprite.play('down_second').on('animationcomplete', ()=>{this.scene.start('start1')})
+            this.hoverSprite.play('down_second').on('animationcomplete', ()=>{
+                this.scene.start('start1')})
             
         });
 
