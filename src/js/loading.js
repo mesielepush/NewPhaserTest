@@ -42,7 +42,10 @@ class loading extends Phaser.Scene {
 
 
 
-
+        this.load.spritesheet('catWalk', "../src/images/sprites/catWalk.png",{
+            frameHeight:25,
+            frameWidth:31.1
+        });
         this.load.spritesheet('catStay', "../src/images/sprites/catStay.png",{
             frameHeight:20,
             frameWidth:32
