@@ -45,9 +45,7 @@ class room2_passage1_done extends Phaser.Scene{
         
         this.catIdle.setVisible(true);
         this.catIdle.play('catIdle_animation',true)
-        this.ex.setText('X: '+this.hero.x);
-       
-        this.ys.setText('Y: '+this.hero.y);
+        
         if (this.keyboard.D.isDown === true) {
             
             this.hero.setVelocityX(+constants.hero.speed_room1);

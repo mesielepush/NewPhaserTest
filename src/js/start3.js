@@ -38,7 +38,7 @@ class start3 extends Phaser.Scene{
         if (this.hero.x >180){
             
             if(this.animationPlayed === false) {
-                let secondText = this.add.text(200,270, '...I try to stop him... I failed... ',
+                let secondText = this.add.text(200,150, '...I try to stop him... I failed... ',
                 { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
                 this.animationPlayed = true;
                 

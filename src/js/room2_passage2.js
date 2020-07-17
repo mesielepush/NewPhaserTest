@@ -17,8 +17,8 @@ class room2_passage2 extends Phaser.Scene{
  
     }
     create (){
-        this.soundOn = this.add.image(450,35,'soundOn').setScale(0.3).setVisible(false).setDepth(6)
-        this.soundOff = this.add.image(450,35,'soundOff').setScale(0.3).setDepth(6)
+        this.soundOn = this.add.image(100,35,'soundOn').setScale(0.3).setVisible(false).setDepth(6)
+        this.soundOff = this.add.image(100,35,'soundOff').setScale(0.3).setDepth(6)
         this.soundOn.setInteractive();
         this.soundOff.setInteractive();
 
