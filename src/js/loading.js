@@ -36,6 +36,10 @@ class loading extends Phaser.Scene {
         this.load.image('tube',"../src/images/tube.png");
         this.load.image('aspersor',"../src/images/aspersor.png");
         this.load.image('romm2_official',"../src/images/romm2_official.png");
+        this.load.image('catButtonRed',"../src/images/catButtonRed.png");
+        this.load.image('catButtonGreen',"../src/images/catButtonGreen.png");
+
+
 
 
 
@@ -101,7 +105,7 @@ class loading extends Phaser.Scene {
         
     }
     create(){
-        this.scene.start('room2_passage1')
+        this.scene.start('room2_passage2')
        
     }
     

@@ -1,9 +1,9 @@
 import constants from "./constants";
 
-class room2 extends Phaser.Scene{
+class room2_passage2 extends Phaser.Scene{
 
     constructor(){
-        super({key:'room2'})
+        super({key:'room2_passage2'})
     }
     preload(){
         this.anims.create({
@@ -42,24 +42,127 @@ class room2 extends Phaser.Scene{
             }),
             repeat:-1
         });
+        this.anims.create({
+            key: "left",
+            frameRate: 8,
+            frames: this.anims.generateFrameNumbers("hero", {
+                start: 8,
+                end: 11
+            }),
+            repeat:0
+        });
+        this.anims.create({
+            key: "up",
+            frameRate: 8,
+            frames: this.anims.generateFrameNumbers("hero", {
+                start: 12,
+                end: 15
+            }),
+            repeat:0
+        }); 
+        this.anims.create({
+            key: "down",
+            frameRate: 8,
+            frames: this.anims.generateFrameNumbers("hero", {
+                start: 0,
+                end: 3
+            }),
+            repeat:0
+        });
+        this.anims.create({
+            key: "right",
+            frameRate: 8,
+            frames: this.anims.generateFrameNumbers("hero", {
+                start: 4,
+                end: 7
+            }),
+            repeat:0
+        });
  
     }
     create (){
         this.room2bg1 = this.add.sprite(0,0,"room2bg1",0).setDepth(0).setScale(1).setOrigin(0);
         this.catapult = this.add.sprite(430,180,"catapult",0).setDepth(1).setScale(1.5).setDepth(1);
-        this.tube = this.add.image(366,300,'tube').setDepth(2).setScale(1)
+        this.tube = this.add.image(366,300,'tube').setDepth(2).setScale(1);
+        this.catButtonRed = this.add.image(192,462,'catButtonRed').setScale(0.2).setVisible(true)
+        this.catButtonGreen = this.add.image(192,462,'catButtonGreen').setScale(0.2).setVisible(false)
         this.catStay = this.add.sprite(50,550,'catStay').setScale(2.5)
         this.aspersor = this.add.image(650,10,'aspersor').setDepth(3)
         this.catapult.flipX= true
+
+        this.hero = this.physics.add.sprite(800,538,"hero",8).setDepth(0).setScale(0.15).setGravityY(0);
+        this.hero.body.setAllowGravity(false);
+        this.hero.setCollideWorldBounds(true);
+        this.keyboard = this.input.keyboard.addKeys("W,A,S,D");
+        
+        this.ex = this.add.text(this.hero.x,100, 'X: ',this.hero.x,
+        { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
+        this.ys = this.add.text(this.hero.x,150, 'X: ',this.hero.y,
+            { fontFamily: 'Georgia, "Gouady Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
+        
+
+
     }
     update(){
         /* this.catapult.play('catapult_animation',true) */
+        this.ex.setText('X: '+this.hero.x);
+       
+        this.ys.setText('Y: '+this.hero.y);
         this.catStay.play('catStay_animation',true)
         this.room2bg1.play('room2bg1_animation',true)
+        if (this.keyboard.D.isDown === true) {
+            
+            this.hero.setVelocityX(+constants.hero.speed_room1);
+            
 
+        }
+
+        if (this.keyboard.W.isDown === true) {
+            
+            this.hero.setVelocityY(-constants.hero.speed_room1);
+            
+        }
+
+        if (this.keyboard.S.isDown === true) {
+            
+            this.hero.setVelocityY(+constants.hero.speed_room1);
+            
+        }
+
+        if (this.keyboard.A.isDown === true) {
+            
+            this.hero.setVelocityX(-constants.hero.speed_room1);
+            
+        }
+        if (this.keyboard.A.isUp && this.keyboard.D.isUp) { //not moving on X axis
+            
+            this.hero.setVelocityX(0);
+            
+        }
+        if (this.keyboard.W.isUp && this.keyboard.S.isUp) { //not pressing y movement
+            
+            this.hero.setVelocityY(0);
+            
+        }
+
+        if (this.hero.body.velocity.x > 0) { //moving right
+            this.hero.play("right", true);
+        } else if (this.hero.body.velocity.x < 0) { //moving left
+            this.hero.play("left", true);
+        } else if (this.hero.body.velocity.y < 0) { //moving up
+            this.hero.play("up", true);
+        } else if (this.hero.body.velocity.y > 0) { //moving down
+            this.hero.play("down", true);
+        }
+        if (this.hero.y <496){
+            this.hero.y = 496
+        }
+        if (this.hero.x > 885){
+            this.scene.start('room2')
+        }
     }
 }
-export default room2;
+export default room2_passage2;
 
 /* this.player.flipX= true; // flip the sprite to the left
 this.player.play('walk', true); // play walk animation */

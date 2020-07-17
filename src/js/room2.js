@@ -149,6 +149,19 @@ class room2 extends Phaser.Scene{
         } else if (this.hero.body.velocity.y > 0) { //moving down
             this.hero.play("down", true);
         }
+        if (this.hero.y < 151){
+            this.hero.y = 151
+        }
+        if (this.hero.y <258){
+            if (this.hero.x >694){
+                this.hero.x =694
+            }
+        }
+        if (this.hero.y >180 && this.hero.y<226){
+            if (this.hero.x >619){
+                this.scene.start('room2_passage2')
+            }
+        }
         if (this.hero.x >749){
             if(this.hero.y<380 && this.hero.y >299){
                 this.scene.start('room2_passage1')
