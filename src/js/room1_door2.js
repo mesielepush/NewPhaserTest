@@ -6,7 +6,12 @@ class room1_door2 extends Phaser.Scene{
         super({key:'room1_door2'})
     }
     init(data){
-    this.openGate = data.open
+    this.openGate = data.open,
+    this.complete=  {
+        room1: data.room1,
+        room2 : data.room2,
+        
+    }
     }
     preload(){
         this.anims.create({
@@ -97,6 +102,7 @@ class room1_door2 extends Phaser.Scene{
 
     }
     create (){
+        console.log(this.complete)
         this.open = this.openGate || false;
         this.chickenBoundaries = true;
         this.hero = this.physics.add.sprite(800,600,"hero",8).setDepth(4).setScale(0.2);
@@ -151,8 +157,7 @@ class room1_door2 extends Phaser.Scene{
     }
     update(){
         
-        console.log(this.hero.x)
-        /* this.hero.setScale() */
+        
         for (let i = 0; i < this.chickens.getChildren().length; i++) {
             this.physics.accelerateToObject(this.chickens.getChildren()[i], this.hero,50);
             this.chickens.getChildren()[i].body.setAllowGravity(false).setCollideWorldBounds(true)
@@ -230,9 +235,19 @@ class room1_door2 extends Phaser.Scene{
         if (this.hero.x ==875){
            
             if (this.chickenBoundaries == false){
-                this.scene.start('room1',{ chickens: true , x: 1848})
+                this.scene.start('room1',{
+                    chickens: true ,
+                    x: 1848,
+                    room1:this.complete.room1,
+                    room2: this.complete.room2
+                })
             }else{
-                this.scene.start('room1',{ chickens: false ,x: 1848 })
+                this.scene.start('room1',{
+                    chickens: false,
+                    x: 1848,
+                    room1:this.complete.room1,
+                    room2: this.complete.room2
+                 })
             }
             
         }

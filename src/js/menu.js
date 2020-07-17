@@ -32,7 +32,7 @@ class menu extends Phaser.Scene{
             })
         });
         this.anims.create({
-            key: "down",
+            key: "down_second",
             frameRate: 5,
             frames: this.anims.generateFrameNumbers("second", {
                 start: 0,
@@ -53,7 +53,7 @@ class menu extends Phaser.Scene{
 
         });
         playButton.on('pointerup', ()=>{
-            this.hoverSprite.play('down').on('animationcomplete', ()=>{this.scene.start('start1')})
+            this.hoverSprite.play('down_second').on('animationcomplete', ()=>{this.scene.start('start1')})
             
         });
 

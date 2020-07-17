@@ -52,7 +52,7 @@ class start3 extends Phaser.Scene{
                 { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
                 this.animationPlayed = true;
                 
-                this.second.play('down',true);
+                this.second.play('down_second',true);
             }
             
         }

@@ -6,7 +6,10 @@ class secondLast extends Phaser.Scene{
         super({key:'secondLast'})
     }
     init(data){
-        
+        this.complete = {
+            room1: data.room1,
+            room2 : data.room2,
+        }
         
     }
     preload(){
@@ -61,17 +64,39 @@ class secondLast extends Phaser.Scene{
 
     }
     create (){
+        console.log(this.complete)
         this.hero = this.physics.add.sprite(450,450,"hero",8).setDepth(4).setScale(0.2);
-        this.bg = this.add.sprite(450,360,"th",8).setDepth(4).setScale(1.18);
+        this.bg = this.add.sprite(450,360,"th",8).setDepth(0).setScale(1.18);
+        this.roombg = this.add.sprite(457,300,"bg2",0).setDepth(-1).setScale(1).setVisible(false);
+        this.physics.world.bounds.width = this.roombg.width;
+        this.physics.world.bounds.height = this.roombg.height;
+        this.backDoors = this.add.image(465,590,"backDoor",8).setDepth(1).setScale(1.18);
+        this.hero.setCollideWorldBounds(true);
         this.hero.body.setAllowGravity(false);
         this.keyboard = this.input.keyboard.addKeys("W,A,S,D");
+        
+        this.oneDone = this.add.text(70,380, 'Room1 clear',
+        { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
+        this.oneDone.setVisible(false);
+        
+        this.oneTwo = this.add.text(450,380, 'Room2 clear',
+        { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
+        this.oneTwo.setVisible(false);
+
+
+        this.ex = this.add.text(this.hero.x,100, 'X: ',this.hero.x,
+                { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
+        this.ys = this.add.text(this.hero.x,150, 'X: ',this.hero.y,
+            { fontFamily: 'Georgia, "Gouady Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
 
         /* window.steps.stop() */
     }
     update(){
-        this.bg.play('throne_animation',true)
-        
-        
+        this.oneDone.setVisible(false)
+        this.bg.play('throne_animation',true);
+        this.ex.setText(this.hero.x);
+        this.oneTwo.setVisible(false)
+        this.ys.setText(this.hero.y);
 
         if (this.keyboard.D.isDown === true) {
             
@@ -118,19 +143,43 @@ class secondLast extends Phaser.Scene{
             this.hero.play("down", true);
         }
 
-        if (this.hero.y < 450){
+        if (this.hero.y < 350){
             
-            this.hero.y=450
+            this.hero.y=350
         }
-        if (this.hero.x ==875){
-            if (this.open ==true){
+        if (this.hero.y >530){
+            if (this.hero.x>56 && this.hero.x <248){
+                
+                if (this.complete.room1 == true ){
 
-                this.scene.start('room1',{ open:true,x: 990 })
-            }else{
-                this.scene.start('room1',{ x: 990 })
+                    this.oneDone.setVisible(true)
+                }else{
+                    this.scene.start('room1', {
+                        x:3450,
+                        room1:this.complete.room1,
+                        room2:this.complete.room2})
+                }
             }
-            
+            if (this.hero.x>400 && this.hero.x <550){
+                
+                    this.scene.start('main', {
+                        room1:this.complete.room1,
+                        room2:this.complete.room2})
+               
+            }
+            if (this.hero.x >716){
+                if (this.complete.room2 == true ){
+                    this.oneTwo.setVisible(true);
+                }
+                else{
+                    this.scene.start('room2', {
+                        room1:this.complete.room1,
+                        room2:this.complete.room2
+                    })
+                }
+            }
         }
+        
 
     }
 }

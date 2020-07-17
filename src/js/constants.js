@@ -3,7 +3,7 @@ const constants = {
         menu0:'menu0'
     },
     hero:{
-        speed:100,
+        speed:250,
         speed_room1:250
     }
 }

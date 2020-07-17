@@ -28,18 +28,46 @@ class loading extends Phaser.Scene {
         this.load.image('corral1',"../src/images/corral1.png");
         this.load.image('no_button',"../src/images/buttonNo.png");
         this.load.image('yes_button',"../src/images/buttonYes.png");
-
-
-
-
-
-
-
-
-
+        this.load.image('backDoor',"../src/images/backDoors.png");
         this.load.audio('opening','../src/music/inevitable.mp3');
         this.load.audio('steps','../src/music/steps.mp3');
+        this.load.image('alertWhite',"../src/images/alertWhite.png");
+        this.load.image('alertRed',"../src/images/alertRed.png");
+        this.load.image('tube',"../src/images/tube.png");
+        this.load.image('aspersor',"../src/images/aspersor.png");
+        this.load.image('romm2_official',"../src/images/romm2_official.png");
+        this.load.image('catButtonRed',"../src/images/catButtonRed.png");
+        this.load.image('catButtonGreen',"../src/images/catButtonGreen.png");
+        this.load.image('tuna',"../src/images/tuna.png");
+        this.load.image('alertGreen',"../src/images/alertGreen.png");
 
+
+
+
+        this.load.spritesheet('catIdle', "../src/images/sprites/catIdle.png",{
+            frameHeight:32,
+            frameWidth:31.1
+        });
+        this.load.spritesheet('catWalk', "../src/images/sprites/catWalk.png",{
+            frameHeight:25,
+            frameWidth:31.1
+        });
+        this.load.spritesheet('catStay', "../src/images/sprites/catStay.png",{
+            frameHeight:20,
+            frameWidth:32
+        });
+        this.load.spritesheet('catapult', "../src/images/sprites/catapult.png",{
+            frameHeight:181,
+            frameWidth:214
+        });
+        this.load.spritesheet('room2bg1', "../src/images/sprites/room2_bg1.png",{
+            frameHeight:640,
+            frameWidth:960
+        });
+        this.load.spritesheet('room2bg', "../src/images/sprites/room2bg.png",{
+            frameHeight:215,
+            frameWidth:512
+        });
         this.load.spritesheet('machine', "../src/images/sprites/machine.png",{
             frameHeight:750,
             frameWidth:784
@@ -86,7 +114,7 @@ class loading extends Phaser.Scene {
         
     }
     create(){
-        this.scene.start('secondLast')
+        this.scene.start('room2_passage2')
        
     }
     
