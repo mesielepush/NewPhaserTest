@@ -109,14 +109,18 @@ class room2_passage2 extends Phaser.Scene{
         { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
         this.ys = this.add.text(450,150, 'X: ',this.hero.y,
             { fontFamily: 'Georgia, "Gouady Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
-        
+        this.catMoving = false
 
 
     }
     update(){
         /* this.catapult.play('catapult_animation',true) */
-        this.ex.setText('X: '+this.hero.x);
-        this.ys.setText('Y: '+this.hero.y);
+       this.ex.setText('X: '+this.hero.x);
+       this.ys.setText('Y: '+this.hero.y);
+       if (this.catMoving == true){
+            this.catMove.play('catWalk_animation',true);
+            this.catMove.x+=7
+       }
        if (this.catStay.active){
         this.catStay.play('catStay_animation',true);
        }
@@ -175,8 +179,7 @@ class room2_passage2 extends Phaser.Scene{
             this.catapult.play('catapult_animation',true).on('animationcomplete',()=>{
                 this.catStay.destroy();
                 this.catMove.setVisible(true)
-                this.catMove.play('catWalk_animation',true);
-                this.catMove.x+=7
+                this.catMoving = true
                 
             });
 
@@ -187,6 +190,9 @@ class room2_passage2 extends Phaser.Scene{
         }
         if (this.hero.x > 885){
             this.scene.start('room2')
+        }
+        if (this.catMove.x > 885){
+            this.scene.start('room2_passage1_animation')
         }
     }
 }

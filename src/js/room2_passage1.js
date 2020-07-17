@@ -12,6 +12,7 @@ class room2_passage1 extends Phaser.Scene{
             room3 :data.doom3
 
         }
+        this.cat = data.cat
     }
     preload(){
         this.anims.create({
@@ -61,6 +62,7 @@ class room2_passage1 extends Phaser.Scene{
         });
     }
     create (){
+        
         this.room2Background = this.add.sprite(386,300,"room2bg",0).setDepth(1).setScale(2.2).setDepth(0);
         this.alert = this.add.image(550,375,'alertWhite').setVisible(false)
         this.redAlert = this.add.image(550,375,'alertRed').setVisible(false)
