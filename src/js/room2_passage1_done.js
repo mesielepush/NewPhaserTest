@@ -1,19 +1,31 @@
 import constants from "./constants";
 
-class room2 extends Phaser.Scene{
+class room2_passage1_done extends Phaser.Scene{
 
     constructor(){
-        super({key:'room2'})
+        super({key:'room2_passage1_done'})
     }
-    init(data){
-        this.complete = {
-            room1: data.room1,
-            room2 : data.room2,
-            room3 :data.doom3
-        }
-        this.cat = data.cat
-    }
+    
     preload(){
+        this.anims.create({
+            key: "room2back",
+            frameRate: 10,
+            frames: this.anims.generateFrameNumbers("room2bg", {
+                start: 0,
+                end: 7
+            }),
+            repeat:-1
+        });
+        
+        this.anims.create({
+            key: "catIdle_animation",
+            frameRate: 4,
+            frames: this.anims.generateFrameNumbers("catIdle", {
+                start: 0,
+                end: 8
+            }),
+            repeat:2
+        });
         this.anims.create({
             key: "left",
             frameRate: 8,
@@ -50,58 +62,42 @@ class room2 extends Phaser.Scene{
             }),
             repeat:0
         });
-        this.anims.create({
-            key: "room2back",
-            frameRate: 10,
-            frames: this.anims.generateFrameNumbers("room2bg", {
-                start: 0,
-                end: 7
-            }),
-            repeat:-1
-        });
-        this.anims.create({
-            key: "room2bg1_animation",
-            frameRate: 24,
-            frames: this.anims.generateFrameNumbers("room2bg1", {
-                start: 0,
-                end: 60
-            }),
-            repeat:-1
-        });
-        this.anims.create({
-            key: "catapult_animation",
-            frameRate: 10,
-            frames: this.anims.generateFrameNumbers("catapult", {
-                start: 0,
-                end: 14
-            }),
-            repeat:-1
-        });
-        this.anims.create({
-            key: "catStay_animation",
-            frameRate: 3,
-            frames: this.anims.generateFrameNumbers("catStay", {
-                start: 3,
-                end: 5
-            }),
-            repeat:-1
-        });
- 
     }
     create (){
-        this.room2bg = this.add.sprite(0,0,"romm2_official",0).setDepth(0).setScale(2).setOrigin(0);
-        this.hero = this.physics.add.sprite( 400,400,"hero",4).setDepth(0).setScale(0.2).setGravityY(0);
-        this.hero.body.setAllowGravity(false);
-        this.physics.world.bounds.width = this.room2bg.width*2;
-        this.physics.world.bounds.height = this.room2bg.height*2;
+        
+        this.room2Background = this.add.sprite(386,300,"room2bg",0).setDepth(1).setScale(2.2).setDepth(0);
+        this.alert = this.add.image(550,375,'alertWhite').setVisible(false)
+        this.redAlert = this.add.image(550,375,'alertRed').setVisible(false);
+        this.alertGreen = this.add.image(550,375,'alertGreen').setVisible(false)
+
+        this.tuna = this.add.image(580,480,'tuna')
+        this.physics.world.bounds.width = this.room2Background.width*2.5;
+        this.physics.world.bounds.height = this.room2Background.height*2.5;
+
         this.keyboard = this.input.keyboard.addKeys("W,A,S,D");
+        this.hero = this.physics.add.sprite(70,400,"hero",4).setDepth(0).setScale(0.2).setGravityY(0);
+        this.hero.body.setAllowGravity(false);
         this.hero.setCollideWorldBounds(true);
+        
+        this.catIdle = this.add.sprite(587,510,'catIdle').setScale(2.5).setVisible(false);
+        this.yes = this.add.image(840,150,'yes_button').setDepth(3).setScale(0.7).setVisible(true)
+        
         this.ex = this.add.text(this.hero.x,100, 'X: ',this.hero.x,
                 { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
         this.ys = this.add.text(this.hero.x,150, 'X: ',this.hero.y,
             { fontFamily: 'Georgia, "Gouady Bookletter 1911", Times, serif',fontSize:40 , backgroundColor:'black',align:'center'});
+        this.keyboard = this.input.keyboard.addKeys("W,A,S,D");
+        
     }
     update(){
+                
+        
+        this.room2Background.play("room2back",true);
+        this.ex.setText('X: '+this.hero.x);
+       
+        this.ys.setText('Y: '+this.hero.y);
+        this.catIdle.setVisible(true);
+        this.catIdle.play('catIdle_animation',true)
         this.ex.setText('X: '+this.hero.x);
        
         this.ys.setText('Y: '+this.hero.y);
@@ -149,38 +145,20 @@ class room2 extends Phaser.Scene{
         } else if (this.hero.body.velocity.y > 0) { //moving down
             this.hero.play("down", true);
         }
-        if (this.hero.y < 151){
-            this.hero.y = 151
-        }
-        if (this.hero.y <258){
-            if (this.hero.x >694){
-                this.hero.x =694
-            }
-        }
-        if (this.hero.y >180 && this.hero.y<226){
-            if (this.hero.x >619){
-                if(this.cat != true){
-                    this.scene.start('room2_passage2')
-                }else{
-                    console.log('nothing to see here')
-                }
-                
-            }
-        }
         if (this.hero.x >749){
             if(this.hero.y<380 && this.hero.y >299){
-                if (this.cat == true){
-                    this.scene.start('room2_passage1_done')
-                }else{
-                    this.scene.start('room2_passage1')
-                }
-                
+                this.scene.start('room2_passage1')
             }
         }
-
+        if (this.hero.y < 430){
+            this.hero.y =430
+        }
+        if (this.hero.x >965){
+            this.scene.start('secondLast',{room2:true})
+        }
     }
 }
-export default room2;
+export default room2_passage1_done;
 
 /* this.player.flipX= true; // flip the sprite to the left
 this.player.play('walk', true); // play walk animation */

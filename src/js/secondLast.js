@@ -96,7 +96,7 @@ class secondLast extends Phaser.Scene{
     update(){
         this.oneDone.setVisible(false)
         this.bg.play('throne_animation',true);
-        
+        console.log(this.complete)
         this.ex.setText(this.hero.x);
        
         this.ys.setText(this.hero.y);
@@ -164,7 +164,15 @@ class secondLast extends Phaser.Scene{
             if (this.hero.x>400 && this.hero.x <550){
                 
                 if (this.complete.room2 == true ){
-                    this.oneTwo.setVisible(false);
+                    this.oneTwo.setVisible(true);
+                }
+                else{
+                    this.scene.start('room2', {complete: this.complete})
+                }
+            }
+            if (this.hero.x >716){
+                if (this.complete.room2 == true ){
+                    this.oneTwo.setVisible(true);
                 }
                 else{
                     this.scene.start('room2', {complete: this.complete})

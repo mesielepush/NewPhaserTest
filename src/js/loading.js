@@ -38,10 +38,16 @@ class loading extends Phaser.Scene {
         this.load.image('romm2_official',"../src/images/romm2_official.png");
         this.load.image('catButtonRed',"../src/images/catButtonRed.png");
         this.load.image('catButtonGreen',"../src/images/catButtonGreen.png");
+        this.load.image('tuna',"../src/images/tuna.png");
+        this.load.image('alertGreen',"../src/images/alertGreen.png");
 
 
 
 
+        this.load.spritesheet('catIdle', "../src/images/sprites/catIdle.png",{
+            frameHeight:32,
+            frameWidth:31.1
+        });
         this.load.spritesheet('catWalk', "../src/images/sprites/catWalk.png",{
             frameHeight:25,
             frameWidth:31.1
@@ -108,7 +114,7 @@ class loading extends Phaser.Scene {
         
     }
     create(){
-        this.scene.start('room2_passage1_animation')
+        this.scene.start('room2_passage1_done')
        
     }
     
