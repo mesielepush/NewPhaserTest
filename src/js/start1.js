@@ -161,7 +161,7 @@ class start1 extends Phaser.Scene{
         this.hero.play('right',true)
         this.hero.x+=15
         if (this.hero.x >= 1050){
-            this.scene.start('secondLastPassage')
+            this.scene.start('darkTunel')
 
         }
     }

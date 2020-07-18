@@ -1,5 +1,5 @@
 import constants from "./constants";
-import newfunct from "./new";
+
 
 class secondLastPassage extends Phaser.Scene{
 
@@ -31,10 +31,17 @@ class secondLastPassage extends Phaser.Scene{
         /* window.steps.stop() */
     }
     update(){
-        
-        console.log(this.bDoor.y)
+        console.log(this.hero.y)
         this.bg.play('throne_animation',true);
         this.bDoor.y -=2
+        if (this.bDoor.y <-180){
+            this.hero.y -=1
+            this.hero.play("up", true);
+            if(this.hero.y <250){
+                this.hero.destroy();
+                this.scene.start('darkTunel')
+            }
+        }
     }
 }
 export default secondLastPassage;
