@@ -42,6 +42,9 @@ class loading extends Phaser.Scene {
         this.load.image('alertGreen',"../src/images/alertGreen.png");
         this.load.image('soundOn',"../src/images/sound.png");
         this.load.image('soundOff',"../src/images/soundOff.png");
+        this.load.image('throne_back',"../src/images/throne_door.png");
+        this.load.image('throne_black',"../src/images/throne_door_black.png");
+
 
 
 

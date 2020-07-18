@@ -13,7 +13,8 @@ import room2_passage2 from './room2_passage2'
 import room2_passage1_animation from './room2_passage1_animation'
 import room2_passage1_done from './room2_passage1_done'
 import room3 from './room3';
-import secondLast from './secondLast'
+import secondLast from './secondLast';
+import secondLastPassage from './secondLastPassage'
 
 const config = ()=>{
     var config = {
@@ -30,7 +31,8 @@ const config = ()=>{
                 start3, main, room1, room2, 
                 room3, room1_door1, room1_door2,
                 secondLast,room2_passage1,room2_passage2,
-                room2_passage1_animation,room2_passage1_done]
+                room2_passage1_animation,room2_passage1_done,
+                secondLastPassage]
     };
     
     var game = new Phaser.Game(config);

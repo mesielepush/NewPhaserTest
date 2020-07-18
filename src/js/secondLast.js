@@ -1,4 +1,5 @@
 import constants from "./constants";
+import newfunct from "./new";
 
 class secondLast extends Phaser.Scene{
 
@@ -61,6 +62,10 @@ class secondLast extends Phaser.Scene{
     }
     update(){
         console.log(this.complete)
+
+        if (this.complete.room1 == true && this.room2 == true){
+            this.scene.start('secondLastPassage')
+        }
 
         this.oneDone.setVisible(false)
         this.bg.play('throne_animation',true);
