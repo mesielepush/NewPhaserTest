@@ -15,7 +15,9 @@ import room2_passage1_done from './room2_passage1_done'
 import room3 from './room3';
 import secondLast from './secondLast';
 import secondLastPassage from './secondLastPassage';
-import darkTunel from './darkTunel'
+import darkTunel from './darkTunel';
+import battleTest from './battleTest';
+import UIScene from './UIScene'
 
 const config = ()=>{
     var config = {
@@ -33,7 +35,7 @@ const config = ()=>{
                 room3, room1_door1, room1_door2,
                 secondLast,room2_passage1,room2_passage2,
                 room2_passage1_animation,room2_passage1_done,
-                secondLastPassage,darkTunel]
+                secondLastPassage,darkTunel,battleTest,UIScene]
     };
     
     var game = new Phaser.Game(config);
