@@ -50,8 +50,8 @@ class loading extends Phaser.Scene {
 
 
         this.load.spritesheet('boos', "../src/images/sprites/boos.png",{
-            frameHeight:209,
-            frameWidth:136
+            frameHeight:207.5,
+            frameWidth:132
         });
 
         this.load.spritesheet('catIdle', "../src/images/sprites/catIdle.png",{
