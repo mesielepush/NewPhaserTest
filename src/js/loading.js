@@ -50,6 +50,7 @@ class loading extends Phaser.Scene {
         this.load.image('reasonWhite',"../src/images/reasonWhites.png");
         this.load.image('attackGreen',"../src/images/attackGreens.png");
         this.load.image('attackWhite',"../src/images/attackWhites.png");
+        this.load.image('reasonOne',"../src/images/reasonOnes.png");
 
 
 

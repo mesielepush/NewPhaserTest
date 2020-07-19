@@ -35,7 +35,10 @@ class darkTunel extends Phaser.Scene{
         this.attackGreen = this.add.image(700,402,'attackGreen').setScale(1.4).setVisible(false);
         this.reasonWhite = this.add.image(703,366,'reasonWhite').setScale(1.4).setVisible(false).setDepth(5);
         this.attackWhite = this.add.image(630,432,'attackWhite').setScale(1.4).setVisible(false).setDepth(5);
-        this.turn = false;
+        
+        this.reasonOne = this.add.image(460,300,'reasonOne').setScale(1.8).setVisible(false);
+        this.reasonTurn = false;
+
         this.reasonWhite.setInteractive();
         this.reasonWhite.on('pointerover', ()=>{
             this.reasonWhite.setVisible(false);
@@ -46,7 +49,7 @@ class darkTunel extends Phaser.Scene{
             this.reasonGreen.setVisible(false);
         });
         this.reasonWhite.on('pointerup', ()=>{
-            this.turn = true
+            this.reasonTurn = true
         });
 
 
@@ -78,6 +81,7 @@ class darkTunel extends Phaser.Scene{
         this.keyboard = this.input.keyboard.addKeys("W,A,S,D");
         this.upTurnAnimation = false
         this.turnsBegin = false
+        this.turnOne = false
         /* window.steps.stop() */
     }
     update(){
@@ -96,11 +100,16 @@ class darkTunel extends Phaser.Scene{
                 this.reasonWhite.setVisible(true),
                 this.attackWhite.setVisible(true)},
                 callbackScope: this});
-            
-        })
+        });
        }
        if (this.turnsBegin == true){
-            this.menu1.setVisible(true)
+            this.menu1.setVisible(true);
+       }
+       if (this.reasonTurn == true){
+        this.menu1.setVisible(false);
+        this.reasonWhite.setVisible(false),
+        this.attackWhite.setVisible(false),
+        this.reasonOne.setVisible(true);
        }
        
         
