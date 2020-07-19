@@ -7,10 +7,7 @@ class UIScene extends Phaser.Scene{
         super({key:'UIScene'})
     }
     
-    preload(){
-       
-        
-    }
+    
     create (){
         this.graphics = this.add.graphics();
         this.graphics.lineStyle(1, 0xffffff);
@@ -23,10 +20,6 @@ class UIScene extends Phaser.Scene{
         this.graphics.strokeRect(615, 350, 306, 250);
         this.graphics.fillRect(615, 350, 306, 250);
     }
-    update(){
-      
-       
-        
-    }
+    
 }
 export default UIScene;

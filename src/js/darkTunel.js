@@ -8,6 +8,22 @@ class darkTunel extends Phaser.Scene{
     }
     
     preload(){
+        this.m1 = this.add.image(460,300,'m1').setScale(1.8).setVisible(false);
+        this.menu1 = this.add.image(700,400,'menu1').setScale(1.4).setVisible(true);
+        this.reasonGreen = this.add.image(700,401,'reasonGreen').setScale(1.4).setVisible(false);
+        this.reasonWhite = this.add.image(703,366,'reasonWhite').setScale(1.4);
+        this.reasonWhite.setInteractive();
+        this.reasonWhite.on('pointerover', ()=>{
+            this.reasonWhite.setVisible(false);
+            this.reasonGreen.setVisible(true);
+            console.log('jsbnlkjfsbdlkj')
+            
+        });
+        this.reasonWhite.on('pointerout', ()=>{
+            this.reasonWhite.setVisible(true);
+            this.reasonGreen.setVisible(false);
+        });
+
         this.anims.create({
             key: "down_fire",
             frameRate: 6,
@@ -29,7 +45,7 @@ class darkTunel extends Phaser.Scene{
     create (){
         window.opening.stop()
         
-        this.hero = this.physics.add.sprite(450,450,"hero",12).setDepth(4).setScale(0.2);
+        this.hero = this.physics.add.sprite(450,450,"hero",12).setDepth(4).setScale(0.1);
         /* this.boos = this.add.sprite(600,150,'boos',0); */
         this.boos2 = this.add.sprite(450,340,'boos',0);
         /* this.boos3 = this.add.sprite(250,200,'boos',0); */
@@ -44,7 +60,7 @@ class darkTunel extends Phaser.Scene{
         this.hero.body.setAllowGravity(false);
         this.keyboard = this.input.keyboard.addKeys("W,A,S,D");
         this.upTurnAnimation = false
-
+        this.turnsBegin = false
         /* window.steps.stop() */
     }
     update(){
@@ -55,10 +71,18 @@ class darkTunel extends Phaser.Scene{
        }
        if (this.upTurnAnimation == false){
         this.upTurnAnimation = true;
-        this.boos2.play('up_turn',true)
+        this.boos2.play('up_turn',true).on('animationcomplete',()=>{
+            this.m1.setVisible(true);
+            this.time.addEvent({ delay: 5000,  callback: ()=>{
+                this.m1.setVisible(false),
+                
+                this.turnsBegin=true},
+                callbackScope: this});
+            
+        })
        }
-       if (this.boos2.y == 150){
-           
+       if (this.turnsBegin == true){
+            this.menu1.setVisible(true)
        }
        
         

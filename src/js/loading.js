@@ -44,6 +44,16 @@ class loading extends Phaser.Scene {
         this.load.image('soundOff',"../src/images/soundOff.png");
         this.load.image('throne_back',"../src/images/throne_door.png");
         this.load.image('throne_black',"../src/images/throne_door_black.png");
+        this.load.image('m1',"../src/images/message1s.png");
+        this.load.image('menu1',"../src/images/menu1s.png");
+        this.load.image('reasonGreen',"../src/images/reasonGreens.png");
+        this.load.image('reasonWhite',"../src/images/reasonWhites.png");
+        this.load.image('attackGreen',"../src/images/attackGreens.png");
+
+
+
+
+
 
 
 
@@ -123,7 +133,7 @@ class loading extends Phaser.Scene {
     }
     create(){
         
-        this.scene.start('battleTest')
+        this.scene.start('menu')
        
     }
     
