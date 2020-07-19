@@ -8,22 +8,7 @@ class darkTunel extends Phaser.Scene{
     }
     
     preload(){
-        this.m1 = this.add.image(460,300,'m1').setScale(1.8).setVisible(false);
-        this.menu1 = this.add.image(700,400,'menu1').setScale(1.4).setVisible(true);
-        this.reasonGreen = this.add.image(700,401,'reasonGreen').setScale(1.4).setVisible(false);
-        this.reasonWhite = this.add.image(703,366,'reasonWhite').setScale(1.4);
-        this.reasonWhite.setInteractive();
-        this.reasonWhite.on('pointerover', ()=>{
-            this.reasonWhite.setVisible(false);
-            this.reasonGreen.setVisible(true);
-            console.log('jsbnlkjfsbdlkj')
-            
-        });
-        this.reasonWhite.on('pointerout', ()=>{
-            this.reasonWhite.setVisible(true);
-            this.reasonGreen.setVisible(false);
-        });
-
+        
         this.anims.create({
             key: "down_fire",
             frameRate: 6,
@@ -44,7 +29,39 @@ class darkTunel extends Phaser.Scene{
     }
     create (){
         window.opening.stop()
-        
+        this.m1 = this.add.image(460,300,'m1').setScale(1.8).setVisible(false);
+        this.menu1 = this.add.image(700,400,'menu1').setScale(1.4).setVisible(false);
+        this.reasonGreen = this.add.image(700,401,'reasonGreen').setScale(1.4).setVisible(false);
+        this.attackGreen = this.add.image(700,402,'attackGreen').setScale(1.4).setVisible(false);
+        this.reasonWhite = this.add.image(703,366,'reasonWhite').setScale(1.4).setVisible(false).setDepth(5);
+        this.attackWhite = this.add.image(630,432,'attackWhite').setScale(1.4).setVisible(false).setDepth(5);
+        this.turn = false;
+        this.reasonWhite.setInteractive();
+        this.reasonWhite.on('pointerover', ()=>{
+            this.reasonWhite.setVisible(false);
+            this.reasonGreen.setVisible(true);            
+        });
+        this.reasonWhite.on('pointerout', ()=>{
+            this.reasonWhite.setVisible(true);
+            this.reasonGreen.setVisible(false);
+        });
+        this.reasonWhite.on('pointerup', ()=>{
+            this.turn = true
+        });
+
+
+        this.attackWhite.setInteractive();
+        this.attackWhite.on('pointerover', ()=>{
+            this.attackWhite.setVisible(false);
+            this.attackGreen.setVisible(true);            
+        });
+        this.attackWhite.on('pointerout', ()=>{
+            this.attackWhite.setVisible(true);
+            this.attackGreen.setVisible(false);
+        });
+
+
+
         this.hero = this.physics.add.sprite(450,450,"hero",12).setDepth(4).setScale(0.1);
         /* this.boos = this.add.sprite(600,150,'boos',0); */
         this.boos2 = this.add.sprite(450,340,'boos',0);
@@ -75,8 +92,9 @@ class darkTunel extends Phaser.Scene{
             this.m1.setVisible(true);
             this.time.addEvent({ delay: 5000,  callback: ()=>{
                 this.m1.setVisible(false),
-                
-                this.turnsBegin=true},
+                this.turnsBegin = true,
+                this.reasonWhite.setVisible(true),
+                this.attackWhite.setVisible(true)},
                 callbackScope: this});
             
         })
