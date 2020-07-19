@@ -15,7 +15,7 @@ class darkTunel extends Phaser.Scene{
             frames: this.anims.generateFrameNumbers("boos", {
                 frames: [0,8,16,24,32,40,48]
             }),
-            repeat:-1
+            repeat:0
         });
         this.anims.create({
             key: "up_turn",
@@ -36,8 +36,8 @@ class darkTunel extends Phaser.Scene{
         this.reasonWhite = this.add.image(703,366,'reasonWhite').setScale(1.4).setVisible(false).setDepth(5);
         this.attackWhite = this.add.image(630,432,'attackWhite').setScale(1.4).setVisible(false).setDepth(5);
         
-        this.reasonOne = this.add.image(460,300,'reasonOne').setScale(1.8).setVisible(false);
-        this.reasonTurn = false;
+        this.reasonOne   = this.add.image(460,300,'reasonOne').setScale(1.8).setVisible(false);
+        this.reasonTurn  = false;
 
         this.reasonWhite.setInteractive();
         this.reasonWhite.on('pointerover', ()=>{
@@ -65,7 +65,7 @@ class darkTunel extends Phaser.Scene{
 
 
 
-        this.hero = this.physics.add.sprite(450,450,"hero",12).setDepth(4).setScale(0.1);
+        this.hero = this.physics.add.sprite(480,450,"hero",12).setDepth(4).setScale(0.1);
         /* this.boos = this.add.sprite(600,150,'boos',0); */
         this.boos2 = this.add.sprite(450,340,'boos',0);
         /* this.boos3 = this.add.sprite(250,200,'boos',0); */
@@ -79,9 +79,10 @@ class darkTunel extends Phaser.Scene{
         this.hero.setCollideWorldBounds(true);
         this.hero.body.setAllowGravity(false);
         this.keyboard = this.input.keyboard.addKeys("W,A,S,D");
-        this.upTurnAnimation = false
-        this.turnsBegin = false
-        this.turnOne = false
+        this.upTurnAnimation = false;
+        this.turnsBegin = false;
+        this.turnOne = false;
+        this.turnTwo = false;
         /* window.steps.stop() */
     }
     update(){
@@ -94,22 +95,33 @@ class darkTunel extends Phaser.Scene{
         this.upTurnAnimation = true;
         this.boos2.play('up_turn',true).on('animationcomplete',()=>{
             this.m1.setVisible(true);
-            this.time.addEvent({ delay: 5000,  callback: ()=>{
-                this.m1.setVisible(false),
+            this.time.addEvent({ delay: 4000,  callback: ()=>{
+                this.m1.destroy(),
                 this.turnsBegin = true,
+                this.menu1.setVisible(true);
                 this.reasonWhite.setVisible(true),
                 this.attackWhite.setVisible(true)},
                 callbackScope: this});
         });
        }
-       if (this.turnsBegin == true){
-            this.menu1.setVisible(true);
-       }
+       
        if (this.reasonTurn == true){
+        this.reasonTurn = false,
         this.menu1.setVisible(false);
         this.reasonWhite.setVisible(false),
+        this.reasonGreen.setVisible(false),
         this.attackWhite.setVisible(false),
-        this.reasonOne.setVisible(true);
+        this.reasonOne.setVisible(true),
+        this.time.addEvent({ delay: 4000,  callback: ()=>{
+            this.boos2.play('down_fire',true).on('animationcomplete',()=>{
+                this.reasonOne.setVisible(false),
+                this.reasonTurn = false,
+                this.turnTwo = true,
+                this.turnOne = 'done'
+            })            
+            },
+            callbackScope: this});
+    
        }
        
         

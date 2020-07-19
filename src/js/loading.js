@@ -51,6 +51,9 @@ class loading extends Phaser.Scene {
         this.load.image('attackGreen',"../src/images/attackGreens.png");
         this.load.image('attackWhite',"../src/images/attackWhites.png");
         this.load.image('reasonOne',"../src/images/reasonOnes.png");
+        
+
+        
 
 
 
@@ -60,7 +63,10 @@ class loading extends Phaser.Scene {
 
 
 
-
+        this.load.spritesheet('fire', "../src/images/sprites/fire.png",{
+            frameHeight:535,
+            frameWidth:594
+        });
 
         this.load.spritesheet('boos', "../src/images/sprites/boos.png",{
             frameHeight:207.5,
