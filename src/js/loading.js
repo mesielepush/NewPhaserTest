@@ -61,8 +61,10 @@ class loading extends Phaser.Scene {
     this.load.audio('opening', '../src/music/inevitable.mp3');
     this.load.audio('steps', '../src/music/steps.mp3');
     this.load.audio('finalSong', '../src/music/finalSong.mp3');
-
-
+    this.sound.add('finalSong', {
+      loop: false,
+      volume: 0.3,
+    });
     this.load.spritesheet('destroyWorld', '../src/images/sprites/destroyWorld.png', {
       frameHeight: 109,
       frameWidth: 218,

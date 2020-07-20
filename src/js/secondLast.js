@@ -63,9 +63,10 @@ class secondLast extends Phaser.Scene {
   }
 
   update() {
-    console.log(this.complete);
+    console.log(this.complete)
 
-    if (this.complete.room1 == true && this.room2 == true) {
+    if (this.complete.room1 === true && this.complete.room2 === true) {
+     
       this.scene.start('secondLastPassage');
     }
 
