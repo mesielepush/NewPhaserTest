@@ -1,12 +1,12 @@
 const path = require('path');
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  mode: "development",
+  mode: 'development',
   entry: './src/js/index.js',
-  devtool: "eval-source-map",
+  devtool: 'eval-source-map',
 
   module: {
     rules: [
@@ -14,16 +14,16 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
-        }
+          loader: 'babel-loader',
+        },
       },
       {
         test: [/\.vert$/, /\.frag$/],
-        use: "raw-loader"
+        use: 'raw-loader',
       },
       {
         test: /\.(gif|png|jpe?g|svg|xml)$/i,
-        use: "file-loader"
+        use: 'file-loader',
       },
       {
         test: /\.css$/,
@@ -54,18 +54,18 @@ module.exports = {
         use: 'file-loader?name=[name].[ext]&outputPath=./images/',
         exclude: /node_modules/,
       },
-    ]
+    ],
   },
   plugins: [
     new CleanWebpackPlugin({
-      root: path.resolve(__dirname, "../")
+      root: path.resolve(__dirname, '../'),
     }),
     new webpack.DefinePlugin({
       'typeof CANVAS_RENDERER': JSON.stringify(true),
-      'typeof WEBGL_RENDERER': JSON.stringify(true)
+      'typeof WEBGL_RENDERER': JSON.stringify(true),
     }),
     new HtmlWebpackPlugin({
-      template: "./index.html"
+      template: './index.html',
     }),
-  ]
+  ],
 };
