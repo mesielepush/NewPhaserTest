@@ -32,6 +32,14 @@ class darkTunel extends Phaser.Scene{
             }),
             repeat:0
         });
+        this.anims.create({
+            key: "low_blood",
+            frameRate: 1,
+            frames: this.anims.generateFrameNumbers("demonBlood", {
+                frames: [0,1,2]
+            }),
+            repeat:0
+        });
         
     }
     create (){
@@ -48,9 +56,7 @@ class darkTunel extends Phaser.Scene{
         this.heroBloodOne = this.add.image(480,500,'heroBlood',1).setDepth(5).setVisible(false);
         this.heroBloodTwo = this.add.image(480,500,'heroBlood',2).setDepth(5).setVisible(false);
         this.heroBloodThree = this.add.image(480,500,'heroBlood',3).setDepth(5).setVisible(false);
-        this.demoonBloodZero = this.add.image(480,30,'demonBlood',0).setDepth(5).setVisible(true);
-        this.demoonBloodOne = this.add.image(480,30,'demonBlood',1).setDepth(5).setVisible(false);
-        this.demoonBloodTwo = this.add.image(480,30,'demonBlood',2).setDepth(5).setVisible(false);
+        this.demoonBloodZero = this.add.sprite(480,30,'demonBlood',0).setDepth(5).setVisible(true);
 
 
         this.reasonOne   = this.add.image(460,300,'reasonOne').setScale(1.8).setVisible(false);
@@ -141,7 +147,10 @@ class darkTunel extends Phaser.Scene{
                 
             }
             if (this.chickens.getChildren().length>280){
-                this.scene.start('finalStage')
+                this.demoonBloodZero.play('low_blood',true).on('animationcomplete',()=>{
+                    this.scene.start('finalStage')
+                })
+                
                 
             }
             
