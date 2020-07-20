@@ -11,6 +11,13 @@ class start1 extends Phaser.Scene {
     window.steps = this.steps;
     this.steps.play();
 
+    this.finalS = this.sound.add('finalSong', {
+      loop: false,
+      volume: 0.6,
+    });
+    window.finalS = this.finalS;
+
+    this.steps.play();
     this.anims.create({
       key: 'left_chicken',
       frameRate: 8,

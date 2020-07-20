@@ -29,7 +29,7 @@ class finalStage extends Phaser.Scene {
 
   create() {
     
-    this.sound.play('finalSong',{volume:0.3})
+    window.finalS.play()
     this.destroyWorld = this.add.sprite(480, 300, 'destroyWorld', 0).setScale(5.7);
     this.finalMessage = this.add.image(450, 300, 'finalmessage').setVisible(false).setScale(1.5);
     this.reset = this.add.image(850, 550, 'reset').setScale(0.15);
@@ -38,7 +38,7 @@ class finalStage extends Phaser.Scene {
     
     this.reset.setInteractive();
     this.reset.on('pointerup', () => {
-      /* this.sound.stop('finalSong') */
+      window.finalS.stop()
       this.scene.start('menu');
     });
   }

@@ -28,7 +28,7 @@ class secondLastPassage extends Phaser.Scene {
     this.keyboard = this.input.keyboard.addKeys('W,A,S,D');
 
 
-    /* window.steps.stop() */
+    
   }
 
   update() {
@@ -36,10 +36,12 @@ class secondLastPassage extends Phaser.Scene {
     this.bg.play('throne_animation', true);
     this.bDoor.y -= 2;
     if (this.bDoor.y < -180) {
+      window.steps.play();
       this.hero.y -= 1;
       this.hero.play('up', true);
       if (this.hero.y < 250) {
         this.hero.destroy();
+        window.steps.stop();
         this.scene.start('darkTunel');
       }
     }
