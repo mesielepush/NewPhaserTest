@@ -29,8 +29,6 @@ class loading extends Phaser.Scene {
         this.load.image('no_button',"../src/images/buttonNo.png");
         this.load.image('yes_button',"../src/images/buttonYes.png");
         this.load.image('backDoor',"../src/images/backDoors.png");
-        this.load.audio('opening','../src/music/inevitable.mp3');
-        this.load.audio('steps','../src/music/steps.mp3');
         this.load.image('alertWhite',"../src/images/alertWhite.png");
         this.load.image('alertRed',"../src/images/alertRed.png");
         this.load.image('tube',"../src/images/tube.png");
@@ -54,8 +52,13 @@ class loading extends Phaser.Scene {
         this.load.image('reasonTwo',"../src/images/reasonTwos.png");
         this.load.image('reasonThree',"../src/images/reasonThrees.png");
         this.load.image('gameOver',"../src/images/gameOver.png");
-        this.load.image('finalmessage',"../src/images/finalMessages.png");
+        this.load.image('finalmessage',"../src/images/finals.png");
+        this.load.image('reset',"../src/images/reset.png");
 
+
+        this.load.audio('opening','../src/music/inevitable.mp3');
+        this.load.audio('steps','../src/music/steps.mp3');
+        this.load.audio('finalSong','../src/music/finalSong.mp3');
 
 
 
