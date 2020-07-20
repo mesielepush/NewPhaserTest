@@ -51,21 +51,26 @@ class loading extends Phaser.Scene {
         this.load.image('attackGreen',"../src/images/attackGreens.png");
         this.load.image('attackWhite',"../src/images/attackWhites.png");
         this.load.image('reasonOne',"../src/images/reasonOnes.png");
+        this.load.image('reasonTwo',"../src/images/reasonTwos.png");
+        this.load.image('reasonThree',"../src/images/reasonThrees.png");
+        this.load.image('gameOver',"../src/images/gameOver.png");
+
+
+
+
         
-
         
-
-
-
-
-
-
-
-
-
+        this.load.spritesheet('demonBlood', "../src/images/sprites/demonBloods.png",{
+            frameHeight:27,
+            frameWidth:152
+        });
+        this.load.spritesheet('heroBlood', "../src/images/sprites/heroBloods.png",{
+            frameHeight:27,
+            frameWidth:152
+        });
         this.load.spritesheet('fire', "../src/images/sprites/fire.png",{
             frameHeight:535,
-            frameWidth:594
+            frameWidth:800
         });
 
         this.load.spritesheet('boos', "../src/images/sprites/boos.png",{
