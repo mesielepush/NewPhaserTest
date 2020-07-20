@@ -59,7 +59,10 @@ class loading extends Phaser.Scene {
 
 
         
-        
+        this.load.spritesheet('destroyWorld', "../src/images/sprites/destroyWorld.png",{
+            frameHeight:109,
+            frameWidth:218
+        });
         this.load.spritesheet('demonBlood', "../src/images/sprites/demonBloods.png",{
             frameHeight:27,
             frameWidth:152
