@@ -54,6 +54,8 @@ class loading extends Phaser.Scene {
         this.load.image('reasonTwo',"../src/images/reasonTwos.png");
         this.load.image('reasonThree',"../src/images/reasonThrees.png");
         this.load.image('gameOver',"../src/images/gameOver.png");
+        this.load.image('finalmessage',"../src/images/finalMessages.png");
+
 
 
 
