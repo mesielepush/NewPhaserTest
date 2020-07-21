@@ -1,5 +1,5 @@
+/* global Phaser */
 import constants from './constants';
-import newfunct from './new';
 
 class secondLast extends Phaser.Scene {
   constructor() {
@@ -11,11 +11,6 @@ class secondLast extends Phaser.Scene {
       room1: data.room1,
       room2: data.room2,
     };
-  }
-
-  preload() {
-
-
   }
 
   create() {
@@ -34,7 +29,6 @@ class secondLast extends Phaser.Scene {
       this.soundOn.setVisible(true);
       window.opening.stop();
     });
-
 
     this.hero = this.physics.add.sprite(450, 450, 'hero', 12).setDepth(4).setScale(0.2);
     this.bg = this.add.sprite(450, 360, 'th', 0).setDepth(0).setScale(1.18);
@@ -58,15 +52,11 @@ class secondLast extends Phaser.Scene {
       });
     this.oneTwo.setVisible(false);
 
-
     /* window.steps.stop() */
   }
 
   update() {
-    console.log(this.complete)
-
     if (this.complete.room1 === true && this.complete.room2 === true) {
-     
       this.scene.start('secondLastPassage');
     }
 
@@ -74,7 +64,6 @@ class secondLast extends Phaser.Scene {
     this.bg.play('throne_animation', true);
 
     this.oneTwo.setVisible(false);
-
 
     if (this.keyboard.D.isDown === true) {
       this.hero.setVelocityX(+constants.hero.speed_room1);
@@ -113,7 +102,7 @@ class secondLast extends Phaser.Scene {
     }
     if (this.hero.y > 530) {
       if (this.hero.x > 56 && this.hero.x < 248) {
-        if (this.complete.room1 == true) {
+        if (this.complete.room1 === true) {
           this.oneDone.setVisible(true);
         } else {
           this.scene.start('room1', {
@@ -130,7 +119,7 @@ class secondLast extends Phaser.Scene {
         });
       }
       if (this.hero.x > 716) {
-        if (this.complete.room2 == true) {
+        if (this.complete.room2 === true) {
           this.oneTwo.setVisible(true);
         } else {
           this.scene.start('room2', {

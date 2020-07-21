@@ -1,5 +1,4 @@
-import constants from './constants';
-
+/* global Phaser */
 class menu extends Phaser.Scene {
   constructor() {
     super({ key: 'menu' });
@@ -38,7 +37,6 @@ class menu extends Phaser.Scene {
       }),
 
     });
-
 
     playButton.setInteractive();
     playButton.on('pointerover', () => {

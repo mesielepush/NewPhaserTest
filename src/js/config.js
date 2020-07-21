@@ -1,3 +1,4 @@
+/* global Phaser */
 import start2 from './start2';
 import start1 from './start1';
 import start3 from './start3';
@@ -5,19 +6,18 @@ import main from './main';
 import menu from './menu';
 import loading from './loading';
 import room1 from './room1';
-import room1_door1 from './room1_door1';
-import room1_door2 from './room1_door2';
+import room1Door1 from './room1Door1';
+import room1Door2 from './room1Door2';
 import room2 from './room2';
-import room2_passage1 from './room2_passage1';
-import room2_passage2 from './room2_passage2';
-import room2_passage1_animation from './room2_passage1_animation';
-import room2_passage1_done from './room2_passage1_done';
+import room2Passage1 from './room2Passage1';
+import room2Passage2 from './room2Passage2';
+import room2Passage1Animation from './room2Passage1Animation';
+import room2Passage1Done from './room2Passage1Done';
 import room3 from './room3';
 import secondLast from './secondLast';
 import secondLastPassage from './secondLastPassage';
 import darkTunel from './darkTunel';
 import finalStage from './finalStage';
-
 
 const config = () => {
   const config = {
@@ -32,14 +32,13 @@ const config = () => {
     },
     scene: [loading, menu, start1, start2,
       start3, main, room1, room2,
-      room3, room1_door1, room1_door2,
-      secondLast, room2_passage1, room2_passage2,
-      room2_passage1_animation, room2_passage1_done,
+      room3, room1Door1, room1Door2,
+      secondLast, room2Passage1, room2Passage2,
+      room2Passage1Animation, room2Passage1Done,
       secondLastPassage, darkTunel, finalStage],
   };
-
+  // eslint-disable-next-line
   const game = new Phaser.Game(config);
 };
 
 export default config;
-/* this.load.setBaseURL('http://labs.phaser.io'); */

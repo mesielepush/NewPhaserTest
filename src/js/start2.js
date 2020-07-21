@@ -1,3 +1,4 @@
+/* global Phaser */
 class start2 extends Phaser.Scene {
   constructor() {
     super({ key: 'start2' });

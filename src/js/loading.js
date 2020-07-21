@@ -1,5 +1,4 @@
-import constants from './constants';
-
+/* global Phaser */
 class loading extends Phaser.Scene {
   constructor() {
     super({ key: 'loading' });
@@ -11,7 +10,6 @@ class loading extends Phaser.Scene {
         color: 0xffffff,
       },
     });
-
 
     this.load.image('passage', '../src/images/passage.png');
     this.load.image('block', '../src/images/blocks.png');
@@ -60,8 +58,8 @@ class loading extends Phaser.Scene {
     this.load.audio('finalSong', '../src/music/finalSong.mp3');
     this.load.audio('opening', '../src/music/inevitable.mp3');
     this.load.audio('steps', '../src/music/steps.mp3');
-    
-   
+    this.load.audio('boosSound', '../src/music/boos.mp3');
+
     this.load.spritesheet('destroyWorld', '../src/images/sprites/destroyWorld.png', {
       frameHeight: 109,
       frameWidth: 218,

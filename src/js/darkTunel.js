@@ -1,6 +1,4 @@
-import constants from './constants';
-
-
+/* global Phaser */
 class darkTunel extends Phaser.Scene {
   constructor() {
     super({ key: 'darkTunel' });
@@ -57,7 +55,6 @@ class darkTunel extends Phaser.Scene {
     this.heroBloodThree = this.add.image(480, 500, 'heroBlood', 3).setDepth(5).setVisible(false);
     this.demoonBloodZero = this.add.sprite(480, 30, 'demonBlood', 0).setDepth(5).setVisible(true);
 
-
     this.reasonOne = this.add.image(460, 300, 'reasonOne').setScale(1.8).setVisible(false);
     this.reasonTwo = this.add.image(460, 300, 'reasonTwo').setScale(1.8).setVisible(false);
     this.reasonThree = this.add.image(460, 300, 'reasonThree').setScale(1.8).setVisible(false);
@@ -90,7 +87,6 @@ class darkTunel extends Phaser.Scene {
       this.attackTurn = true;
     });
 
-
     this.hero = this.physics.add.sprite(480, 450, 'hero', 12).setDepth(4).setScale(0.1);
     this.fire = this.add.sprite(535, 100, 'fire', 0).setDepth(10).setScale(0.2).setVisible(false);
     this.boos2 = this.add.sprite(450, 340, 'boos', 0);
@@ -113,28 +109,29 @@ class darkTunel extends Phaser.Scene {
   }
 
   update() {
-    /* this.fire.play('fireOn',true); */
     this.boos2.y -= 2;
-    console.log('LIFE: ', this.demonLife);
 
-    if (this.attackTurn == true) {
+    if (this.attackTurn === true) {
       this.menu1.setVisible(false);
-      this.reasonWhite.setVisible(false),
-      this.reasonGreen.setVisible(false),
+      this.reasonWhite.setVisible(false);
+      this.reasonGreen.setVisible(false);
       this.attackWhite.setVisible(false);
 
-      for (let i = 0; i < 1; i++) {
+      for (let i = 0; i < 1; i += 1) {
         let x = 250;
         let y = 550;
         switch (Phaser.Math.Between(0, 1)) {
           case 0: x = Phaser.Math.Between(250, 580);
             break;
           case 1: y = Phaser.Math.Between(600, 450);
+            break;
+          default:
+            y = 600;
         }
         this.chickens.add(this.physics.add.sprite(x, y, 'chicken', 0).setDepth(2).setScale(4).setCollideWorldBounds(true));
       }
 
-      for (let i = 0; i < this.chickens.getChildren().length; i++) {
+      for (let i = 0; i < this.chickens.getChildren().length; i += 1) {
         this.physics.accelerateToObject(this.chickens.getChildren()[i], this.boos2, 150);
         this.chickens.getChildren()[i].body.setAllowGravity(false).setCollideWorldBounds(true);
         if (this.chickens.getChildren()[i].body.velocity.x > 0) {
@@ -146,13 +143,13 @@ class darkTunel extends Phaser.Scene {
       }
       if (this.chickens.getChildren().length > 280) {
         this.demoonBloodZero.play('low_blood', true).on('animationcomplete', () => {
+          window.boosSound.stop();
           this.scene.start('finalStage');
         });
       }
     }
 
-
-    if (this.fireBadGuy == true) {
+    if (this.fireBadGuy === true) {
       this.fire.setVisible(true);
 
       this.fire.play('fireOn', true);
@@ -166,17 +163,17 @@ class darkTunel extends Phaser.Scene {
     if (this.boos2.y < 150) {
       this.boos2.y = 150;
     }
-    if (this.upTurnAnimation == false) {
+    if (this.upTurnAnimation === false) {
       this.upTurnAnimation = true;
       this.boos2.play('up_turn', true).on('animationcomplete', () => {
         this.m1.setVisible(true);
         this.time.addEvent({
           delay: 4000,
           callback: () => {
-            this.m1.destroy(),
-            this.turnsBegin = true,
+            this.m1.destroy();
+            this.turnsBegin = true;
             this.menu1.setVisible(true);
-            this.reasonWhite.setVisible(true),
+            this.reasonWhite.setVisible(true);
             this.attackWhite.setVisible(true);
           },
           callbackScope: this,
@@ -184,38 +181,38 @@ class darkTunel extends Phaser.Scene {
       });
     }
 
-    if (this.reasonTurn == true) {
+    if (this.reasonTurn === true) {
       this.menu1.setVisible(false);
-      this.reasonWhite.setVisible(false),
-      this.reasonGreen.setVisible(false),
+      this.reasonWhite.setVisible(false);
+      this.reasonGreen.setVisible(false);
       this.attackWhite.setVisible(false);
-      if (this.heroLife == 2) {
+      if (this.heroLife === 2) {
         this.reasonOne.setVisible(true);
       }
-      if (this.heroLife == 1) {
+      if (this.heroLife === 1) {
         this.reasonTwo.setVisible(true);
       }
-      if (this.heroLife == 0) {
+      if (this.heroLife === 0) {
         this.reasonThree.setVisible(true);
       }
 
-      this.reasonTurn = false,
+      this.reasonTurn = false;
       this.time.addEvent({
         delay: 4000,
         callback: () => {
           this.boos2.play('down_fire', true).on('animationcomplete', () => {
-            if (this.heroLife == 2) {
+            if (this.heroLife === 2) {
               this.reasonOne.setVisible(false);
             }
-            if (this.heroLife == 1) {
+            if (this.heroLife === 1) {
               this.reasonTwo.setVisible(false);
             }
-            if (this.heroLife == 0) {
+            if (this.heroLife === 0) {
               this.reasonThree.setVisible(false);
             }
-            this.turnTwo = true,
-            this.turnOne = 'done',
-            this.fireBadGuy = true,
+            this.turnTwo = true;
+            this.turnOne = 'done';
+            this.fireBadGuy = true;
             this.fire.y = 100;
           });
         },
@@ -223,15 +220,15 @@ class darkTunel extends Phaser.Scene {
       });
     }
 
-    if (this.heroLife == 1) {
+    if (this.heroLife === 1) {
       this.heroBloodZero.destroy();
       this.heroBloodOne.setVisible(true);
     }
-    if (this.heroLife == 0) {
+    if (this.heroLife === 0) {
       this.heroBloodOne.destroy();
       this.heroBloodTwo.setVisible(true);
     }
-    if (this.heroLife == -1) {
+    if (this.heroLife === -1) {
       this.heroBloodTwo.destroy();
       this.heroBloodThree.setVisible(true);
 

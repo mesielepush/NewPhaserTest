@@ -1,8 +1,9 @@
+/* global Phaser */
 import constants from './constants';
 
-class room1_door1 extends Phaser.Scene {
+class room1Door1 extends Phaser.Scene {
   constructor() {
-    super({ key: 'room1_door1' });
+    super({ key: 'room1Door1' });
   }
 
   init(data) {
@@ -49,32 +50,31 @@ class room1_door1 extends Phaser.Scene {
     this.hero.setCollideWorldBounds(true);
     this.groundLayer.setCollideWorldBounds(true);
 
-
     this.keyboard = this.input.keyboard.addKeys('W,A,S,D');
 
     this.physics.world.bounds.width = this.mainbg.width;
     this.physics.world.bounds.height = this.mainbg.height;
 
-
     this.keyboard = this.input.keyboard.addKeys('W,A,S,D');
 
-    if (this.chickensOn == true) {
+    if (this.chickensOn === true) {
       this.chicken = this.physics.add.sprite(600, 351, 'chicken', 0).setDepth(3).setScale(4);
       this.chickens = this.physics.add.group({ immovable: true });
       this.chickens.add(this.chicken);
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 5; i += 1) {
         let x = 600;
         let y = 0;
         switch (Phaser.Math.Between(0, 1)) {
           case 0: x = Phaser.Math.Between(400, 650);
             break;
           case 1: y = Phaser.Math.Between(400, this.game.renderer.height);
+            break;
+          default:
+            y = Phaser.Math.Between(400, this.game.renderer.height);
         }
         this.chickens.add(this.physics.add.sprite(x, y, 'chicken', 0).setDepth(3).setScale(4).setCollideWorldBounds(true));
       }
     }
-
-    /* window.steps.stop() */
   }
 
   update() {
@@ -84,9 +84,9 @@ class room1_door1 extends Phaser.Scene {
     }
     this.roombg.anims.playReverse('bgroom1', true);
 
-    if (this.chickensOn == true) {
+    if (this.chickensOn === true) {
       this.machine.play('on', true);
-      for (let i = 0; i < this.chickens.getChildren().length; i++) {
+      for (let i = 0; i < this.chickens.getChildren().length; i += 1) {
         this.physics.accelerateToObject(this.chickens.getChildren()[i], this.machine, 50);
         this.chickens.getChildren()[i].body.setAllowGravity(false).setCollideWorldBounds(true);
         if (this.chickens.getChildren()[i].body.velocity.x > 0) {
@@ -102,7 +102,6 @@ class room1_door1 extends Phaser.Scene {
       }
     }
     /* this.hero.setScale() */
-
 
     if (this.keyboard.D.isDown === true) {
       this.hero.setVelocityX(+constants.hero.speed_room1);
@@ -139,8 +138,8 @@ class room1_door1 extends Phaser.Scene {
     if (this.hero.y < 450) {
       this.hero.y = 450;
     }
-    if (this.hero.x == 875) {
-      if (this.open == true) {
+    if (this.hero.x === 875) {
+      if (this.open === true) {
         this.scene.start('room1', {
           open: true,
           x: 990,
@@ -157,4 +156,4 @@ class room1_door1 extends Phaser.Scene {
     }
   }
 }
-export default room1_door1;
+export default room1Door1;

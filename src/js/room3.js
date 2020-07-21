@@ -1,5 +1,4 @@
-import constants from './constants';
-
+/* global Phaser */
 class room3 extends Phaser.Scene {
   constructor() {
     super({ key: 'room3' });
@@ -33,13 +32,9 @@ class room3 extends Phaser.Scene {
     this.animationPlayed = true;
     this.map = this.make.tilemap({ key: 'map' });
 
-    // tiles for the ground layer
     const groundTiles = this.map.addTilesetImage('tiles');
-    // create the ground layer
     this.groundLayer = this.map.createDynamicLayer('World', groundTiles, 0, 0);
-    // the player will collide with this layer
     this.groundLayer.setCollisionByExclusion([-1]);
-    // set the boundaries of our game world
     this.physics.world.bounds.width = this.groundLayer.width;
     this.physics.world.bounds.height = this.groundLayer.height;
     this.player = this.physics.add.sprite(200, 200, 'player').setDepth(5);
@@ -48,21 +43,15 @@ class room3 extends Phaser.Scene {
     this.physics.add.collider(this.groundLayer, this.player);
     this.cursors = this.input.keyboard.createCursorKeys();
     this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
-    // make the camera follow the pla yer
     this.cameras.main.startFollow(this.player);
-
-    // set background color, so the sky is not black
     this.cameras.main.setBackgroundColor('#ccccff');
-    /* window.steps.stop() */
   }
 
   update() {
-    if (this.cursors.left.isDown) // if the left arrow key is down
-    {
-      this.player.body.setVelocityX(-200); // move left
-    } else if (this.cursors.right.isDown) // if the right arrow key is down
-    {
-      this.player.body.setVelocityX(200); // move right
+    if (this.cursors.left.isDown) {
+      this.player.body.setVelocityX(-200);
+    } else if (this.cursors.right.isDown) {
+      this.player.body.setVelocityX(200);
     }
     if ((this.cursors.space.isDown || this.cursors.up.isDown) && this.player.body.onFloor()) {
       this.player.body.setVelocityY(-500); // jump up

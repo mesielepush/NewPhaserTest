@@ -1,3 +1,4 @@
+/* global Phaser */
 class start1 extends Phaser.Scene {
   constructor() {
     super({ key: 'start1' });
@@ -16,6 +17,12 @@ class start1 extends Phaser.Scene {
       volume: 0.6,
     });
     window.finalS = this.finalS;
+
+    this.boosSound = this.sound.add('boosSound', {
+      loop: false,
+      volume: 0.6,
+    });
+    window.boosSound = this.boosSound;
 
     this.steps.play();
     this.anims.create({
@@ -144,7 +151,6 @@ class start1 extends Phaser.Scene {
       }),
       repeat: -1,
     });
-
 
     this.anims.create({
       key: 'catWalk_animation',

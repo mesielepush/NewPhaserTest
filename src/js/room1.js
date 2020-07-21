@@ -1,3 +1,4 @@
+/* global Phaser */
 import constants from './constants';
 
 class room1 extends Phaser.Scene {
@@ -9,7 +10,7 @@ class room1 extends Phaser.Scene {
     this.heroCurrentX = data.x;
     this.chickensOn = data.chickens;
 
-    this.openGate = data.open,
+    this.openGate = data.open;
     this.complete = {
       room1: data.room1,
       room2: data.room2,
@@ -20,7 +21,7 @@ class room1 extends Phaser.Scene {
   preload() {
     this.load.image('ground', '../src/images/ground.png');
     this.load.image('room1_stuff', '../src/images/room1_stuff.png');
-    if (this.complete.room1 == true) {
+    if (this.complete.room1 === true) {
       this.open = true;
     } else {
       this.open = this.openGate || false;
@@ -35,7 +36,6 @@ class room1 extends Phaser.Scene {
     this.hero.body.setAllowGravity(false);
     this.groundLayer = this.physics.add.image(0, 400, 'ground').setOrigin(0).setDepth(-2);
 
-
     this.physics.world.bounds.width = this.groundLayer.width;
     this.physics.world.bounds.height = this.groundLayer.height;
 
@@ -45,13 +45,13 @@ class room1 extends Phaser.Scene {
     this.physics.add.collider(this.groundLayer, this.hero);
 
     this.keyboard = this.input.keyboard.addKeys('W,A,S,D');
-    this.cameras.main.setBounds(0, 0, this.room1_passage.displayWidth, this.room1_passage.displayHeight);
+    this.cameras.main.setBounds(0, 0, this.room1_passage.displayWidth,
+      this.room1_passage.displayHeight);
     this.cameras.main.startFollow(this.hero);
     this.physics.world.bounds.width = this.room1_passage.width;
     this.physics.world.bounds.height = this.room1_passage.height;
     this.no = this.add.image(3600, 450, 'no_button').setDepth(3).setScale(0.7).setVisible(true);
     this.yes = this.add.image(3600, 150, 'yes_button').setDepth(3).setScale(0.7).setVisible(false);
-
 
     this.soundOn = this.add.image(450, 50, 'soundOn').setScale(0.3).setVisible(false);
     this.soundOff = this.add.image(450, 50, 'soundOff').setScale(0.3);
@@ -69,17 +69,20 @@ class room1 extends Phaser.Scene {
       window.opening.stop();
     });
 
-    if (this.chickensOn == true) {
+    if (this.chickensOn === true) {
       this.chicken = this.physics.add.sprite(600, 351, 'chicken', 0).setDepth(0).setScale(4);
       this.chickens = this.physics.add.group({ immoavable: true });
       this.chickens.add(this.chicken);
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < 5; i += 1) {
         let x = 1500;
         let y = 0;
         switch (Phaser.Math.Between(0, 1)) {
           case 0: x = Phaser.Math.Between(1500, 2000);
             break;
           case 1: y = Phaser.Math.Between(400, this.game.renderer.height);
+            break;
+          default:
+            y = Phaser.Math.Between(400, this.game.renderer.height);
         }
         this.chickens.add(this.physics.add.sprite(x, y, 'chicken', 0).setDepth(0).setScale(4).setCollideWorldBounds(true));
       }
@@ -89,8 +92,8 @@ class room1 extends Phaser.Scene {
   update() {
     this.soundOn.x = this.hero.x;
     this.soundOff.x = this.hero.x;
-    if (this.chickensOn == true) {
-      for (let i = 0; i < this.chickens.getChildren().length; i++) {
+    if (this.chickensOn === true) {
+      for (let i = 0; i < this.chickens.getChildren().length; i += 1) {
         this.physics.accelerateToObject(this.chickens.getChildren()[i], this.hero, 50);
         this.chickens.getChildren()[i].body.setAllowGravity(false).setCollideWorldBounds(true);
         if (this.chickens.getChildren()[i].body.velocity.x > 0) {
@@ -101,11 +104,10 @@ class room1 extends Phaser.Scene {
         }
       }
     }
-    if (this.open == true) {
+    if (this.open === true) {
       this.yes.setVisible(true);
       this.no.setVisible(false);
     }
-
 
     if (this.keyboard.D.isDown === true) {
       this.hero.setVelocityX(+constants.hero.speed_room1);
@@ -143,7 +145,7 @@ class room1 extends Phaser.Scene {
     }
     if (this.hero.y < 350) {
       if (this.hero.x > 914 && this.hero.x < 1000) {
-        if (this.chickensOn == true) {
+        if (this.chickensOn === true) {
           this.scene.start('room1_door1', {
             chickens: true,
             room1: this.complete.room1,
@@ -158,7 +160,7 @@ class room1 extends Phaser.Scene {
         }
       }
       if (this.hero.x < 1880 && this.hero.x > 1800) {
-        if (this.open == true) {
+        if (this.open === true) {
           this.add.text(this.hero.x, 0, '...Nothing to do here... ',
             {
               fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif', fontSize: 40, backgroundColor: 'black', align: 'center',
@@ -179,14 +181,14 @@ class room1 extends Phaser.Scene {
       }
     }
     if (this.hero.x > 3550) {
-      if (this.open == true) {
+      if (this.open === true) {
         this.scene.start('secondLast', {
           room1: true,
           room2: this.complete.room2,
         });
       }
     }
-    if (this.hero.x == 45) {
+    if (this.hero.x === 45) {
       this.scene.start('main');
     }
   }

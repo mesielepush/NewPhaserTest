@@ -1,8 +1,7 @@
-import constants from './constants';
-
-class room2_passage1_animation extends Phaser.Scene {
+/* global Phaser */
+class room2Passage1Animation extends Phaser.Scene {
   constructor() {
-    super({ key: 'room2_passage1_animation' });
+    super({ key: 'room2Passage1Animation' });
   }
 
   init(data) {
@@ -46,26 +45,22 @@ class room2_passage1_animation extends Phaser.Scene {
   }
 
   update() {
-    console.log(this.complete);
-
     if (this.catMove.active) {
       this.catMove.play('catWalk_animation', true);
       this.catMove.x += 7;
     }
 
-
     this.room2Background.play('room2back', true);
 
-
     if (this.catMove.x > 250) {
-      if (this.seenOnce == false) {
+      if (this.seenOnce === false) {
         this.seenOnce = true;
 
         this.alert = this.add.image(550, 375, 'alertWhite').setVisible(true);
       }
     }
     if (this.catMove.x < 250) {
-      if (this.seenOnce == true) {
+      if (this.seenOnce === true) {
         this.seenOnce = false;
         this.alert.destroy();
       }
@@ -95,7 +90,7 @@ class room2_passage1_animation extends Phaser.Scene {
     }
   }
 }
-export default room2_passage1_animation;
+export default room2Passage1Animation;
 
 /* this.player.flipX= true; // flip the sprite to the left
 this.player.play('walk', true); // play walk animation */

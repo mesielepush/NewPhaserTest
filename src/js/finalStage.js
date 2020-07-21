@@ -1,5 +1,4 @@
-import constants from './constants';
-
+/* global Phaser */
 class finalStage extends Phaser.Scene {
   constructor() {
     super({ key: 'finalStage' });
@@ -22,29 +21,24 @@ class finalStage extends Phaser.Scene {
       }),
       repeat: 0,
     });
-    
-    
-    
   }
 
   create() {
-    
-    window.finalS.play()
+    window.finalS.play();
     this.destroyWorld = this.add.sprite(480, 300, 'destroyWorld', 0).setScale(5.7);
     this.finalMessage = this.add.image(450, 300, 'finalmessage').setVisible(false).setScale(1.5);
     this.reset = this.add.image(850, 550, 'reset').setScale(0.15);
     this.finalAnimation = false;
-    
-    
+
     this.reset.setInteractive();
     this.reset.on('pointerup', () => {
-      window.finalS.stop()
+      window.finalS.stop();
       this.scene.start('menu');
     });
   }
 
   update() {
-    if (this.finalAnimation == false) {
+    if (this.finalAnimation === false) {
       this.finalAnimation = true;
       this.time.addEvent({
         delay: 2500,

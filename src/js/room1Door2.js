@@ -1,22 +1,18 @@
+/* global Phaser */
 import constants from './constants';
 
-class room1_door2 extends Phaser.Scene {
+class room1Door2 extends Phaser.Scene {
   constructor() {
-    super({ key: 'room1_door2' });
+    super({ key: 'room1Door2' });
   }
 
   init(data) {
-    this.openGate = data.open,
+    this.openGate = data.open;
     this.complete = {
       room1: data.room1,
       room2: data.room2,
 
     };
-  }
-
-  preload() {
-
-
   }
 
   create() {
@@ -51,47 +47,42 @@ class room1_door2 extends Phaser.Scene {
     this.corral1 = this.add.image(450, 360, 'corral1').setDepth(3);
     this.corral2 = this.add.image(450, 335, 'corral2').setDepth(0).setVisible(false);
 
-
     this.hero.setCollideWorldBounds(true);
-
 
     this.keyboard = this.input.keyboard.addKeys('W,A,S,D');
 
     this.physics.world.bounds.width = this.roombg.width;
     this.physics.world.bounds.height = this.roombg.height;
 
-
     this.keyboard = this.input.keyboard.addKeys('W,A,S,D');
     this.chickens = this.physics.add.group({ immovable: true });
     this.chickens.add(this.chicken);
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 5; i += 1) {
       let x = 250;
       let y = 0;
       switch (Phaser.Math.Between(0, 1)) {
         case 0: x = Phaser.Math.Between(250, 580);
           break;
         case 1: y = Phaser.Math.Between(400, this.game.renderer.height);
+          break;
+        default:
+          y = Phaser.Math.Between(400, this.game.renderer.height);
       }
       this.chickens.add(this.physics.add.sprite(x, y, 'chicken', 0).setDepth(2).setScale(4).setCollideWorldBounds(true));
     }
-    if (this.open == true) {
-      for (let i = 0; i < this.chickens.getChildren().length; i++) {
+    if (this.open === true) {
+      for (let i = 0; i < this.chickens.getChildren().length; i += 1) {
         this.chickens.getChildren()[i].setVisible(false);
       }
       this.corral.setVisible(false);
       this.corral1.setVisible(false);
       this.corral2.setVisible(true);
     }
-
-    /* window.steps.stop() */
   }
 
   update() {
-    console.log(this.complete);
-
-
-    for (let i = 0; i < this.chickens.getChildren().length; i++) {
+    for (let i = 0; i < this.chickens.getChildren().length; i += 1) {
       this.physics.accelerateToObject(this.chickens.getChildren()[i], this.hero, 50);
       this.chickens.getChildren()[i].body.setAllowGravity(false).setCollideWorldBounds(true);
       if (this.chickens.getChildren()[i].body.velocity.x > 0) {
@@ -100,7 +91,7 @@ class room1_door2 extends Phaser.Scene {
       if (this.chickens.getChildren()[i].body.velocity.x < 0) {
         this.chickens.getChildren()[i].play('left_chicken', true);
       }
-      if (this.chickenBoundaries == true) {
+      if (this.chickenBoundaries === true) {
         if (this.chickens.getChildren()[i].y > 400) {
           this.chickens.getChildren()[i].y = 400;
         }
@@ -148,8 +139,8 @@ class room1_door2 extends Phaser.Scene {
     if (this.hero.y < 450) {
       this.hero.y = 450;
     }
-    if (this.hero.x == 875) {
-      if (this.chickenBoundaries == false) {
+    if (this.hero.x === 875) {
+      if (this.chickenBoundaries === false) {
         this.scene.start('room1', {
           chickens: true,
           x: 1848,
@@ -165,7 +156,7 @@ class room1_door2 extends Phaser.Scene {
         });
       }
     }
-    if (this.hero.y == 450) {
+    if (this.hero.y === 450) {
       if (this.hero.x > 114 && this.hero.x < 186) {
         this.no.setVisible(false);
         this.yes.setVisible(true);
@@ -177,4 +168,4 @@ class room1_door2 extends Phaser.Scene {
     }
   }
 }
-export default room1_door2;
+export default room1Door2;

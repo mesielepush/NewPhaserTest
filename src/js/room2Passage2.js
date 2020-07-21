@@ -1,8 +1,9 @@
+/* global Phaser */
 import constants from './constants';
 
-class room2_passage2 extends Phaser.Scene {
+class room2Passage2 extends Phaser.Scene {
   constructor() {
-    super({ key: 'room2_passage2' });
+    super({ key: 'room2Passage2' });
   }
 
   init(data) {
@@ -10,11 +11,6 @@ class room2_passage2 extends Phaser.Scene {
       room1: data.room1,
       room2: data.room2,
     };
-  }
-
-  preload() {
-
-
   }
 
   create() {
@@ -48,22 +44,17 @@ class room2_passage2 extends Phaser.Scene {
     this.hero.setCollideWorldBounds(true);
     this.keyboard = this.input.keyboard.addKeys('W,A,S,D');
 
-
     this.catMoving = false;
   }
 
   update() {
-    console.log(this.complete);
-
-
-    if (this.catMoving == true) {
+    if (this.catMoving === true) {
       this.catMove.play('catWalk_animation', true);
       this.catMove.x += 7;
     }
     if (this.catStay.active) {
       this.catStay.play('catStay_animation', true);
     }
-
 
     this.room2bg1.play('room2bg1_animation', true);
 
@@ -123,7 +114,7 @@ class room2_passage2 extends Phaser.Scene {
     }
   }
 }
-export default room2_passage2;
+export default room2Passage2;
 
 /* this.player.flipX= true; // flip the sprite to the left
 this.player.play('walk', true); // play walk animation */

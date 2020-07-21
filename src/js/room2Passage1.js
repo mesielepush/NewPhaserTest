@@ -1,8 +1,9 @@
+/* global Phaser */
 import constants from './constants';
 
-class room2_passage1 extends Phaser.Scene {
+class room2Passage1 extends Phaser.Scene {
   constructor() {
-    super({ key: 'room2_passage1' });
+    super({ key: 'room2Passage1' });
   }
 
   init(data) {
@@ -13,10 +14,6 @@ class room2_passage1 extends Phaser.Scene {
 
     };
     this.cat = data.cat;
-  }
-
-  preload() {
-
   }
 
   create() {
@@ -47,17 +44,13 @@ class room2_passage1 extends Phaser.Scene {
     this.hero.setCollideWorldBounds(true);
     this.keyboard = this.input.keyboard.addKeys('W,A,S,D');
 
-
     this.no = this.add.image(840, 150, 'no_button').setDepth(3).setScale(0.7).setVisible(false);
     this.yes = this.add.image(840, 150, 'yes_button').setDepth(3).setScale(0.7).setVisible(true);
-
 
     this.seenOnce = false;
   }
 
   update() {
-    console.log(this.complete);
-
     this.room2Background.play('room2back', true);
 
     if (this.keyboard.D.isDown === true) {
@@ -100,13 +93,13 @@ class room2_passage1 extends Phaser.Scene {
       this.hero.y = 425;
     }
     if (this.hero.x > 250) {
-      if (this.seenOnce == false) {
+      if (this.seenOnce === false) {
         this.seenOnce = true;
         this.alert = this.add.image(550, 375, 'alertWhite').setVisible(true);
       }
     }
     if (this.hero.x < 250) {
-      if (this.seenOnce == true) {
+      if (this.seenOnce === true) {
         this.seenOnce = false;
         this.alert.destroy();
       }
@@ -117,12 +110,12 @@ class room2_passage1 extends Phaser.Scene {
       this.yes.setVisible(false);
       this.no.setVisible(true);
     }
-    if (this.hero.x == 45) {
+    if (this.hero.x === 45) {
       this.scene.start('room2');
     }
   }
 }
-export default room2_passage1;
+export default room2Passage1;
 
 /* this.player.flipX= true; // flip the sprite to the left
 this.player.play('walk', true); // play walk animation */

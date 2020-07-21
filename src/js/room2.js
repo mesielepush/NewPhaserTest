@@ -1,3 +1,4 @@
+/* global Phaser */
 import constants from './constants';
 
 class room2 extends Phaser.Scene {
@@ -11,16 +12,11 @@ class room2 extends Phaser.Scene {
       room2: data.room2,
 
     };
-    if (this.complete.room2 == true) {
+    if (this.complete.room2 === true) {
       this.cat = true;
     } else {
       this.cat = data.cat;
     }
-  }
-
-  preload() {
-
-
   }
 
   create() {
@@ -39,7 +35,6 @@ class room2 extends Phaser.Scene {
       this.soundOn.setVisible(true);
       window.opening.stop();
     });
-
 
     this.room2bg = this.add.sprite(0, 0, 'romm2_official', 0).setDepth(0).setScale(2).setOrigin(0);
     this.hero = this.physics.add.sprite(400, 400, 'hero', 4).setDepth(0).setScale(0.2).setGravityY(0);
@@ -98,19 +93,17 @@ class room2 extends Phaser.Scene {
     }
     if (this.hero.y > 180 && this.hero.y < 226) {
       if (this.hero.x > 619) {
-        if (this.cat != true) {
+        if (this.cat !== true) {
           this.scene.start('room2_passage2', {
             room1: this.complete.room1,
             room2: this.complete.room2,
           });
-        } else {
-          console.log('nothing to see here');
         }
       }
     }
     if (this.hero.x > 749) {
       if (this.hero.y < 380 && this.hero.y > 299) {
-        if (this.cat == true) {
+        if (this.cat === true) {
           this.scene.start('room2_passage1_done', {
             room1: this.complete.room1,
             room2: this.complete.room2,
@@ -123,8 +116,8 @@ class room2 extends Phaser.Scene {
         }
       }
     }
-    if (this.hero.y == 572) {
-      if (this.cat == true) {
+    if (this.hero.y === 572) {
+      if (this.cat === true) {
         this.catDone.setVisible(true);
       } else {
         this.scene.start('main', {
