@@ -11,7 +11,7 @@
 [Issues page](https://github.com/mesielepush/Js_tictactoe/issues)  
 
 ## License
-[MIT license](https://en.wikipedia.org/wiki/MIT_License)  
+[MIT license](https://en.wikipedia.org/wiki/MIT_License)
 
 Jonathan Marín - [Github](https://github.com/mesielepush)
 
