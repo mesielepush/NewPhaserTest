@@ -2,13 +2,13 @@
  This is a short RPG game written in JS with the Phaser3 module.
 ![photo flexing the game](https://i.imgur.com/5Y3137L.png)  
   
-  It was made to test the capabilities of the module, which are ok. However I'm pretty sure I just scratch the surface. The module it's mvery big and there are not too much users out there so getting into it. So it's a little slower to learn than  popular engines likes Godot or Unity.
+  It was made to test the capabilities of the module, which are ok. However I'm pretty sure I just scratch the surface. The module it's very big and there are not too much users out there, so it's a little slower to learn than  popular engines likes Godot or Unity.
 
 ## Installation  
   To install just clone the repository. Open the directory and run  ```yarn install``` into the console. Then just type: ```yarn watch ```. And open the ```index.html``` on Chrome.
 
 ## Issues
-[Issues page](https://github.com/mesielepush/Js_tictactoe/issues)  
+[Issues page](https://github.com/mesielepush/NewPhaserTest/issues)  
 
 ## License
 [MIT license](https://en.wikipedia.org/wiki/MIT_License)
