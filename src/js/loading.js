@@ -54,6 +54,8 @@ class loading extends Phaser.Scene {
     this.load.image('gameOver', '../src/images/gameOver.png');
     this.load.image('finalmessage', '../src/images/finals.png');
     this.load.image('reset', '../src/images/reset.png');
+    this.load.image('controls', '../src/images/controls.png');
+    this.load.image('mouse', '../src/images/mouse.png');
 
     this.load.audio('finalSong', '../src/music/finalSong.mp3');
     this.load.audio('opening', '../src/music/inevitable.mp3');

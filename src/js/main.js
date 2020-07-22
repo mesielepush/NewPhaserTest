@@ -18,7 +18,7 @@ class main extends Phaser.Scene {
     this.hero = this.physics.add.sprite(450, 500, 'hero', 12).setDepth(3).setScale(0.2).setImmovable(true);
     this.hero.body.setAllowGravity(false);
     this.keyboard = this.input.keyboard.addKeys('W,A,S,D');
-
+    this.controls = this.add.image(450, 110, 'controls').setScale(0.3);
     this.soundOn = this.add.image(450, 50, 'soundOn').setScale(0.3).setVisible(false);
     this.soundOff = this.add.image(450, 50, 'soundOff').setScale(0.3);
     this.soundOn.setInteractive();

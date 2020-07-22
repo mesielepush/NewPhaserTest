@@ -29,6 +29,7 @@ class room1 extends Phaser.Scene {
   }
 
   create() {
+    this.controls = this.add.image(450, 110, 'controls').setScale(0.3);
     this.room1_passage = this.add.image(0, 0, 'room1_passage').setOrigin(0).setDepth(-1);
     this.room1_stuff = this.add.image(1800, 295, 'room1_stuff').setDepth(1);
     this.hero = this.physics.add.sprite(this.heroCurrentX || 236, 400, 'hero', 4).setDepth(0).setScale(0.2).setGravityY(0);

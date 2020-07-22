@@ -24,7 +24,7 @@ class room2 extends Phaser.Scene {
     this.soundOff = this.add.image(450, 50, 'soundOff').setScale(0.3).setDepth(6);
     this.soundOn.setInteractive();
     this.soundOff.setInteractive();
-
+    this.controls = this.add.image(450, 110, 'controls').setScale(0.3);
     this.soundOn.on('pointerup', () => {
       this.soundOn.setVisible(false);
       this.soundOff.setVisible(true);

@@ -7,7 +7,7 @@ module.exports = {
   mode: 'development',
   entry: './src/js/index.js',
   devtool: 'eval-source-map',
-  
+
   module: {
     rules: [
       {

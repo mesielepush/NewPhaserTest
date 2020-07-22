@@ -54,7 +54,7 @@ class darkTunel extends Phaser.Scene {
     this.heroBloodTwo = this.add.image(480, 500, 'heroBlood', 2).setDepth(5).setVisible(false);
     this.heroBloodThree = this.add.image(480, 500, 'heroBlood', 3).setDepth(5).setVisible(false);
     this.demoonBloodZero = this.add.sprite(480, 30, 'demonBlood', 0).setDepth(5).setVisible(true);
-
+    this.add.image(100, 100, 'mouse').setScale(0.4);
     this.reasonOne = this.add.image(460, 300, 'reasonOne').setScale(1.8).setVisible(false);
     this.reasonTwo = this.add.image(460, 300, 'reasonTwo').setScale(1.8).setVisible(false);
     this.reasonThree = this.add.image(460, 300, 'reasonThree').setScale(1.8).setVisible(false);
@@ -203,12 +203,18 @@ class darkTunel extends Phaser.Scene {
           this.boos2.play('down_fire', true).on('animationcomplete', () => {
             if (this.heroLife === 2) {
               this.reasonOne.setVisible(false);
+              this.reasonWhite.setVisible(false);
+              this.reasonGreen.setVisible(false);
             }
             if (this.heroLife === 1) {
               this.reasonTwo.setVisible(false);
+              this.reasonWhite.setVisible(false);
+              this.reasonGreen.setVisible(false);
             }
             if (this.heroLife === 0) {
               this.reasonThree.setVisible(false);
+              this.reasonWhite.setVisible(false);
+              this.reasonGreen.setVisible(false);
             }
             this.turnTwo = true;
             this.turnOne = 'done';
