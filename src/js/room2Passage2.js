@@ -107,7 +107,7 @@ class room2Passage2 extends Phaser.Scene {
       this.scene.start('room2');
     }
     if (this.catMove.x > 885) {
-      this.scene.start('room2_passage1_animation', {
+      this.scene.start('room2Passage1Animation', {
         room1: this.complete.room1,
         room2: this.complete.room2,
       });

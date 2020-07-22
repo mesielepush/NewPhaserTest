@@ -39,8 +39,7 @@ class room1 extends Phaser.Scene {
     this.physics.world.bounds.width = this.groundLayer.width;
     this.physics.world.bounds.height = this.groundLayer.height;
 
-    /* this.hero.setBounce(0.2); */ // our player will bounce from items
-    this.hero.setCollideWorldBounds(true); // don't go out of the map
+    this.hero.setCollideWorldBounds(true);
     this.groundLayer.setCollideWorldBounds(true);
     this.physics.add.collider(this.groundLayer, this.hero);
 
@@ -146,13 +145,13 @@ class room1 extends Phaser.Scene {
     if (this.hero.y < 350) {
       if (this.hero.x > 914 && this.hero.x < 1000) {
         if (this.chickensOn === true) {
-          this.scene.start('room1_door1', {
+          this.scene.start('room1Door1', {
             chickens: true,
             room1: this.complete.room1,
             room2: this.complete.room2,
           });
         } else {
-          this.scene.start('room1_door1', {
+          this.scene.start('room1Door1', {
             chickens: false,
             room1: this.complete.room1,
             room2: this.complete.room2,
@@ -166,7 +165,7 @@ class room1 extends Phaser.Scene {
               fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif', fontSize: 40, backgroundColor: 'black', align: 'center',
             });
         } else {
-          this.scene.start('room1_door2', {
+          this.scene.start('room1Door2', {
             room1: this.complete.room1,
             room2: this.complete.room2,
           });

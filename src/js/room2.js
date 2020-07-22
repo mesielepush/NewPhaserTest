@@ -94,7 +94,7 @@ class room2 extends Phaser.Scene {
     if (this.hero.y > 180 && this.hero.y < 226) {
       if (this.hero.x > 619) {
         if (this.cat !== true) {
-          this.scene.start('room2_passage2', {
+          this.scene.start('room2Passage2', {
             room1: this.complete.room1,
             room2: this.complete.room2,
           });
@@ -104,12 +104,12 @@ class room2 extends Phaser.Scene {
     if (this.hero.x > 749) {
       if (this.hero.y < 380 && this.hero.y > 299) {
         if (this.cat === true) {
-          this.scene.start('room2_passage1_done', {
+          this.scene.start('room2Passage1Done', {
             room1: this.complete.room1,
             room2: this.complete.room2,
           });
         } else {
-          this.scene.start('room2_passage1', {
+          this.scene.start('room2Passage1', {
             room1: this.complete.room1,
             room2: this.complete.room2,
           });
@@ -129,6 +129,3 @@ class room2 extends Phaser.Scene {
   }
 }
 export default room2;
-
-/* this.player.flipX= true; // flip the sprite to the left
-this.player.play('walk', true); // play walk animation */

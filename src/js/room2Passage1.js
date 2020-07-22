@@ -86,7 +86,7 @@ class room2Passage1 extends Phaser.Scene {
     }
     if (this.hero.x > 749) {
       if (this.hero.y < 380 && this.hero.y > 299) {
-        this.scene.start('room2_passage1');
+        this.scene.start('room2Passage1');
       }
     }
     if (this.hero.y < 425) {
