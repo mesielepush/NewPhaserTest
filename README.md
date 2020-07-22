@@ -38,8 +38,8 @@ All the images and sprites were taken from different sites, and although some
 times they are modified some times they are not.
 #### Music:
  
-Except for the boss battle music, that is the classic battle theme from ninja gaiden and was composed by [Keiji Yamagishi](https://en.wikipedia.org/wiki/Keiji_Yamagishi#:~:text=Keiji%20Yamagishi%20(%E5%B1%B1%E5%B2%B8%20%E7%B6%99%E5%8F%B8,in%20the%208%20bit%20era.)
-the opening and closing song are compositions of mine and you can use them under the MIT license. 
+The boss battle theme, is the classic battle theme from ninja gaiden and was composed by [Keiji Yamagishi](https://bit.ly/2OMxW2Z).  
+The other two songs, the opening and the closing themes were composed by myself and you can use them under the MIT license. Which means if you do please make the reference to this repo.
 
 ## Try it live:
 [Link to live deployment](https://5f179f28444ec1f7f61ea158--objective-nobel-a8f862.netlify.app/)
