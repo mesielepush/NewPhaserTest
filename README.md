@@ -16,6 +16,12 @@ Except for the last battle that uses the mouse, every other part is played with 
 
 ## Installation  
   To install just clone the repository. Open the directory and run  ```yarn install``` into the console. Then just type: ```yarn watch ```. And open the ```index.html``` on Chrome.
+
+## Acknowledgements:
+All the images and sprites were taken from different sites, and althought some 
+times they are modified most of the time they are not.  
+Also, except for the boos battle music the opening and closing song are compositions of mine and you can use them under the MIT license.  
+
 ## Try it live:
 [Link to live deployment](https://5f179f28444ec1f7f61ea158--objective-nobel-a8f862.netlify.app/)
 ## Issues
