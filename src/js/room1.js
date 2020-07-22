@@ -124,20 +124,20 @@ class room1 extends Phaser.Scene {
     if (this.keyboard.A.isDown === true) {
       this.hero.setVelocityX(-constants.hero.speed_room1);
     }
-    if (this.keyboard.A.isUp && this.keyboard.D.isUp) { // not moving on X axis
+    if (this.keyboard.A.isUp && this.keyboard.D.isUp) { 
       this.hero.setVelocityX(0);
     }
-    if (this.keyboard.W.isUp && this.keyboard.S.isUp) { // not pressing y movement
+    if (this.keyboard.W.isUp && this.keyboard.S.isUp) {
       this.hero.setVelocityY(0);
     }
 
-    if (this.hero.body.velocity.x > 0) { // moving right
+    if (this.hero.body.velocity.x > 0) { 
       this.hero.play('right', true);
-    } else if (this.hero.body.velocity.x < 0) { // moving left
+    } else if (this.hero.body.velocity.x < 0) { 
       this.hero.play('left', true);
-    } else if (this.hero.body.velocity.y < 0) { // moving up
+    } else if (this.hero.body.velocity.y < 0) { 
       this.hero.play('up', true);
-    } else if (this.hero.body.velocity.y > 0) { // moving down
+    } else if (this.hero.body.velocity.y > 0) { 
       this.hero.play('down', true);
     }
     if (this.hero.y < 300) {
