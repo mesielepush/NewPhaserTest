@@ -1,26 +1,45 @@
 # Fantastic Phaser RPG game
- This is a short RPG game written in JS with the Phaser3 module.
+ This is a short RPG game written in JS with the Phaser3 module.
 ![photo flexing the game](https://i.imgur.com/5Y3137L.png)  
   
-  It was made to test the capabilities of the module, which are ok. However I'm pretty sure I just scratch the surface. The module it's very big and there are not too much users out there, so it's a little slower to learn than  popular engines likes Godot or Unity.
+  It was made to test the capabilities of the module, which are ok. However, I'm pretty sure I just scratch the surface. The module it's very big and there are not too many users out there, so it's a little slower to learn than popular engines likes Godot or Unity.
 
 ## History of this case.
 
-Since I was new at Phaser 3, the design of the game was pointing more to the sense that RPG games have of developing a story. I was pushing for the sensation of mistery and discovery of those types of games. However this project was made in a week so again, same as with exploring the Phaser documentation, the story and the player capabilities are merly superficial, but, of course, they have a lot of heart. 
+Since I was new at Phaser 3, the design of the game was pointing more to the sense that RPG games have of developing a story. I was pushing for the sensation of mystery and discovery of those types of games. However this project was made in a week so again, same as with exploring the Phaser documentation, the story and the player capabilities are merely superficial, but they were made with love (• ◡•).
 
 
 ## Play instructions.
 
-Except for the last battle that uses the mouse, every other part is played with the classic 'W,A,S,D' pc keys.  
+Except for the last battle that uses the mouse, every other part is played with the classic 'W,A,S,D' pc keys.  
 
 
-## Installation  
-  To install just clone the repository. Open the directory and run  ```yarn install``` into the console. Then just type: ```yarn watch ```. And open the ```index.html``` on Chrome.
+## Installation  
+  To install just clone the repository. Open the directory and run  ```yarn install``` into the console. And then: ```yarn build ```.  
+  Now, Phaser 3 requires a server so you can play the game, if you have VsCode you can open the index.html with LiveServer and that will be all. If you don't use VsCode you can run this simple python script on the repository folder:  
+ 
+ ```
+import http.server
+import socketserver
+
+PORT = 8080
+Handler = http.server.SimpleHTTPRequestHandler
+
+with socketserver.TCPServer(("", PORT), Handler) as httpd:
+    print("serving at port", PORT)
+    httpd.serve_forever()
+```
+
+And open the game by going to``` http://localhost:8080/``` on your favorite browser, although I don't recommend InternetExplorer, that should not be your favorite browser.
 
 ## Acknowledgements:
-All the images and sprites were taken from different sites, and althought some 
-times they are modified most of the time they are not.  
-Also, except for the boos battle music the opening and closing song are compositions of mine and you can use them under the MIT license.  
+#### Images:
+All the images and sprites were taken from different sites, and although some 
+times they are modified some times they are not.
+#### Music:
+ 
+Except for the boss battle music, that is the classic battle theme from ninja gaiden and was composed by [Keiji Yamagishi](https://en.wikipedia.org/wiki/Keiji_Yamagishi#:~:text=Keiji%20Yamagishi%20(%E5%B1%B1%E5%B2%B8%20%E7%B6%99%E5%8F%B8,in%20the%208%20bit%20era.)
+the opening and closing song are compositions of mine and you can use them under the MIT license. 
 
 ## Try it live:
 [Link to live deployment](https://5f179f28444ec1f7f61ea158--objective-nobel-a8f862.netlify.app/)
