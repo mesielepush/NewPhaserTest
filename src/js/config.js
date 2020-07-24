@@ -1,4 +1,5 @@
 /* global Phaser */
+import getName from './getName';
 import start2 from './start2';
 import start1 from './start1';
 import start3 from './start3';
@@ -17,6 +18,7 @@ import secondLast from './secondLast';
 import secondLastPassage from './secondLastPassage';
 import darkTunel from './darkTunel';
 import finalStage from './finalStage';
+import scores from './scores';
 
 const config = () => {
   const config = {
@@ -29,11 +31,11 @@ const config = () => {
         gravity: { y: 800 },
       },
     },
-    scene: [loading, menu, start1, start2,
+    scene: [loading, getName, menu, start1, start2,
       start3, main, room1, room2, room1Door1, room1Door2,
       secondLast, room2Passage1, room2Passage2,
       room2Passage1Animation, room2Passage1Done,
-      secondLastPassage, darkTunel, finalStage],
+      secondLastPassage, darkTunel, finalStage, scores],
   };
   // eslint-disable-next-line
   const game = new Phaser.Game(config);

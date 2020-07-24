@@ -1,14 +1,25 @@
 /* global Phaser */
+const {
+  postUserScore,
+} = require('./fetchAPI');
+
+
 class finalStage extends Phaser.Scene {
   constructor() {
     super({ key: 'finalStage' });
   }
 
   init(data) {
-    this.complete = {
-      room1: data.room1,
-      room2: data.room2,
-    };
+    this.heroLife = data.heroLife;
+    if (this.heroLife === 2) {
+      this.score = 'UNREASONABLE!!!';
+    }
+    if (this.heroLife === 1) {
+      this.score = 'Reasonable!';
+    }
+    if (this.heroLife === 0) {
+      this.score = 'Tolerable';
+    }
   }
 
   preload() {
@@ -25,15 +36,31 @@ class finalStage extends Phaser.Scene {
 
   create() {
     window.finalS.play();
+
     this.destroyWorld = this.add.sprite(480, 300, 'destroyWorld', 0).setScale(5.7);
     this.finalMessage = this.add.image(450, 300, 'finalmessage').setVisible(false).setScale(1.5);
     this.reset = this.add.image(850, 550, 'reset').setScale(0.15);
+    this.subitRecord = this.add.image(850, 450, 'submitRecord').setScale(1);
+
     this.finalAnimation = false;
 
     this.reset.setInteractive();
+
     this.reset.on('pointerup', () => {
       window.finalS.stop();
       this.scene.start('menu');
+    });
+    this.subitRecord.setInteractive();
+    this.subitRecord.on('pointerup', () => {
+      postUserScore(window.userName, this.score);
+      this.time.addEvent({
+        delay: 2500,
+        callback: () => {
+          this.add.text(300, 800, 'Record saved');
+        },
+        callbackScope: this,
+      });
+      this.scene.start('scores');
     });
   }
 

@@ -1,4 +1,8 @@
 /* global Phaser */
+const {
+  postUserScore,
+} = require('./fetchAPI');
+
 class darkTunel extends Phaser.Scene {
   constructor() {
     super({ key: 'darkTunel' });
@@ -144,7 +148,7 @@ class darkTunel extends Phaser.Scene {
       if (this.chickens.getChildren().length > 280) {
         this.demoonBloodZero.play('low_blood', true).on('animationcomplete', () => {
           window.boosSound.stop();
-          this.scene.start('finalStage');
+          this.scene.start('finalStage', { heroLife: this.heroLife });
         });
       }
     }
@@ -249,6 +253,7 @@ class darkTunel extends Phaser.Scene {
       this.time.addEvent({
         delay: 3000,
         callback: () => {
+          postUserScore(window.userName, 'NiceGuy!');
           this.scene.start('darkTunel');
         },
         callbackScope: this,

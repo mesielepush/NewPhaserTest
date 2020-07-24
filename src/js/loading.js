@@ -56,6 +56,13 @@ class loading extends Phaser.Scene {
     this.load.image('reset', '../src/images/reset.png');
     this.load.image('controls', '../src/images/controls.png');
     this.load.image('mouse', '../src/images/mouse.png');
+    this.load.image('submit', '../src/images/submits.png');
+    this.load.image('enter', '../src/images/enters.png');
+    this.load.image('submitRecord', '../src/images/submitRecords.png');
+    this.load.image('tag', '../src/images/empty-tag.png');
+
+    this.load.image('sky', '../src/images/sky.png');
+
 
     this.load.audio('finalSong', '../src/music/finalSong.mp3');
     this.load.audio('opening', '../src/music/inevitable.mp3');
@@ -152,7 +159,7 @@ class loading extends Phaser.Scene {
   }
 
   create() {
-    this.scene.start('menu');
+    this.scene.start('getName');
   }
 }
 export default loading;
