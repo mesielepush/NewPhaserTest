@@ -11,7 +11,7 @@ Since I was new at Phaser 3, the design of the game was pointing more to the sen
 
 ## Play instructions.
 
-Except for the last battle that uses the mouse, every other part is played with the classic 'W,A,S,D' pc keys. After the initial display, you have to solve two main rooms to get to the boos batlle, no spoilers so no tips. 
+Except for the last battle that uses the mouse, every other part is played with the classic 'W,A,S,D' pc keys. After the initial display, you have to solve two main rooms to get to the boss batlle, no spoilers so no tips. 
 
 
 ## Installation  
