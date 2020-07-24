@@ -11,7 +11,7 @@ Since I was new at Phaser 3, the design of the game was pointing more to the sen
 
 ## Play instructions.
 
-Except for the last battle that uses the mouse, every other part is played with the classic 'W,A,S,D' pc keys.  
+Except for the last battle that uses the mouse, every other part is played with the classic 'W,A,S,D' pc keys. You have to solve two rooms to get to the boos batlle, no spoilers so no tips.
 
 
 ## Installation  
@@ -38,7 +38,7 @@ All the images and sprites were taken from different sites, and although some
 times they are modified some times they are not.
 #### Music:
  
-The boss battle theme, is the classic battle theme from ninja gaiden and was composed by [Keiji Yamagishi](https://bit.ly/2OMxW2Z).  
+The boss battle theme, is a classic battle theme from ninja gaiden and was composed by [Keiji Yamagishi](https://bit.ly/2OMxW2Z).  
 The other two songs, the opening and the closing themes were composed by myself and you can use them under the MIT license. Which means if you do please make the reference to this repo.
 
 ## Try it live:
